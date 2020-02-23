@@ -1,0 +1,9 @@
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/bin/Debug/netstandard2.0/PPR.Persistence.deps.json
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/bin/Debug/netstandard2.0/PPR.Persistence.dll
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/bin/Debug/netstandard2.0/PPR.Persistence.pdb
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/obj/Debug/netstandard2.0/PPR.Persistence.csprojAssemblyReference.cache
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/obj/Debug/netstandard2.0/PPR.Persistence.csproj.CoreCompileInputs.cache
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/obj/Debug/netstandard2.0/PPR.Persistence.AssemblyInfoInputs.cache
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/obj/Debug/netstandard2.0/PPR.Persistence.AssemblyInfo.cs
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/obj/Debug/netstandard2.0/PPR.Persistence.dll
+/media/patrix/Data/working/ppr/ppr/src/PPR.Persistence/obj/Debug/netstandard2.0/PPR.Persistence.pdb

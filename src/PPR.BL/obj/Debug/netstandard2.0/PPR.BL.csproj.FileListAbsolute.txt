@@ -1,0 +1,9 @@
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/bin/Debug/netstandard2.0/PPR.BL.deps.json
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/bin/Debug/netstandard2.0/PPR.BL.dll
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/bin/Debug/netstandard2.0/PPR.BL.pdb
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/obj/Debug/netstandard2.0/PPR.BL.csprojAssemblyReference.cache
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/obj/Debug/netstandard2.0/PPR.BL.csproj.CoreCompileInputs.cache
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/obj/Debug/netstandard2.0/PPR.BL.AssemblyInfoInputs.cache
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/obj/Debug/netstandard2.0/PPR.BL.AssemblyInfo.cs
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/obj/Debug/netstandard2.0/PPR.BL.dll
+/media/patrix/Data/working/ppr/ppr/src/PPR.BL/obj/Debug/netstandard2.0/PPR.BL.pdb
