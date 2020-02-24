@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PPR.BL\PPR.BL.csproj" />
-    <ProjectReference Include="..\PPR.Persistence\PPR.Persistence.csproj" />
+    <ProjectReference Include="..\PPR.Business\PPR.Business.csproj" />
   </ItemGroup>
 
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
