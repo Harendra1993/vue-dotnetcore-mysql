@@ -1,8 +1,8 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using PPR.Providers;
+using PPR.App.Providers;
 
-namespace PPR.Controllers
+namespace PPR.App.Controllers
 {
     [Route("api/[controller]")]
     public class WeatherController : Controller

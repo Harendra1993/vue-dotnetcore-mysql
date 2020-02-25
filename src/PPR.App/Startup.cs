@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PPR.Providers;
+using PPR.App.Providers;
 
-namespace PPR {
+namespace PPR.App {
     public class Startup {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;

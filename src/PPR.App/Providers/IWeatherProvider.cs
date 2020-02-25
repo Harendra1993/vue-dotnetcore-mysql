@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using PPR.Models;
+using PPR.App.Models;
 
-namespace PPR.Providers
+namespace PPR.App.Providers
 {
     public interface IWeatherProvider
     {

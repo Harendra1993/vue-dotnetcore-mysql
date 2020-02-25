@@ -1,4 +1,4 @@
-namespace PPR.Models
+namespace PPR.App.Models
 {
     public class WeatherForecast
     {

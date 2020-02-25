@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace PPR.Controllers
+namespace PPR.App.Controllers
 {
     public class HomeController : Controller
     {

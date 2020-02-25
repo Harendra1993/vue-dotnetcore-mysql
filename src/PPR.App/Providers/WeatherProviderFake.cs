@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PPR.Models;
+using PPR.App.Models;
 
-namespace PPR.Providers
+namespace PPR.App.Providers
 {
     public class WeatherProviderFake : IWeatherProvider
     {
