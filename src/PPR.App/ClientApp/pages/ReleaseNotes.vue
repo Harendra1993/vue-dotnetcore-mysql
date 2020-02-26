@@ -4,44 +4,50 @@
     <div class="ibox shadow-md-down">
       <div class="ibox-content">
         <div class="animated fadeInDown">
-          <div class="release-note position-relative container-new px-3 text-left"></div>
+          <div
+            class="release-note position-relative container-new px-3 text-left"
+          ></div>
           <section
             class="release-note position-relative container-new py-6 px-3 text-left"
             v-for="(item, index) in data"
             :key="index"
           >
             <header class="timeline-decorator d-flex flex-items-center mb-3">
-              <span class="version-badge d-inline-block bg-gold p-1 rounded-1 mr-2 text-bold">
-                <b>{{item.version}}</b>
+              <span
+                class="version-badge d-inline-block bg-gold p-1 rounded-1 mr-2 text-bold"
+              >
+                <b>{{ item.version }}</b>
               </span>
-              <h2 class="f3 css-truncate css-truncate-target">{{item.date}}</h2>
+              <h2 class="f3 css-truncate css-truncate-target">
+                {{ item.date }}
+              </h2>
             </header>
             <ul class="list-style-none change-log">
-              <template v-if="item.features.length>0">
+              <template v-if="item.features.length > 0">
                 <li
                   class="d-flex flex-items-start mb-2"
-                  v-for="(feature,index) in item.features"
-                  :key="index+'F'"
+                  v-for="(feature, index) in item.features"
+                  :key="index + 'F'"
                 >
                   <div class="change-badge change-badge-added">Added</div>
                   <div class="change-description" v-html="feature"></div>
                 </li>
               </template>
-              <template v-if="item.improvements.length>0">
+              <template v-if="item.improvements.length > 0">
                 <li
                   class="d-flex flex-items-start mb-2"
-                  v-for="(improvement,index) in item.improvements"
-                  :key="index+'I'"
+                  v-for="(improvement, index) in item.improvements"
+                  :key="index + 'I'"
                 >
                   <div class="change-badge change-badge-improved">Improved</div>
                   <div class="change-description" v-html="improvement"></div>
                 </li>
               </template>
-              <template v-if="item.bugs.length>0">
+              <template v-if="item.bugs.length > 0">
                 <li
                   class="d-flex flex-items-start mb-2"
-                  v-for="(bug,index) in item.bugs"
-                  :key="index+'B'"
+                  v-for="(bug, index) in item.bugs"
+                  :key="index + 'B'"
                 >
                   <div class="change-badge change-badge-fixed">Fixed</div>
                   <div class="change-description" v-html="bug"></div>
@@ -82,7 +88,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./resources/sass/release.scss";
+@import "../sass/release.scss";
 .f3 {
   font-weight: 600;
 }

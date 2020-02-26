@@ -1,28 +1,30 @@
-require("./boot-app");
+import './css/site.css'
+import 'core-js/es6/promise'
+import 'core-js/es6/array'
 
-// Installed modules import
-import Vue from "vue";
-// import * as uiv from "uiv";
+// window._ = require('lodash');
+// window.Popper = require('popper.js').default;
 
-// import VueSplit from "vue-split-panel";
+//window.ajax = require('ajax');
+//window.DataTable = require('datatables.net');
 
-// Custom modules import
-import store from "../store/index";
-import router from "@/router";
-import App from "@/components/App";
+try {
+  window.$ = window.jQuery = require('jquery');
 
-import "@/components";
+  // require('bootstrap');
+} catch (e) {
 
-// Vue.use(uiv);
+  console.log('Failed Bootstrap Failed To Render.', e);
+}
 
-/** Vue JS Configurations */
-Vue.config.productionTip = false;
+window.axios = require('axios');
 
-Vue.config.devtools = true;
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-/** Rendering  */
-new Vue({
-  store,
-  router,
-  ...App
-});
+// let token = document.head.querySelector('meta[name="csrf-token"]');
+
+// if (token) {
+//     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+// } else {
+//     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+// }
