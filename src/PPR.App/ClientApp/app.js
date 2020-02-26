@@ -1,26 +1,28 @@
-import Vue from 'vue'
-import axios from 'axios'
-import router from './router/index'
-import store from './store'
-import { sync } from 'vuex-router-sync'
-import App from 'components/app-root'
-import { FontAwesomeIcon } from './icons'
+require("./boot-app");
 
-// Registration of global components
-Vue.component('icon', FontAwesomeIcon)
+// Installed modules import
+import Vue from "vue";
+// import * as uiv from "uiv";
 
-Vue.prototype.$http = axios
+// import VueSplit from "vue-split-panel";
 
-sync(store, router)
+// Custom modules import
+import store from "../store/index";
+import router from "@/router";
+import App from "@/components/App";
 
-const app = new Vue({
+import "@/components";
+
+// Vue.use(uiv);
+
+/** Vue JS Configurations */
+Vue.config.productionTip = false;
+
+Vue.config.devtools = true;
+
+/** Rendering  */
+new Vue({
   store,
   router,
   ...App
-})
-
-export {
-  app,
-  router,
-  store
-}
+});

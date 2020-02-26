@@ -1,32 +1,32 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
+import Cookies from "js-cookie";
 
-Vue.use(Vuex)
+import actions from "./actions";
+import mutations from "./mutations";
+import getters from "./getters";
+import state from "./state";
 
-// TYPES
-const MAIN_SET_COUNTER = 'MAIN_SET_COUNTER'
-
-// STATE
-const state = {
-  counter: 1
-}
-
-// MUTATIONS
-const mutations = {
-  [MAIN_SET_COUNTER] (state, obj) {
-    state.counter = obj.counter
-  }
-}
-
-// ACTIONS
-const actions = ({
-  setCounter ({ commit }, obj) {
-    commit(MAIN_SET_COUNTER, obj)
-  }
-})
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state,
   mutations,
-  actions
-})
+  getters,
+  actions,
+  plugins: [
+    createPersistedState({
+      key: "g_persist",
+      storage: {
+        getItem: key => Cookies.get(key),
+        setItem: (key, value) =>
+          Cookies.set(key, value, {
+            expires: 2147483647,
+            secure: false
+          }),
+        removeItem: key => Cookies.remove(key)
+      }
+    })
+  ]
+});
