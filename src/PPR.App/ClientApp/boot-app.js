@@ -1,4 +1,4 @@
-require("./app");
+require("./init");
 
 // Installed modules import
 import Vue from "vue";
