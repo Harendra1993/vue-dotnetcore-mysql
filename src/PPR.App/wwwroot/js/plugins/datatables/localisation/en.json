@@ -1,0 +1,23 @@
+{
+  "sEmptyTable": "<div class='col-sm-12'><div class='img-responsive text-center' style='margin-top:10px;'><img src='/img/no-record.png'></div></div>",
+  "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+  "sInfoEmpty": "Showing 0 to 0 of 0 entries",
+  "sInfoFiltered": "(filtered from _MAX_ total entries)",
+  "sInfoPostFix": "",
+  "sInfoThousands": ",",
+  "sLengthMenu": "Show _MENU_ entries",
+  "loadingRecords": "<div class='spiner-example'><div class='sk-spinner sk-spinner-pulse'></div></div>",
+  "Processing": "<div class='spiner-example'><div class='sk-spinner sk-spinner-pulse'></div></div>",
+  "sSearch": "Filter:",
+  "zeroRecords": "<div class='col-sm-12'><div class='img-responsive text-center' style='margin-top:10px;'><img src='/img/no-record.png'></div></div>",
+  "oPaginate": {
+    "sFirst": "First",
+    "sLast": "Last",
+    "sNext": "Next",
+    "sPrevious": "Previous"
+  },
+  "oAria": {
+    "sSortAscending": ": activate to sort column ascending",
+    "sSortDescending": ": activate to sort column descending"
+  }
+}
