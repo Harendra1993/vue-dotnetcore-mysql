@@ -68,9 +68,8 @@ module.exports = () => {
               : [MiniCssExtractPlugin.loader, "css-loader"]
           },
           {
-            test: /\.scss$/,
-            include: /ClientApp/,
-            use: "sass-loader"
+            test: /\.s[a|c]ss$/,
+            loader: "style-loader!css-loader!sass-loader"
           },
           {
             test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -78,6 +77,7 @@ module.exports = () => {
           }
         ]
       },
+
       plugins: [
         new VueLoaderPlugin(),
         new webpack.DllReferencePlugin({
