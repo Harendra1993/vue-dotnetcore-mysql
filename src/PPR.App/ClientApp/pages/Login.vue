@@ -7,24 +7,38 @@
       </li>-->
     </ul>
     <div class="page">
-      <img class="logo" src="/img/logo/gs_logo_1.png" />
-      <br />
-      <div class="search">
-        <form role="search" @submit.prevent="change($event)">
-          <div class="input-group">
-            <input
-              type="text"
-              v-model="keyword"
-              class="form-control"
-              placeholder="Search something here..."
-              required
-              autofocus="autofocus"
-            />
-            <div class="input-group-btn">
-              <input class="btn btn-primary" type="submit" value="Search" />
+      <div
+        class="middle-box text-center loginscreen animated fadeInDown"
+        style="padding-top: 15%;width: 350px;"
+      >
+        <div>
+          <center>
+            <h2 class="font-bold">Welcome to PPR</h2>
+            <p>Login in. To see it in action.</p>
+          </center>
+
+          <form class="m-t" role="form" action="#" method="POST">
+            <div class="form-group">
+              <input
+                type="text"
+                name="username"
+                class="form-control"
+                placeholder="Enter Username"
+                required
+              />
             </div>
-          </div>
-        </form>
+            <div class="form-group">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter Password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b" name="RM_login">Login</button>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -101,7 +115,7 @@ export default {
 .h-body {
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  background-image: url(/img/start/bg3.jpg);
+  background-image: url(/img/start/1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

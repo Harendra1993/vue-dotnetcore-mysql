@@ -7,8 +7,8 @@ function page(path) {
 
 export default [{
     path: "/",
-    name: "home",
-    component: page("home/Home.vue")
+    name: "login",
+    component: page("Login.vue")
   },
   {
     path: "/contacts",
