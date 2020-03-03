@@ -12,7 +12,7 @@
         style="padding-top: 15%;width: 350px;"
       >
         <div>
-          <center>
+          <center style="  color: white;">
             <h2 class="font-bold">Welcome to PPR</h2>
             <p>Login in. To see it in action.</p>
           </center>
@@ -120,7 +120,6 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  color: white;
   height: 100vh;
   width: 100wh;
   margin-top: -15px;
@@ -132,6 +131,7 @@ export default {
   left: 15px;
   position: absolute;
   padding: 0;
+  color: white;
 }
 
 .date {
