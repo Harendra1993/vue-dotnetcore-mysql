@@ -4,7 +4,7 @@
 // Bootstrap
 // @import "~bootstrap/scss/bootstrap";
 
-.top-navigation .nav > li > .exact-active {
+.top-navigation .nav>li>.exact-active {
   color: $green;
   cursor: pointer;
   font-weight: bolder;
@@ -152,18 +152,18 @@ table {
   color: #000;
 }
 
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:focus,
-.dropdown-menu > .active > a:hover {
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover {
   color: #fff;
   text-decoration: none;
   background-color: #bb8b30;
   outline: 0;
 }
 
-.dropdown-menu > li > .active,
-.dropdown-menu > li > .active:focus,
-.dropdown-menu > li > .active:hover {
+.dropdown-menu>li>.active,
+.dropdown-menu>li>.active:focus,
+.dropdown-menu>li>.active:hover {
   color: #fff;
   text-decoration: none;
   background-color: #bb8b30;
@@ -185,7 +185,7 @@ a {
   font-size: 9px;
 }
 
-.contact-box > #anchor:hover {
+.contact-box>#anchor:hover {
   cursor: pointer;
 }
 
@@ -199,12 +199,12 @@ a {
   padding: 0 !important;
 }
 
-.no-padding > pre {
+.no-padding>pre {
   margin: 30px;
 }
 
 .no-padding .dataTables_wrapper table,
-.no-padding > table {
+.no-padding>table {
   border: none !important;
   margin-bottom: 0 !important;
   border-bottom-width: 0 !important;
@@ -481,18 +481,18 @@ a {
   transition: opacity 0.15s linear;
 }
 
-.tabs-pull-right.nav-pills > li,
-.tabs-pull-right.nav-tabs > li {
+.tabs-pull-right.nav-pills>li,
+.tabs-pull-right.nav-tabs>li {
   float: right;
 }
 
-.tabs-pull-right.nav-pills > li:first-child > a,
-.tabs-pull-right.nav-tabs > li:first-child > a {
+.tabs-pull-right.nav-pills>li:first-child>a,
+.tabs-pull-right.nav-tabs>li:first-child>a {
   margin-right: 1px;
 }
 
-.tabs-pull-right.bordered.nav-pills > li:first-child > a,
-.tabs-pull-right.bordered.nav-tabs > li:first-child > a {
+.tabs-pull-right.bordered.nav-pills>li:first-child>a,
+.tabs-pull-right.bordered.nav-tabs>li:first-child>a {
   border-left-width: 1px !important;
   margin-right: 0;
   border-right-width: 0;
@@ -626,18 +626,18 @@ time.icon * {
     text-align: left;
   }
 
-  .profile-pic > img {
+  .profile-pic>img {
     width: 90px;
     margin-left: 0;
     top: -25px;
     margin-right: 0;
   }
 
-  .profile-pic + div > h1 {
+  .profile-pic+div>h1 {
     font-size: 20px;
   }
 
-  .profile-pic + div > h1 small {
+  .profile-pic+div>h1 small {
     font-size: 16px;
   }
 
@@ -925,12 +925,15 @@ mark {
 .pdf {
   color: rgb(255, 0, 0);
 }
+
 .ppt {
   color: #be351d;
 }
+
 .doc {
   color: #275596;
 }
+
 .xls {
   color: #126c43;
 }

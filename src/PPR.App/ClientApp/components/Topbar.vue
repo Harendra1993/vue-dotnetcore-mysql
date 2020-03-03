@@ -17,19 +17,8 @@
           <img class="logo" src="/img/logo/without_text.png" />
         </router-link>
       </div>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- <ul class="nav navbar-top-links navbar-right">
-          <li>
-            <a title="Switch between English/Arabic" id="lang">
-              <b>En</b>
-              <i class></i>
-              <b>Ar</b>
-            </a>
-          </li>
-        </ul>-->
-        <div class="col-md-6 col-sm-8 col-xs-11 navbar-left">
-          <search-box></search-box>
-        </div>
         <menu-items></menu-items>
       </div>
     </nav>
@@ -37,11 +26,9 @@
 </template>
 
 <script>
-import SearchBox from "./SearchBox";
 import MenuItems from "./MenuItems";
 export default {
   components: {
-    SearchBox,
     MenuItems
   }
 };

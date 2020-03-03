@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <progress-bar ref="progress" />
 
     <transition name="page" mode="out-in">
