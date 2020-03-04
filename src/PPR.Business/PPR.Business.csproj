@@ -1,11 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="SqlKata" Version="1.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PPR.Common\PPR.Common.csproj" />
+    <ProjectReference Include="..\PPR.Data\PPR.Data.csproj" />
   </ItemGroup>
 
 </Project>
