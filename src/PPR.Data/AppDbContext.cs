@@ -1,24 +1,8 @@
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.Extensions;
+using PPR.Data.Entites;
 
 namespace PPR.Data {
-
-    public class Book {
-        public string ISBN { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Language { get; set; }
-        public int Pages { get; set; }
-        public virtual Publisher Publisher { get; set; }
-    }
-
-    public class Publisher {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public virtual ICollection<Book> Books { get; set; }
-    }
-
     public class AppDbContext : DbContext {
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseMySQL ("server=localhost;database=test;user=root;password=redhat");
