@@ -1,47 +1,61 @@
 <template>
   <ul class="nav navbar-top-links">
     <li>
-      <router-link to="/profile">
-        <i class="fa fa-users"></i> Profile
+      <router-link to="/dashboard">
+        <i class="fa fa-users"></i> Dashboard
       </router-link>
     </li>
     <li>
-      <router-link to="/contacts">
-        <i class="fa fa-address-book"></i> Contacts
+      <router-link to="/upload">
+        <i class="fa fa-address-book"></i> Upload
       </router-link>
     </li>
 
     <li>
-      <router-link to="/messengers">
-        <i class="fa fa-comments"></i> Messengers
+      <router-link to="/actions">
+        <i class="fa fa-comments"></i> View / Edit
       </router-link>
     </li>
 
-    <li>
-      <router-link to="/sms">
-        <i class="fa fa-sms"></i> SMS
-      </router-link>
+    <li class="dropdown">
+      <a class="dropdown-toggle" id="untagged" data-toggle="dropdown" href="#">
+        <i class="fa fa-folder"></i>
+        Analysis
+        <i class="caret"></i>
+      </a>
+
+      <ul class="dropdown-menu">
+        <li>
+          <router-link to="/analysis">
+            <i class="fa fa-file-search"></i> Overall Analysis
+          </router-link>
+        </li>
+
+        <li>
+          <router-link to="/team-chart">
+            <i class="fa fa-file-powerpoint"></i> Team Chart
+          </router-link>
+        </li>
+
+        <li>
+          <router-link to="/team-chart">
+            <i class="fa fa-file-powerpoint"></i> Assignment Chart
+          </router-link>
+        </li>
+
+        <li>
+          <router-link to="/team-chart">
+            <i class="fa fa-file-powerpoint"></i> Scorecard
+          </router-link>
+        </li>
+      </ul>
     </li>
 
-    <li>
-      <router-link to="/emails-old">
-        <i class="fa fa-envelope"></i> Emails
-      </router-link>
-    </li>
-    <!-- File System Start-->
-    <li>
-      <router-link to="/attachments">
-        <i class="fa fa-paperclip"></i>
-        Mobile-attachments
-      </router-link>
-    </li>
-
-    <li>
-      <router-link to="/tagged" id="files">
-        <i class="fa fa-tag"></i>
-        Tagged-reports
-      </router-link>
-    </li>
+    <ul class="nav navbar-top-links navbar-right">
+      <li>
+        <a href="/logout"> <i class="fa fa-sign-out"></i> Logout </a>
+      </li>
+    </ul>
   </ul>
 </template>
 
@@ -49,5 +63,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>

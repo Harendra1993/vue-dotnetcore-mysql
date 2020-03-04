@@ -14,7 +14,7 @@
         </button>
 
         <router-link to="/" class="navbar-brand">
-          <img class="logo" src="/img/logo/without_text.png" />
+          <b>PPR</b>
         </router-link>
       </div>
 

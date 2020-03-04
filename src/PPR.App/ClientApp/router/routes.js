@@ -11,9 +11,9 @@ export default [{
     component: page("Login.vue")
   },
   {
-    path: "/contacts",
-    name: "contacts",
-    component: page("contacts/Contacts.vue")
+    path: "/dashboard",
+    name: "dashboard",
+    component: page("user/Dashboard.vue")
   },
   {
     path: "/release-notes",
