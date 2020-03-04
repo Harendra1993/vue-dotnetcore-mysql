@@ -1,7 +1,20 @@
-namespace PPR.Business.Repositories
-{
-    public class DashboardRepository
-    {
-        
+using System.Collections.Generic;
+using System.Linq;
+using PPR.Business.interfaces;
+using PPR.Data;
+using PPR.Data.Entites;
+
+namespace PPR.Business.Repositories {
+    public class DashboardRepository : IDashboardRepository {
+
+        private readonly AppDbContext _dataContext;
+        public DashboardRepository () {
+            _dataContext = new AppDbContext ();
+        }
+        public IList<Book> Books () {
+            IList<Book> data = _dataContext.Book.ToList ();
+
+            return data;
+        }
     }
 }

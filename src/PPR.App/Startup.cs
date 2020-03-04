@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PPR.App.Providers;
+using PPR.Business.interfaces;
+using PPR.Business.Repositories;
 
 namespace PPR.App {
     public class Startup {
@@ -22,6 +24,7 @@ namespace PPR.App {
 
             // Simple example with dependency injection for a data provider.
             services.AddSingleton<IWeatherProvider, WeatherProviderFake> ();
+            services.AddSingleton<IDashboardRepository, DashboardRepository> ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
