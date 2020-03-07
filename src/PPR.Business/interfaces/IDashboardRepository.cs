@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using PPR.Data.Entites;
+using PPR.Data.Entities;
 
 namespace PPR.Business.interfaces {
     public interface IDashboardRepository {

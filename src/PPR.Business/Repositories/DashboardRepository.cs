@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PPR.Business.interfaces;
 using PPR.Data;
-using PPR.Data.Entites;
+using PPR.Data.Entities;
 
 namespace PPR.Business.Repositories {
     public class DashboardRepository : IDashboardRepository {
