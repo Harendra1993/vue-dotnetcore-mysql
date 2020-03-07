@@ -9,8 +9,7 @@
         "${workspaceFolder}/src/PPR.App/PPR.App.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
-      ],
-      "problemMatcher": "$msCompile"
+      ]
     },
     {
       "label": "publish",
@@ -21,8 +20,7 @@
         "${workspaceFolder}/src/PPR.App/PPR.App.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
-      ],
-      "problemMatcher": "$msCompile"
+      ]
     },
     {
       "label": "watch",
@@ -34,8 +32,7 @@
         "${workspaceFolder}/src/PPR.App/PPR.App.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
-      ],
-      "problemMatcher": "$msCompile"
+      ]
     }
   ]
 }
