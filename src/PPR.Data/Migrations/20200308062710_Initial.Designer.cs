@@ -9,8 +9,8 @@ using PPR.Data;
 namespace PPR.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200308060422_Users")]
-    partial class Users
+    [Migration("20200308062710_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
