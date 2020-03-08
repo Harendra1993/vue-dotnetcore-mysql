@@ -1,12 +1,24 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.EntityFrameworkCore.Extensions;
 using PPR.Data.Entities;
 using PPR.Data.Mappings;
 
 namespace PPR.Data {
     public class AppDbContext : DbContext {
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseMySQL ("server=localhost;database=test;user=root;password=redhat");
+
+        protected override void OnConfiguring (DbContextOptionsBuilder dbContextBuilder) {
+            Console.WriteLine (Directory.GetCurrentDirectory ());
+            var configuration = new ConfigurationBuilder ()
+                .SetBasePath (Directory.GetCurrentDirectory ())
+                .AddJsonFile ("appsettings.json")
+                .Build ();
+
+            dbContextBuilder.UseMySQL (configuration.GetConnectionString ("DefaultConnection"));
         }
 
         public DbSet<Book> Book { get; set; }
