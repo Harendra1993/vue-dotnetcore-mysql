@@ -74,15 +74,15 @@ namespace PPR.Data.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime>("LastLogin");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(20);
 
                     b.Property<short?>("RoleId");
-
-                    b.Property<string>("UserEmailAddress")
-                        .IsRequired()
-                        .HasMaxLength(35);
 
                     b.Property<string>("UserName")
                         .IsRequired()

@@ -9,8 +9,8 @@ using PPR.Data;
 namespace PPR.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200308062710_Initial")]
-    partial class Initial
+    [Migration("20200308100747_UpdateUser")]
+    partial class UpdateUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,15 +76,15 @@ namespace PPR.Data.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime>("LastLogin");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(20);
 
                     b.Property<short?>("RoleId");
-
-                    b.Property<string>("UserEmailAddress")
-                        .IsRequired()
-                        .HasMaxLength(35);
 
                     b.Property<string>("UserName")
                         .IsRequired()

@@ -7,8 +7,8 @@ namespace PPR.Data.Mappings {
         public void Configure (EntityTypeBuilder<User> builder) {
             builder.HasKey (x => x.UserId);
             builder.Property (x => x.UserName).IsRequired ().HasMaxLength (25);
-            builder.Property (x => x.UserEmailAddress).IsRequired ().HasMaxLength (35);
             builder.Property (x => x.Password).IsRequired ().HasMaxLength (20);
+            builder.Property (x => x.Created).IsRequired ();
         }
     }
 }

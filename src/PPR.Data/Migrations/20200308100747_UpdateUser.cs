@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PPR.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class UpdateUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,7 +64,8 @@ namespace PPR.Data.Migrations
                         .Annotation("MySQL:AutoIncrement", true),
                     UserName = table.Column<string>(maxLength: 25, nullable: false),
                     Password = table.Column<string>(maxLength: 20, nullable: false),
-                    UserEmailAddress = table.Column<string>(maxLength: 35, nullable: false),
+                    LastLogin = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
                     RoleId = table.Column<short>(nullable: true)
                 },
                 constraints: table =>
