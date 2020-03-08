@@ -12,7 +12,6 @@ namespace PPR.Data {
     public class AppDbContext : DbContext {
 
         protected override void OnConfiguring (DbContextOptionsBuilder dbContextBuilder) {
-            Console.WriteLine (Directory.GetCurrentDirectory ());
             var configuration = new ConfigurationBuilder ()
                 .SetBasePath (Directory.GetCurrentDirectory ())
                 .AddJsonFile ("appsettings.json")
