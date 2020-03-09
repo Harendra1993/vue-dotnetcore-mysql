@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using PPR.Business.Interfaces;
+using PPR.Common.Entities;
 using PPR.Data;
-using PPR.Data.Entities;
 
 namespace PPR.Business.Repositories {
     public class AccountRepository : IAccountRepository {

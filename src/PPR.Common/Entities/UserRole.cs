@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PPR.Data.Entities {
+namespace PPR.Common.Entities {
     public class UserRole {
         [Key]
         public int UserRoleId { get; set; }

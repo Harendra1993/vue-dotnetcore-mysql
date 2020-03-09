@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PPR.Data.Entities {
+namespace PPR.Common.Entities {
     public class Publisher {
         public int ID { get; set; }
         public string Name { get; set; }

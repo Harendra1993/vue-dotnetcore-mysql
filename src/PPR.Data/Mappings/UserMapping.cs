@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PPR.Data.Entities;
+using PPR.Common.Entities;
 
 namespace PPR.Data.Mappings {
     class UserMapping : IEntityTypeConfiguration<User> {

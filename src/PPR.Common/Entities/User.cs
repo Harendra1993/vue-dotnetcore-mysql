@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace PPR.Data.Entities {
+namespace PPR.Common.Entities {
     public class User {
 
         public int UserId { get; set; }

@@ -1,11 +1,7 @@
-using System;
-using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MySql.Data.EntityFrameworkCore.Extensions;
-using PPR.Data.Entities;
+using PPR.Common.Entities;
 using PPR.Data.Mappings;
 
 namespace PPR.Data {

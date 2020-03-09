@@ -1,4 +1,4 @@
-namespace PPR.Data.Entities {
+namespace PPR.Common.Entities {
     public class Book {
         public string ISBN { get; set; }
         public string Title { get; set; }
