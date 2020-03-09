@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using PPR.App.Providers;
-using PPR.Business.interfaces;
+using PPR.Business.Interfaces;
 using PPR.Business.Repositories;
 
 namespace PPR.App {
@@ -41,6 +41,7 @@ namespace PPR.App {
 
             // Simple example with dependency injection for a data provider.
             services.AddSingleton<IWeatherProvider, WeatherProviderFake> ();
+            services.AddSingleton<IAccountRepository, AccountRepository> ();
             services.AddSingleton<IDashboardRepository, DashboardRepository> ();
         }
 

@@ -1,6 +1,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using PPR.Business.interfaces;
+using PPR.Business.Interfaces;
 
 namespace PPR.App.Controllers {
     [Route ("api/[controller]")]
