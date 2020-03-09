@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PPR.App.DTOs;
 using PPR.Business.Interfaces;
 
 namespace PPR.App.Controllers {
 
     [Authorize]
-    [ApiController]
-    [Route ("[api/controller]")]
+    [Route ("api/[controller]")]
     public class AccountController : ControllerBase {
         private readonly IAccountRepository _accountRepository;
 
@@ -16,10 +16,10 @@ namespace PPR.App.Controllers {
 
         [AllowAnonymous]
         [HttpPost ("authenticate")]
-        public IActionResult Authenticate ([FromBody] User userParam) {
+        public IActionResult Authenticate ([FromBody] UserDTO userParam) {
             // var user = _accountRepository.Authenticate (userParam.Username, userParam.Password);
 
-            var user = _accountRepository.GetUser (userParam.Username, userParam.Password);
+            var user = _accountRepository.GetUser (userParam.UserName, userParam.Password);
 
             if (user == null)
                 return BadRequest (new { message = "Username or password is incorrect" });

@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using PPR.App.Models;
+using PPR.App.DTOs;
 
-namespace PPR.App.Providers
-{
-    public interface IWeatherProvider
-    {
-        List<WeatherForecast> GetForecasts();
+namespace PPR.App.Providers {
+    public interface IWeatherProvider {
+        List<WeatherForecast> GetForecasts ();
     }
 }
