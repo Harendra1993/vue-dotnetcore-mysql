@@ -1,7 +1,7 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace PPR.Common.JwtHelpers {
+namespace PPR.App.JwtHelpers {
     public sealed class JwtToken {
         private JwtSecurityToken token;
 

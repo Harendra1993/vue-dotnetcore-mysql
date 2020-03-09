@@ -9,6 +9,7 @@ namespace PPR.App.DTOs {
         public string Password { get; set; }
         public DateTime LastLogin { get; set; }
         public DateTime Created { get; set; }
-        public string UserRoles { get; set; }
+        public string Role { get; set; }
+        public string Token { get; set; }
     }
 }

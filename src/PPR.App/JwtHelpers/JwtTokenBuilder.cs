@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 
-namespace PPR.Common.JwtHelpers {
+namespace PPR.App.JwtHelpers {
     public class JwtTokenBuilder {
         private SecurityKey securityKey = null;
         private string subject = "";
