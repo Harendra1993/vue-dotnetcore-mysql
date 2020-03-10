@@ -13,7 +13,7 @@ namespace PPR.App.JwtHelpers {
                     .AddAudience (configuration.GetValue<string> ("JwtAudience"))
                     .AddExpiry (30)
                     .AddClaim ("Id", user.UserId.ToString ())
-                    .AddRole (user.Role)
+                    .AddRoles (user.UserRoles)
                     .Build ();
 
                 user.Token = token.Value;

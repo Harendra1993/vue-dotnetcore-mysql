@@ -47,7 +47,9 @@ namespace PPR.App {
             services.AddSingleton<IAccountRepository, AccountRepository> ();
             services.AddSingleton<IDashboardRepository, DashboardRepository> ();
 
-            services.AddAutoMapper (typeof (User), typeof (UserDTO));
+            Mapper.Initialize (cfg => {
+                cfg.CreateMap<User, UserDTO> ();
+            });
 
         }
 

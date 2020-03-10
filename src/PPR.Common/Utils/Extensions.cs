@@ -7,13 +7,14 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace PPR.Common {
+namespace PPR.Common.Utils {
     /// <summary>
     /// Extensions class
     /// </summary>
@@ -803,6 +804,21 @@ namespace PPR.Common {
                 ms.Seek (0, SeekOrigin.Begin);
                 return (T) dcs.ReadObject (ms);
             }
+        }
+
+        // <summary>
+        /// GetClaimValue.
+        /// </summary>
+        /// <typeparam name="IPrincipal"></typeparam>
+        /// <param name="currentPrincipal"></param>
+        /// <returns>Claim Value</returns>
+        public static string GetClaimValue (this IPrincipal currentPrincipal, string key) {
+            var identity = currentPrincipal.Identity as ClaimsIdentity;
+            if (identity == null)
+                return null;
+
+            var claim = identity.Claims.FirstOrDefault (c => c.Type == key);
+            return claim?.Value;
         }
 
         #endregion
