@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
-using PPR.Common.Entities;
+using PPR.App.DTOs;
 
 namespace PPR.App.JwtHelpers {
     public class JwtTokenBuilder {
@@ -45,7 +45,7 @@ namespace PPR.App.JwtHelpers {
             return this;
         }
 
-        public JwtTokenBuilder AddRoles (ICollection<UserRole> claims) {
+        public JwtTokenBuilder AddRoles (ICollection<UserRoleDTO> claims) {
             foreach (var claim in claims) {
                 this.claims.Add (ClaimTypes.Role, claim.Role.RoleName);
 

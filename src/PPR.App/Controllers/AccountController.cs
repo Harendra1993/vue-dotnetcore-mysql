@@ -59,6 +59,8 @@ namespace PPR.App.Controllers {
                     var userDTO = Mapper.Map<User, UserDTO> (await user);
 
                     userDTO.GenerateToken (_configuration);
+                    userDTO.Password = null;
+                    userDTO.UserRoles = null;
 
                     return Ok (new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
                 } else {
