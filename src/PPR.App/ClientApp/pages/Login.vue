@@ -17,34 +17,64 @@
             <p>Login in. To see it in action.</p>
           </center>
 
-          <form class="m-t" role="form" action="#" method="POST">
+          <form class="m-t" role="form" @submit.prevent="handleLogin">
             <div class="form-group">
               <input
+                v-model="user.username"
+                v-validate="'required'"
                 type="text"
                 name="username"
                 class="form-control"
                 placeholder="Enter Username"
-                required
               />
+              <div
+                v-if="errors.has('username')"
+                class="alert alert-danger"
+                role="alert"
+              >
+                Username is required!
+              </div>
             </div>
             <div class="form-group">
               <input
+                v-model="user.password"
+                v-validate="'required'"
                 type="password"
                 name="password"
                 class="form-control"
                 placeholder="Enter Password"
-                required
               />
+              <div
+                v-if="errors.has('password')"
+                class="alert alert-danger"
+                role="alert"
+              >
+                Password is required!
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b" name="RM_login">Login</button>
+            <button
+              class="btn btn-primary block full-width m-b"
+              :disabled="loading"
+            >
+              <span
+                v-show="loading"
+                class="spinner-border spinner-border-sm"
+              ></span>
+              <span>Login</span>
+            </button>
+            <div class="form-group">
+              <div v-if="message" class="alert alert-danger" role="alert">
+                {{ message }}
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
 
     <div class="date-time">
-      <h1 class="time">{{time}}</h1>
-      <h1 class="date">{{date}}</h1>
+      <h1 class="time">{{ time }}</h1>
+      <h1 class="date">{{ date }}</h1>
     </div>
     <bottombar
       @onShowReleaseNotes="showReleaseNotes"
@@ -61,8 +91,9 @@ export default {
   layout: "blank",
   data() {
     return {
-      keyword: this.$store.state.globals.keyword,
-      type: this.$store.state.globals.searchType,
+      user: { username: "", password: "" },
+      loading: false,
+      message: "",
       time: "",
       date: ""
     };
@@ -71,6 +102,17 @@ export default {
     Bottombar,
     ReleaseNotes
   },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/dashboard");
+    }
+  },
+
   mounted() {
     const vm = this;
     vm.interval = setInterval(() => {
@@ -79,18 +121,37 @@ export default {
 
     vm.updateTimestamp();
   },
+
   destroyed() {
     clearInterval(this.interval);
   },
 
   methods: {
+    handleLogin() {
+      this.loading = true;
+      this.$validator.validateAll().then(isValid => {
+        if (!isValid) {
+          this.loading = false;
+          return;
+        }
+        if (this.user.username && this.user.password) {
+          this.$store.dispatch("auth/login", this.user).then(
+            () => {
+              this.$router.push("/dashboard");
+            },
+            error => {
+              this.loading = false;
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+            }
+          );
+        }
+      });
+    },
     showReleaseNotes() {
       this.$refs.popup.show();
-    },
-    change(e) {
-      this.$store.commit("CHANGE_KEYWORD", this.keyword);
-      //window.location.href = "/profile";
-      this.$router.push("profile");
     },
     updateTimestamp() {
       var date = new Date();

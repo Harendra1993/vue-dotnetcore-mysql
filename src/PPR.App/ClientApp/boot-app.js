@@ -3,6 +3,7 @@ require("./init");
 // Installed modules import
 import Vue from "vue";
 import * as uiv from "uiv";
+import VeeValidate from 'vee-validate';
 
 // import VueSplit from "vue-split-panel";
 
@@ -14,6 +15,7 @@ import App from "@/components/App";
 import "@/components";
 
 Vue.use(uiv);
+Vue.use(VeeValidate);
 
 /** Vue JS Configurations */
 Vue.config.productionTip = false;

@@ -3,21 +3,20 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import Cookies from "js-cookie";
 
-import actions from "./actions";
-import mutations from "./mutations";
-import getters from "./getters";
-import state from "./state";
+import {
+  auth
+} from './auth.module';
+
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state,
-  mutations,
-  getters,
-  actions,
+  modules: {
+    auth
+  },
   plugins: [
     createPersistedState({
-      key: "g_persist",
+      key: "p_persist",
       storage: {
         getItem: key => Cookies.get(key),
         setItem: (key, value) =>
