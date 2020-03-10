@@ -18,7 +18,9 @@
           </center>
 
           <form class="m-t" role="form" @submit.prevent="handleLogin">
-            <div class="form-group">
+            <div
+              :class="['form-group', errors.has('username') ? 'has-error' : '']"
+            >
               <input
                 v-model="user.username"
                 v-validate="'required'"
@@ -27,15 +29,13 @@
                 class="form-control"
                 placeholder="Enter Username"
               />
-              <div
-                v-if="errors.has('username')"
-                class="alert alert-danger"
-                role="alert"
-              >
-                Username is required!
+              <div v-if="errors.has('username')" class="help-block with-errors">
+                <b>Username is required!</b>
               </div>
             </div>
-            <div class="form-group">
+            <div
+              :class="['form-group', errors.has('password') ? 'has-error' : '']"
+            >
               <input
                 v-model="user.password"
                 v-validate="'required'"
@@ -44,12 +44,8 @@
                 class="form-control"
                 placeholder="Enter Password"
               />
-              <div
-                v-if="errors.has('password')"
-                class="alert alert-danger"
-                role="alert"
-              >
-                Password is required!
+              <div v-if="errors.has('password')" class="help-block with-errors">
+                <b>Password is required!</b>
               </div>
             </div>
             <button
@@ -63,8 +59,8 @@
               <span>Login</span>
             </button>
             <div class="form-group">
-              <div v-if="message" class="alert alert-danger" role="alert">
-                {{ message }}
+              <div v-if="message" class="help-block with-errors">
+                <b>{{ message }}</b>
               </div>
             </div>
           </form>
