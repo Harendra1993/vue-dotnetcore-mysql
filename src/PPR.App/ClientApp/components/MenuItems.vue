@@ -53,14 +53,31 @@
 
     <ul class="nav navbar-top-links navbar-right">
       <li>
-        <a href="/logout"> <i class="fa fa-sign-out"></i> Logout </a>
+        <a @click="handleLogout"> <i class="fa fa-sign-out"></i> Logout </a>
       </li>
     </ul>
   </ul>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    handleLogout() {
+      this.$store.dispatch("auth/logout").then(
+        () => {
+          this.$router.push("/");
+        },
+        error => {
+          this.loading = false;
+          this.message =
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString();
+        }
+      );
+    }
+  }
+};
 </script>
 
 <style></style>
