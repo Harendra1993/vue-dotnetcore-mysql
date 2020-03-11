@@ -11,6 +11,6 @@ namespace PPR.App.DTOs {
         public DateTime Created { get; set; }
         public string Token { get; set; }
 
-        public virtual ICollection<UserRoleDTO> UserRoles { get; set; }
+        public string[] UserRoles { get; set; }
     }
 }

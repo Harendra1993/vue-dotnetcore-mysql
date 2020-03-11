@@ -31,7 +31,7 @@ function createRouter() {
   });
 
   router.beforeEach(beforeEach);
-  //   router.afterEach(afterEach);
+  router.afterEach(afterEach);
 
   return router;
 }

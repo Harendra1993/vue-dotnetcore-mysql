@@ -52,10 +52,7 @@
               class="btn btn-primary block full-width m-b"
               :disabled="loading"
             >
-              <span
-                v-show="loading"
-                class="spinner-border spinner-border-sm"
-              ></span>
+              <span class="spinner-border spinner-border-sm"></span>
               <span>Login</span>
             </button>
             <div class="form-group">

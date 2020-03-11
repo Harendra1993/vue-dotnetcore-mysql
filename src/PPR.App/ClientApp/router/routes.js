@@ -13,7 +13,10 @@ export default [{
   {
     path: "/dashboard",
     name: "dashboard",
-    component: page("user/Dashboard.vue")
+    component: page("user/Dashboard.vue"),
+    meta: {
+      authorize: ["User"]
+    }
   },
   {
     path: "/release-notes",

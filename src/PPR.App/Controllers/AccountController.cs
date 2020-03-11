@@ -47,20 +47,18 @@ namespace PPR.App.Controllers {
                 if (!ModelState.IsValid)
                     return BadRequest (ModelState);
 
-                //var user = _dbContext.Users.FirstOrDefault (x => x.Email == model.username && x.Password == model.password);
-
                 var user = Task.Run (() => _accountRepository.GetUser (model.UserName, model.Password));
-
-                //model.Role = "Admin";
 
                 await Task.WhenAny (user);
 
                 if (user != null) {
                     var userDTO = Mapper.Map<User, UserDTO> (await user);
+                    var userRoles = Task.Run (() => _accountRepository.GetRolesForUser (model.UserName));
+
+                    userDTO.UserRoles = await userRoles;
+                    userDTO.Password = null;
 
                     userDTO.GenerateToken (_configuration);
-                    userDTO.Password = null;
-                    userDTO.UserRoles = null;
 
                     return Ok (new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
                 } else {

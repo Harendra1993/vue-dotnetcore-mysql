@@ -45,10 +45,9 @@ namespace PPR.App.JwtHelpers {
             return this;
         }
 
-        public JwtTokenBuilder AddRoles (ICollection<UserRoleDTO> claims) {
+        public JwtTokenBuilder AddRoles (string[] claims) {
             foreach (var claim in claims) {
-                this.claims.Add (ClaimTypes.Role, claim.Role.RoleName);
-
+                this.claims.Add (ClaimTypes.Role, claim);
             }
             return this;
         }
