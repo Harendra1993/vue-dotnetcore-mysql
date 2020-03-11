@@ -62,6 +62,26 @@ async function beforeEach(to, from, next) {
     return next();
   }
 
+
+  // redirect to login page if not logged in and trying to access a restricted page
+  const { authorize } = to.meta;
+  const currentUser = (store.state.auth) ? store.state.auth.user : null;
+  console.log(authorize)
+
+
+  if (authorize) {
+    if (!currentUser) {
+      // not logged in so redirect to login page with the return url
+      return next({ path: '/login', query: { returnUrl: to.path } });
+    }
+
+    // check if route is restricted by role
+    if (authorize.length && !currentUser.userRoles.some(x => authorize.includes(x))) {
+      // role not authorised so redirect to home page
+      return next({ path: '/' });
+    }
+  }
+
   // Start the loading bar.
   if (components[components.length - 1].loading !== false) {
     router.app.$nextTick(() => router.app.$progress.start());

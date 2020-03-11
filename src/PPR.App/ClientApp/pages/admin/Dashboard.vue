@@ -4,7 +4,7 @@
     <div class="ibox shadow-md-down" v-show="!isLoading">
       <div class="ibox-content">
         <div class="table-responsive">
-          User Dashboard
+          Admin Dashboard
           <!-- <data-table
             ref="table"
             :fields="fields"
