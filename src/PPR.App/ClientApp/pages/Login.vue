@@ -52,7 +52,7 @@
               class="btn btn-primary block full-width m-b"
               :disabled="loading"
             >
-              <span class="spinner-border spinner-border-sm"></span>
+              <i class="fas fa-spinner-third fa-spin" v-if="loading"></i>
               <span>Login</span>
             </button>
             <div class="form-group">
