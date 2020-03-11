@@ -43,16 +43,7 @@ export default {
     };
   },
 
-  computed: {
-    ...mapGetters(["globals"]),
-    requestParms() {
-      const vm = this;
-      return {
-        keyword: vm.globals.keyword,
-        type: vm.globals.searchType
-      };
-    }
-  },
+  computed: {},
 
   mounted() {
     const vm = this;
