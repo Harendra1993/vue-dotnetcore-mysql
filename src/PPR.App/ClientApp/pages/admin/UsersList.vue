@@ -54,8 +54,8 @@ export default {
         saveState: false
       },
       fields: {
-        "_source.name": {
-          label: "Contact Name",
+        userName: {
+          label: "User Name",
           sortable: true,
           searchable: true,
           defaultOrder: "desc",
@@ -63,25 +63,37 @@ export default {
             return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
           }
         },
-        "_source.number": {
-          label: "Contact Phone",
+        lastLogin: {
+          label: "Last Login",
           render: function(data, type, full, meta) {
             return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
           }
         },
-        "_source.email": {
-          label: "Contact Email",
+        created: {
+          label: "Created On",
           render: function(data, type, full, meta) {
             return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
           }
         },
-        "_source.company": {
-          label: "Contact Organization",
+        userRoles: {
+          label: "Roles",
           sortable: false,
           searchable: true,
           render: function(data, type, full, meta) {
-            return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
+            return data;
           }
+        },
+        edit: {
+          isLocal: true,
+          label: "Edit",
+          defaultContent:
+            '<a href="javascript:void(0);" data-action="edit" class="btn btn-primary btn-sm"><i class="far fa-user-edit "></i></a>'
+        },
+        delete: {
+          isLocal: true,
+          label: "Delete",
+          defaultContent:
+            '<a href="javascript:void(0);" data-action="delete" class="btn btn-danger btn-sm"><i class="far fa-backspace "></i></a>'
         }
       }
     };
