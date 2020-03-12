@@ -66,8 +66,6 @@ async function beforeEach(to, from, next) {
   // redirect to login page if not logged in and trying to access a restricted page
   const { authorize } = to.meta;
   const currentUser = (store.state.auth) ? store.state.auth.user : null;
-  console.log(authorize)
-
 
   if (authorize) {
     if (!currentUser) {

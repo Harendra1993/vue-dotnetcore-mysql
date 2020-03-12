@@ -1,20 +1,26 @@
+import { authHeader } from "@/utils"
 export default class Helpers {
-  constructor() {}
+  constructor() { }
+
+
+  // requests data from server side script using axios-get method
+  get(url, data) {
+    authHeader();
+    return axios.get(url, data);
+  }
 
   // requests data from server side script using axios-post method
 
   post(url, data) {
+    authHeader();
     return axios.post(url, data);
   }
 
-  // requests data from server side script using axios-get method
-  get(url, data) {
-    return axios.get(url, data);
+  put(url, data) {
+    authHeader();
+    return axios.put(url, data);
   }
 
-  all(urls) {
-    return axios.all(urls);
-  }
 
   // maps a month into yearly format from a given number
 

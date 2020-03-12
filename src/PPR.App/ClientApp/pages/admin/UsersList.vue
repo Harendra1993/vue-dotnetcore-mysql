@@ -4,15 +4,14 @@
     <div class="ibox shadow-md-down" v-show="!isLoading">
       <div class="ibox-content">
         <div class="table-responsive">
-          Admin Dashboard
-          <!-- <data-table
+          <data-table
             ref="table"
             :fields="fields"
             :opts="options"
             :details="details"
             @before-creating="doLoadTable"
             @iteration="iteration"
-          ></data-table>-->
+          ></data-table>
         </div>
       </div>
     </div>
@@ -43,11 +42,19 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    ...mapGetters(["globals"]),
+    requestParms() {
+      const vm = this;
+      return {
+        keyword: vm.globals.keyword,
+        type: vm.globals.searchType
+      };
+    }
+  },
 
   mounted() {
     const vm = this;
-    vm.doLoadTable();
   },
   beforeDestroy() {
     this.$root.$off();
@@ -66,6 +73,11 @@ export default {
       vm.isLoading = true;
 
       vm.helpers.post("/api/contacts", vm.requestParms).then(({ data }) => {
+        if (data.hits.length > 0) {
+          table.setTableData(data.hits);
+        } else {
+          table.setTableData([]);
+        }
         vm.isLoading = false;
       });
     },
