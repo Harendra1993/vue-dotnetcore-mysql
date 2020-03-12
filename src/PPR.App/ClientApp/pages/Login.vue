@@ -19,32 +19,38 @@
 
           <form class="m-t" role="form" @submit.prevent="handleLogin">
             <div
-              :class="['form-group', errors.has('username') ? 'has-error' : '']"
+              class="form-group"
+              :class="{ 'has-error': submitted && $v.username.$error }"
             >
               <input
-                v-model="user.username"
-                v-validate="'required'"
+                v-model.trim="$v.username.$model"
                 type="text"
                 name="username"
                 class="form-control"
                 placeholder="Enter Username"
               />
-              <div v-if="errors.has('username')" class="help-block with-errors">
+              <div
+                v-if="submitted && !$v.username.required"
+                class="help-block with-errors"
+              >
                 <b>Username is required!</b>
               </div>
             </div>
             <div
-              :class="['form-group', errors.has('password') ? 'has-error' : '']"
+              class="form-group"
+              :class="{ 'has-error': submitted && $v.password.$error }"
             >
               <input
-                v-model="user.password"
-                v-validate="'required'"
+                v-model.trim="$v.password.$model"
                 type="password"
                 name="password"
                 class="form-control"
                 placeholder="Enter Password"
               />
-              <div v-if="errors.has('password')" class="help-block with-errors">
+              <div
+                v-if="submitted && !$v.password.required"
+                class="help-block with-errors"
+              >
                 <b>Password is required!</b>
               </div>
             </div>
@@ -77,6 +83,8 @@
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
+
 import Bottombar from "@/components/Bottombar";
 import ReleaseNotes from "@/pages/ReleaseNotes";
 
@@ -84,12 +92,18 @@ export default {
   layout: "blank",
   data() {
     return {
-      user: { username: "", password: "" },
+      username: "",
+      password: "",
       loading: false,
+      submitted: false,
       message: "",
       time: "",
       date: ""
     };
+  },
+  validations: {
+    username: { required },
+    password: { required }
   },
   components: {
     Bottombar,
@@ -121,27 +135,29 @@ export default {
 
   methods: {
     handleLogin() {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+
       this.loading = true;
-      this.$validator.validateAll().then(isValid => {
-        if (!isValid) {
-          this.loading = false;
-          return;
-        }
-        if (this.user.username && this.user.password) {
-          this.$store.dispatch("auth/login", this.user).then(
-            () => {
-              this.$router.push("/");
-            },
-            error => {
-              this.loading = false;
-              this.message =
-                (error.response && error.response.data) ||
-                error.message ||
-                error.toString();
-            }
-          );
-        }
-      });
+      if (this.user.username && this.user.password) {
+        this.$store.dispatch("auth/login", this.user).then(
+          () => {
+            this.$router.push("/");
+          },
+          error => {
+            this.loading = false;
+            this.message =
+              (error.response && error.response.data) ||
+              error.message ||
+              error.toString();
+          }
+        );
+      }
     },
     showReleaseNotes() {
       this.$refs.popup.show();
