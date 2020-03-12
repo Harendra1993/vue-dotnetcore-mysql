@@ -27,22 +27,22 @@
 
 <script>
 import Vue from "vue";
-//import "pdfmake";
-// import "datatables.net-bs";
-// import "datatables.net-buttons-bs";
-// import "datatables.net-buttons/js/buttons.colVis.js";
-// import "datatables.net-buttons/js/buttons.flash.js";
-// import "datatables.net-buttons/js/buttons.html5.js";
-// import "datatables.net-buttons/js/buttons.print.js";
-// import "datatables.net-colreorder-bs";
-// import "datatables.net-fixedcolumns-bs";
-// import "datatables.net-fixedheader-bs";
-// import "datatables.net-keytable-bs";
-// import "datatables.net-responsive-bs";
-// import "datatables.net-rowgroup-bs";
-// import "datatables.net-rowreorder-bs";
-// import "datatables.net-scroller-bs";
-// import "datatables.net-select-bs";
+import "pdfmake";
+import "datatables.net-bs";
+import "datatables.net-buttons-bs";
+import "datatables.net-buttons/js/buttons.colVis.js";
+import "datatables.net-buttons/js/buttons.flash.js";
+import "datatables.net-buttons/js/buttons.html5.js";
+import "datatables.net-buttons/js/buttons.print.js";
+import "datatables.net-colreorder-bs";
+import "datatables.net-fixedcolumns-bs";
+import "datatables.net-fixedheader-bs";
+import "datatables.net-keytable-bs";
+import "datatables.net-responsive-bs";
+import "datatables.net-rowgroup-bs";
+import "datatables.net-rowreorder-bs";
+import "datatables.net-scroller-bs";
+import "datatables.net-select-bs";
 let myUniqueId = 1;
 
 export default {
