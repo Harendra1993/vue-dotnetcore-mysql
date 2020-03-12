@@ -72,6 +72,8 @@ namespace PPR.App {
             //  app.UseHttpsRedirection ();
             app.UseStaticFiles ();
 
+            app.UseAuthentication ();
+
             app.UseMvc (routes => {
                 routes.MapRoute (
                     name: "default",
@@ -82,7 +84,6 @@ namespace PPR.App {
                     defaults : new { controller = "Home", action = "Index" });
             });
 
-            app.UseAuthentication ();
         }
     }
 }

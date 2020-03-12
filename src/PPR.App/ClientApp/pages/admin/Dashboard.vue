@@ -65,7 +65,7 @@ export default {
       const table = vm.$refs.table;
       vm.isLoading = true;
 
-      vm.helpers.post("/api/contacts", vm.requestParms).then(({ data }) => {
+      vm.helpers.get("/api/account/allusers").then(({ data }) => {
         vm.isLoading = false;
       });
     },

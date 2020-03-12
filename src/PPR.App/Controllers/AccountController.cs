@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -26,19 +27,6 @@ namespace PPR.App.Controllers {
         }
 
         #endregion
-
-        [AllowAnonymous]
-        [HttpPost ("authenticate")]
-        public IActionResult Authenticate ([FromBody] UserDTO userParam) {
-            // var user = _accountRepository.Authenticate (userParam.Username, userParam.Password);
-
-            var user = _accountRepository.GetUser (userParam.UserName, userParam.Password);
-
-            if (user == null)
-                return BadRequest (new { message = "Username or password is incorrect" });
-
-            return Ok (user);
-        }
 
         [AllowAnonymous]
         [HttpPost ("login")]
@@ -109,6 +97,25 @@ namespace PPR.App.Controllers {
 
         //     return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "You are an authorized user" });
         // }
+        [Authorize (Roles = "Admin")]
+        [HttpGet ("AllUsers")]
+        public async Task<IActionResult> AllUsers () {
+            try {
+                var users = Task.Run (() => _accountRepository.GetAllUsers ());
 
+                await Task.WhenAny (users);
+
+                if (users != null) {
+                    var usersDTO = Mapper.Map<IEnumerable<User>, List<UserDTO>> (await users);
+
+                    return Ok (new CustomResponse<List<UserDTO>> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = usersDTO });
+                } else {
+                    return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "You are an authorized user" });
+                }
+
+            } catch (Exception ex) {
+                return StatusCode (Error.LogError (ex));
+            }
+        }
     }
 }

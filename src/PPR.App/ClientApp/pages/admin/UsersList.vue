@@ -22,7 +22,7 @@
 import Loading from "vue-loading-overlay";
 import { mapGetters } from "vuex";
 
-// import DataTable from "@/components/DataTable";
+import DataTable from "@/components/DataTable";
 import { helpers } from "@/utils";
 
 export default {
@@ -34,24 +34,11 @@ export default {
       helpers: helpers,
       response: [],
       fullPage: true,
-      isLoading: false,
-      limit: 30,
-      page: 1,
-      dialog: false,
-      index: 0
+      isLoading: false
     };
   },
 
-  computed: {
-    ...mapGetters(["globals"]),
-    requestParms() {
-      const vm = this;
-      return {
-        keyword: vm.globals.keyword,
-        type: vm.globals.searchType
-      };
-    }
-  },
+  computed: {},
 
   mounted() {
     const vm = this;
@@ -72,7 +59,7 @@ export default {
       const table = vm.$refs.table;
       vm.isLoading = true;
 
-      vm.helpers.post("/api/contacts", vm.requestParms).then(({ data }) => {
+      vm.helpers.post("/api/contacts").then(({ data }) => {
         if (data.hits.length > 0) {
           table.setTableData(data.hits);
         } else {
