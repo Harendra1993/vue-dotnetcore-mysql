@@ -20,17 +20,17 @@
           <form class="m-t" role="form" @submit.prevent="handleLogin">
             <div
               class="form-group"
-              :class="{ 'has-error': submitted && $v.username.$error }"
+              :class="{ 'has-error': submitted && $v.user.username.$error }"
             >
               <input
-                v-model.trim="$v.username.$model"
+                v-model.trim="$v.user.username.$model"
                 type="text"
                 name="username"
                 class="form-control"
                 placeholder="Enter Username"
               />
               <div
-                v-if="submitted && !$v.username.required"
+                v-if="submitted && !$v.user.username.required"
                 class="help-block with-errors"
               >
                 <b>Username is required!</b>
@@ -38,17 +38,17 @@
             </div>
             <div
               class="form-group"
-              :class="{ 'has-error': submitted && $v.password.$error }"
+              :class="{ 'has-error': submitted && $v.user.password.$error }"
             >
               <input
-                v-model.trim="$v.password.$model"
+                v-model.trim="$v.user.password.$model"
                 type="password"
                 name="password"
                 class="form-control"
                 placeholder="Enter Password"
               />
               <div
-                v-if="submitted && !$v.password.required"
+                v-if="submitted && !$v.user.password.required"
                 class="help-block with-errors"
               >
                 <b>Password is required!</b>
@@ -92,8 +92,10 @@ export default {
   layout: "blank",
   data() {
     return {
-      username: "",
-      password: "",
+      user: {
+        username: "",
+        password: ""
+      },
       loading: false,
       submitted: false,
       message: "",
@@ -102,8 +104,10 @@ export default {
     };
   },
   validations: {
-    username: { required },
-    password: { required }
+    user: {
+      username: { required },
+      password: { required }
+    }
   },
   components: {
     Bottombar,
