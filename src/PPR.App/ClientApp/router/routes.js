@@ -1,3 +1,4 @@
+import account from "./account.routes";
 import admin from "./admin.routes";
 import superadmin from "./super.routes";
 import user from "./user.routes";
@@ -39,4 +40,4 @@ const routes = [
   }
 ];
 
-export default [...routes, ...admin, ...superadmin, ...user]
+export default [...routes, ...account, ...admin, ...superadmin, ...user]
