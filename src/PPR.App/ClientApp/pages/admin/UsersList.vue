@@ -39,7 +39,11 @@ export default {
           title: "Users List"
         },
         /*eslint-disable */
-        dom: "<'html5buttons'B>lTfgirtp",
+
+        dom:
+          "<'col-sm-2'l><'col-sm-6'f><'html5buttons'B>" +
+          "<'col-sm-12'tr>" +
+          "<'col-sm-4'i><'col-sm-6'p>",
         /*eslint-enable */
         responsive: false,
         processing: true,
@@ -51,7 +55,16 @@ export default {
         lengthChange: true,
         serverSide: false,
         fixedHeader: true,
-        saveState: false
+        saveState: false,
+        buttons: [
+          {
+            text: "<i class='far fa-user-plus'></i> Add User",
+            className: "btn btn-primary",
+            action: function(e, dt, node, config) {
+              alert("Button activated");
+            }
+          }
+        ]
       },
       fields: {
         userName: {

@@ -62,7 +62,7 @@
               <span>Login</span>
             </button>
             <div class="form-group">
-              <div v-if="message" class="help-block with-errors">
+              <div v-if="message" class="has-error help-block with-errors">
                 <b>{{ message }}</b>
               </div>
             </div>

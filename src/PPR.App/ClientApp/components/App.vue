@@ -23,7 +23,7 @@ const layouts = requireContext
   }, {});
 
 export default {
-  el: "#root",
+  el: "#page-wrapper",
 
   components: {
     ProgressBar
