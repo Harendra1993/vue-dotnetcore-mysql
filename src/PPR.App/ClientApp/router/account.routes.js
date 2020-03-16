@@ -5,11 +5,10 @@ function page(path) {
     );
 }
 
-export default [
-  {
+export default [{
     path: "/account/users",
     name: "users",
-    component: page("account/UsersList.vue"),
+    component: page("account/ListUsers.vue"),
     meta: {
       authorize: ["Super", "Admin"]
     }

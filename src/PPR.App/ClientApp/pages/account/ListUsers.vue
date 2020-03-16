@@ -10,10 +10,13 @@
             :opts="options"
             @before-creating="doLoadTable"
             @iteration="iteration"
+            @edit="doAlertUserEdit"
+            @delete="doAlertUserDelete"
           ></data-table>
         </div>
       </div>
     </div>
+    <user ref="user" />
   </div>
 </template>
 
@@ -22,10 +25,11 @@ import Loading from "vue-loading-overlay";
 import { mapGetters } from "vuex";
 
 import DataTable from "@/components/DataTable";
+import User from "./User";
 import { helpers } from "@/utils";
 
 export default {
-  components: { Loading, DataTable },
+  components: { Loading, DataTable, User },
 
   data() {
     const vm = this;
@@ -58,10 +62,10 @@ export default {
         saveState: false,
         buttons: [
           {
-            text: "<i class='far fa-user-plus'></i> Add User",
+            text: "<i class='far fa-user-plus'></i> Create User",
             className: "btn btn-primary",
             action: function(e, dt, node, config) {
-              alert("Button activated");
+              vm.doAlertUserCreate();
             }
           }
         ]
@@ -100,7 +104,7 @@ export default {
           isLocal: true,
           label: "Edit",
           defaultContent:
-            '<a href="javascript:void(0);" data-action="edit" class="btn btn-primary btn-sm"><i class="far fa-user-edit "></i></a>'
+            '<a href="javascript:void(0);" data-action="edit" class="btn btn-success btn-sm"><i class="far fa-user-edit "></i></a>'
         },
         delete: {
           isLocal: true,
@@ -121,8 +125,26 @@ export default {
   },
 
   methods: {
-    showPopup(data) {
-      this.$refs.popup.show(data);
+    doAlertUserCreate() {
+      this.$refs.user.show();
+    },
+
+    doAlertUserEdit(row) {
+      this.$refs.user.show(row);
+    },
+
+    doAlertUserDelete(data, row, tr, target) {
+      window.alert(`deleting item ID: ${data.id}`);
+
+      // row.remove() doesn't work when serverside is enabled
+      // so we fake it with dom remove
+      tr.remove();
+
+      const table = this.$refs.table;
+      setTimeout(() => {
+        // simulate extra long running ajax
+        table.reload();
+      }, 1500);
     },
 
     // DT
