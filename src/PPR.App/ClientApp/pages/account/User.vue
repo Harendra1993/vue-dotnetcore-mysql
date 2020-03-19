@@ -71,6 +71,7 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
+import { helpers } from "@/utils";
 
 export default {
   data() {
@@ -105,12 +106,20 @@ export default {
       vm.open = true;
     },
     handleUserCreate() {
+      const vm = this;
       this.submitted = true;
 
       // stop here if form is invalid
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
+      }
+
+      this.loading = true;
+      if (this.user.username && this.user.roles) {
+        helpers.post("/api/account/createuser", this.user).then(({ data }) => {
+          console.log("added");
+        });
       }
     },
     handleUserUpdate() {

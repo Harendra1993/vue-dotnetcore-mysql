@@ -19,10 +19,12 @@ namespace PPR.App.Controllers {
     public class AccountController : ControllerBase {
         #region Properties and constructor
         public IConfiguration _configuration { get; }
+        private readonly IMapper _mapper;
         private readonly IAccountRepository _accountRepository;
 
-        public AccountController (IConfiguration configuration, IAccountRepository accountRepository) {
+        public AccountController (IConfiguration configuration, IMapper mapper, IAccountRepository accountRepository) {
             _configuration = configuration;
+            _mapper = mapper;
             _accountRepository = accountRepository;
         }
 
@@ -40,7 +42,7 @@ namespace PPR.App.Controllers {
                 await Task.WhenAny (user);
 
                 if (user != null) {
-                    var userDTO = Mapper.Map<User, UserDTO> (await user);
+                    var userDTO = _mapper.Map<User, UserDTO> (await user);
                     var userRoles = Task.Run (() => _accountRepository.GetRolesForUser (model.UserName));
 
                     userDTO.UserRoles = await userRoles;
@@ -87,7 +89,7 @@ namespace PPR.App.Controllers {
                 await Task.WhenAny (users);
 
                 if (users != null) {
-                    var usersDTO = Mapper.Map<IEnumerable<User>, List<UserDTO>> (await users);
+                    var usersDTO = _mapper.Map<IEnumerable<User>, List<UserDTO>> (await users);
 
                     return Ok (new CustomResponse<List<UserDTO>> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = usersDTO });
                 } else {
@@ -99,25 +101,25 @@ namespace PPR.App.Controllers {
             }
         }
 
-        [Authorize (Roles = "Admin")]
-        [HttpPost ("CreateUser")]
-        public IActionResult CreateUser ([FromBody] UserDTO userDTO) {
-            try {
+        // [Authorize (Roles = "Admin")]
+        // [HttpPost ("CreateUser")]
+        // public IActionResult CreateUser ([FromBody] UserDTO userDTO) {
+        //     try {
 
-                if (userDTO != null) {
+        //         if (userDTO != null) {
 
-                    User toAdd = Mapper.Map<User> (userDTO);
+        //             User toAdd = Mapper.Map<UserDTO> (userDTO);
 
-                    Task.Run (() => _accountRepository.CreateUser (toAdd));
+        //             _accountRepository.CreateUser (toAdd);
 
-                    return Ok (new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
-                } else {
-                    return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.BadRequest, StatusCode = StatusCodes.Status400BadRequest, Result = "Some thing wrong with your Request." });
-                }
+        //             return Ok (new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
+        //         } else {
+        //             return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.BadRequest, StatusCode = StatusCodes.Status400BadRequest, Result = "Some thing wrong with your Request." });
+        //         }
 
-            } catch (Exception ex) {
-                return StatusCode (Error.LogError (ex));
-            }
-        }
+        //     } catch (Exception ex) {
+        //         return StatusCode (Error.LogError (ex));
+        //     }
+        // }
     }
 }

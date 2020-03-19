@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using PPR.App.DTOs;
+using PPR.App.MappingProfiles;
 using PPR.App.Providers;
 using PPR.Business.Interfaces;
 using PPR.Business.Repositories;
@@ -47,9 +48,7 @@ namespace PPR.App {
             services.AddSingleton<IAccountRepository, AccountRepository> ();
             services.AddSingleton<IDashboardRepository, DashboardRepository> ();
 
-            Mapper.Initialize (cfg => {
-                cfg.CreateMap<User, UserDTO> ();
-            });
+            services.AddAutoMapper (typeof (AccountMappings));
 
         }
 
