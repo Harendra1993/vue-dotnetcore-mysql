@@ -121,19 +121,21 @@ namespace PPR.App.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateUser")]
-        public IActionResult CreateUser([FromBody] UserCreateDTO userDTO)
+        public IActionResult CreateUser([FromBody] UserCreateDTO userCreateDTO)
         {
             try
             {
 
-                if (userDTO != null)
+                if (userCreateDTO != null)
                 {
 
-                    User toAdd = _mapper.Map<User>(userDTO);
+                    User toAdd = _mapper.Map<User>(userCreateDTO);
 
                     _accountRepository.CreateUser(toAdd);
 
-                    return Ok(new CustomResponse<UserCreateDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
+                    UserDTO userDTO = _mapper.Map<UserDTO>(toAdd);
+
+                    return Ok(new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
                 }
                 else
                 {

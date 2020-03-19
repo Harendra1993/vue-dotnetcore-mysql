@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <user ref="user" />
+    <user @created="doUserCreated" ref="user" />
   </div>
 </template>
 
@@ -92,7 +92,7 @@ export default {
             return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
           }
         },
-        userRoles: {
+        roles: {
           label: "Roles",
           sortable: false,
           searchable: true,
@@ -127,6 +127,12 @@ export default {
   methods: {
     doAlertUserCreate() {
       this.$refs.user.show();
+    },
+
+    doUserCreated(data, user) {
+      const vm = this;
+      const table = vm.$refs.table;
+      table.addTableRow(data.result);
     },
 
     doAlertUserEdit(row) {

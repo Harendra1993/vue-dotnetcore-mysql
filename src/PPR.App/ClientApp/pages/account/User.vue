@@ -107,19 +107,21 @@ export default {
     },
     handleUserCreate() {
       const vm = this;
-      this.submitted = true;
+      vm.submitted = true;
 
       // stop here if form is invalid
-      this.$v.$touch();
-      if (this.$v.$invalid) {
+      vm.$v.$touch();
+      if (vm.$v.$invalid) {
         return;
       }
 
-      this.loading = true;
-      if (this.user.username && this.user.roles) {
-        helpers.post("/api/account/createuser", this.user).then(({ data }) => {
-          console.log("added");
+      vm.loading = true;
+      if (vm.user.username && vm.user.roles) {
+        helpers.post("/api/account/createuser", vm.user).then(({ data }) => {
+          if (data.message == "Success") vm.$emit("created", data, vm);
         });
+        vm.loading = false;
+        vm.open = false;
       }
     },
     handleUserUpdate() {

@@ -686,6 +686,26 @@ export default {
       }
       return vm;
     },
+
+    /**
+     * Set table data array that was loaded from somewhere else
+     * This method allow for local setting of data; though, it
+     * is recommended to use ajax instead of this.
+     *
+     * @param {Object} data   the array of data
+     * @return {Object}            the component
+     */
+    addTableRow(data) {
+      const vm = this;
+      if (data.constructor === Object) {
+        if (vm.dataTable) vm.dataTable.row.add(data);
+        vm.dataTable.draw(false);
+        // vm.dataTable.columns.adjust();
+        vm.dataTable.columns.adjust().draw();
+      }
+      return vm;
+    },
+
     /**
      * pass through reload method
      *
