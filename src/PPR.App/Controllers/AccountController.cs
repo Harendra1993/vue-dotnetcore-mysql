@@ -61,25 +61,6 @@ namespace PPR.App.Controllers {
             }
         }
 
-        // [Route ("LoginAsAdmin")]
-        // [HttpGet]
-        // public async Task<IActionResult> LoginAsAdmin (string username, string password) {
-        //     if (username == "Admin" && password == "Pass") {
-        //         var token = new JwtTokenBuilder ()
-        //             .AddSecurityKey (JwtSecurityKey.Create (_configuration.GetValue<string> ("JwtSecretKey")))
-        //             .AddIssuer (_configuration.GetValue<string> ("JwtIssuer"))
-        //             .AddAudience (_configuration.GetValue<string> ("JwtAudience"))
-        //             .AddExpiry (1)
-        //             .AddClaim ("Name", "Admin")
-        //             .AddRole ("Admin")
-        //             .Build ();
-
-        //         return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = token.Value });
-        //     } else
-        //         return Ok (new CustomResponse<Error> { Message = Global.ResponseMessages.Forbidden, StatusCode = StatusCodes.Status403Forbidden, Result = new Error { ErrorMessage = Global.ResponseMessages.GenerateInvalid ("username or password") } });
-
-        // }
-
         // [Route ("GetUser")]
         // [Authorize (Roles = "User, Admin")]
         // [HttpGet]
@@ -111,6 +92,27 @@ namespace PPR.App.Controllers {
                     return Ok (new CustomResponse<List<UserDTO>> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = usersDTO });
                 } else {
                     return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "You are an authorized user" });
+                }
+
+            } catch (Exception ex) {
+                return StatusCode (Error.LogError (ex));
+            }
+        }
+
+        [Authorize (Roles = "Admin")]
+        [HttpPost ("CreateUser")]
+        public IActionResult CreateUser ([FromBody] UserDTO userDTO) {
+            try {
+
+                if (userDTO != null) {
+
+                    User toAdd = Mapper.Map<User> (userDTO);
+
+                    Task.Run (() => _accountRepository.CreateUser (toAdd));
+
+                    return Ok (new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
+                } else {
+                    return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.BadRequest, StatusCode = StatusCodes.Status400BadRequest, Result = "Some thing wrong with your Request." });
                 }
 
             } catch (Exception ex) {

@@ -9,6 +9,7 @@ namespace PPR.Data.Mappings {
             builder.Property (x => x.UserName).IsRequired ().HasMaxLength (25);
             builder.Property (x => x.Password).IsRequired ().HasMaxLength (20);
             builder.Property (x => x.Created).IsRequired ();
+            builder.Property (x => x.IsActive).HasConversion<short> ();
         }
     }
 }

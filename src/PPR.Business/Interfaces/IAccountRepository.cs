@@ -2,7 +2,7 @@
 using PPR.Common.Entities;
 namespace PPR.Business.Interfaces {
   public interface IAccountRepository {
-    void RegisterUser (User userObj);
+    void CreateUser (User userObj);
     IEnumerable<User> GetAllUsers ();
     User GetUserByName (string userName);
     User GetUser (string userName, string password);

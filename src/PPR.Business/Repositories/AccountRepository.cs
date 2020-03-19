@@ -42,7 +42,7 @@ namespace PPR.Business.Repositories {
             return user;
         }
 
-        public void RegisterUser (User userObj) {
+        public void CreateUser (User userObj) {
             _dataContext.Users.Add (userObj);
             _dataContext.SaveChanges ();
         }

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPR.Data;
 
 namespace PPR.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200319063841_UserMappingUpdated")]
+    partial class UserMappingUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,7 +78,7 @@ namespace PPR.Data.Migrations
 
                     b.Property<DateTime>("Created");
 
-                    b.Property<short>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<DateTime>("LastLogin");
 

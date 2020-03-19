@@ -3,7 +3,7 @@
     <span slot="title"><i class="far fa-user"></i> Create New User</span>
     <div class="ibox shadow-md-down">
       <div class="ibox-content">
-        <form class="m-t" role="form" @submit.prevent="handleCreateUser">
+        <form class="m-t" role="form" @submit.prevent="handleUserCreate">
           <div
             class="form-group row"
             :class="{ 'has-error': submitted && $v.user.username.$error }"
@@ -98,10 +98,22 @@ export default {
       if (row != undefined) {
         console.log(row);
         vm.user.username = row.userName;
+      } else {
+        vm.user.username = "";
+        vm.user.roles = [];
       }
       vm.open = true;
     },
-    handleCreateUser() {
+    handleUserCreate() {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+    },
+    handleUserUpdate() {
       this.submitted = true;
 
       // stop here if form is invalid

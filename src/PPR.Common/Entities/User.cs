@@ -9,6 +9,7 @@ namespace PPR.Common.Entities {
         public string Password { get; set; }
         public DateTime LastLogin { get; set; }
         public DateTime Created { get; set; }
+        public Boolean IsActive { get; set; }
 
         public virtual ICollection<UserRole> UserRoles { get; set; }
     }
