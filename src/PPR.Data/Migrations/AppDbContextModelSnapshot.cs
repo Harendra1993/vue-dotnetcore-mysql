@@ -74,7 +74,9 @@ namespace PPR.Data.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Created");
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(new DateTime(2020, 3, 19, 12, 20, 33, 886, DateTimeKind.Local));
 
                     b.Property<short>("IsActive");
 

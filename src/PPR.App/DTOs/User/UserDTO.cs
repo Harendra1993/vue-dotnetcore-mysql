@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PPR.App.DTOs {
+namespace PPR.App.DTOs.User {
     public class UserDTO {
 
         public int UserId { get; set; }
@@ -11,6 +11,6 @@ namespace PPR.App.DTOs {
         public DateTime Created { get; set; }
         public string Token { get; set; }
 
-        public string[] UserRoles { get; set; }
+        public string[] Roles { get; set; }
     }
 }

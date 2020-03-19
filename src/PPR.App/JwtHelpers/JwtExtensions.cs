@@ -1,6 +1,6 @@
 using System;
 using Microsoft.Extensions.Configuration;
-using PPR.App.DTOs;
+using PPR.App.DTOs.User;
 
 namespace PPR.App.JwtHelpers {
 
@@ -13,7 +13,7 @@ namespace PPR.App.JwtHelpers {
                     .AddAudience (configuration.GetValue<string> ("JwtAudience"))
                     .AddExpiry (30)
                     .AddClaim ("Id", user.UserId.ToString ())
-                    .AddRoles (user.UserRoles)
+                    .AddRoles (user.Roles)
                     .Build ();
 
                 user.Token = token.Value;
