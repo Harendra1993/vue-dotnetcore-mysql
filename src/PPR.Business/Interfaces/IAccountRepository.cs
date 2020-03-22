@@ -9,6 +9,7 @@ namespace PPR.Business.Interfaces
         User GetUserByName(string userName);
         User GetUser(string userName, string password);
         User GetUser(int userId);
+        void UpdateUserLastLogin(int userId);
         bool RequiresUniqueEmail { get; }
         void AddUserRole(UserRole userRole);
         bool IsUserInRole(string username, string roleName);

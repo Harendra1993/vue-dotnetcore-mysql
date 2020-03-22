@@ -88,5 +88,12 @@ namespace PPR.Business.Repositories
 
         }
 
+        public void UpdateUserLastLogin(int userId)
+        {
+            var userObj = _dataContext.Users.First(x => x.UserId == userId);
+            userObj.LastLogin = DateTime.UtcNow;
+            _dataContext.UpdateRange(userObj);
+            _dataContext.SaveChanges();
+        }
     }
 }

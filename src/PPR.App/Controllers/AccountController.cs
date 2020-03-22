@@ -56,6 +56,8 @@ namespace PPR.App.Controllers
 
                     userDTO.GenerateToken(_configuration);
 
+                    _accountRepository.UpdateUserLastLogin(userDTO.UserId);
+
                     return Ok(new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
                 }
                 else
