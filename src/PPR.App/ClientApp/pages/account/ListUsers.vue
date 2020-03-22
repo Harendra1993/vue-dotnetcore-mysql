@@ -83,13 +83,13 @@ export default {
         lastLogin: {
           label: "Last Login",
           render: function(data, type, full, meta) {
-            return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
+            return helpers.undefinedCheck(helpers.fullDateTime(data));
           }
         },
         created: {
           label: "Created On",
           render: function(data, type, full, meta) {
-            return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
+            return helpers.undefinedCheck(helpers.fullDateTime(data));
           }
         },
         roles: {

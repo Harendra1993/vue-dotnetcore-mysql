@@ -5,6 +5,7 @@
       <div class="ibox-content">
         <form class="m-t" role="form" @submit.prevent="handleUserCreate">
           <div
+            v-if="isNew"
             class="form-group row"
             :class="{ 'has-error': submitted && $v.user.username.$error }"
           >
@@ -77,6 +78,7 @@ export default {
   data() {
     return {
       open: false,
+      isNew: true,
       user: {
         username: "",
         roles: []
@@ -86,22 +88,36 @@ export default {
     };
   },
 
-  validations: {
-    user: {
-      username: { required },
-      roles: { required }
+  validations() {
+    if (this.isNew) {
+      return {
+        user: {
+          username: { required },
+          roles: { required }
+        }
+      };
+    } else {
+      return {
+        user: {
+          roles: { required }
+        }
+      };
     }
   },
 
   methods: {
     show: function(row) {
       const vm = this;
-      if (row != undefined) {
-        console.log(row);
-        vm.user.username = row.userName;
-      } else {
+      if (row === undefined) {
+        // Create New User
+        vm.isNew = true;
         vm.user.username = "";
         vm.user.roles = [];
+      } else {
+        // Update Existing User
+        console.log(row);
+        vm.isNew = false;
+        vm.user.username = row.userName;
       }
       vm.open = true;
     },
