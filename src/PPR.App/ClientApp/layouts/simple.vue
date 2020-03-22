@@ -19,15 +19,13 @@
           </a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- <ul class="nav navbar-top-links navbar-right">
+          <ul class="nav navbar-top-links navbar-right">
             <li>
-              <a title="Switch between English/Arabic" id="lang">
-                <b>En</b>
-                <i class></i>
-                <b>Ar</b>
+              <a @click="handleLogout">
+                <i class="fa fa-sign-out"></i> Logout
               </a>
             </li>
-          </ul>-->
+          </ul>
           <div class="col-md-6 col-sm-8 col-xs-11 navbar-left"></div>
         </div>
       </nav>
@@ -56,6 +54,20 @@ export default {
     ReleaseNotes
   },
   methods: {
+    handleLogout() {
+      this.$store.dispatch("auth/logout").then(
+        () => {
+          this.$router.push("/");
+        },
+        error => {
+          this.loading = false;
+          this.message =
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString();
+        }
+      );
+    },
     showReleaseNotes() {
       this.$refs.popup.show();
     }

@@ -64,19 +64,28 @@ async function beforeEach(to, from, next) {
 
 
   // redirect to login page if not logged in and trying to access a restricted page
-  const { authorize } = to.meta;
+  const {
+    authorize
+  } = to.meta;
   const currentUser = (store.state.auth) ? store.state.auth.user : null;
 
   if (authorize) {
     if (!currentUser) {
       // not logged in so redirect to login page with the return url
-      return next({ path: '/login', query: { returnUrl: to.path } });
+      return next({
+        path: '/login',
+        query: {
+          returnUrl: to.path
+        }
+      });
     }
 
     // check if route is restricted by role
-    if (authorize.length && !currentUser.userRoles.some(x => authorize.includes(x))) {
+    if (authorize.length && !currentUser.roles.some(x => authorize.includes(x))) {
       // role not authorised so redirect to home page
-      return next({ path: '/' });
+      return next({
+        path: '/'
+      });
     }
   }
 

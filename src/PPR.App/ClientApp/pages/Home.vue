@@ -19,7 +19,7 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
     roles() {
-      return this.$store.state.auth.user.userRoles;
+      return this.$store.state.auth.user.roles;
     }
   },
   created() {},
