@@ -36,14 +36,14 @@
             <label class="col-lg-2 col-form-label">Role</label>
 
             <div class="col-lg-10">
-              <select
-                v-model.trim="$v.user.roles.$model"
-                class="select2_demo_2 form-control"
-                multiple="multiple"
-              >
-                <option value="Super Admin">Super Admin</option>
-                <option value="Admin">Admin</option>
-                <option value="User">User</option>
+              <select class="select2_demo_2 form-control" multiple="multiple">
+                <option
+                  v-for="(option, index) in user.roles"
+                  :value="option.roleId"
+                  :key="index"
+                >
+                  {{ option.roleName }}</option
+                >
               </select>
               <div
                 v-if="submitted && !$v.user.roles.required"
@@ -108,6 +108,7 @@ export default {
   methods: {
     show: function(row) {
       const vm = this;
+      vm.doLoadRoles();
       if (row === undefined) {
         // Create New User
         vm.isNew = true;
@@ -121,9 +122,20 @@ export default {
       }
       vm.open = true;
     },
+    doLoadRoles() {
+      const vm = this;
+      const table = vm.$refs.table;
+
+      helpers.get("/api/account/allroles").then(({ data }) => {
+        if (data.message == "Success") {
+          vm.user.roles = vm.user.roles.concat(data.result);
+        }
+      });
+    },
     handleUserCreate() {
       const vm = this;
       vm.submitted = true;
+      vm.$v.user.roles.$touch();
 
       // stop here if form is invalid
       vm.$v.$touch();

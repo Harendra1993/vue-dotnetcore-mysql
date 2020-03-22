@@ -1,12 +1,17 @@
 using System;
+using System.Collections.Generic;
 
-namespace PPR.App.DTOs.User {
-    public class UserCreateDTO {
+namespace PPR.App.DTOs.User
+{
+    public class UserCreateDTO
+    {
 
         private string _username;
-        public string UserName {
+        public string UserName
+        {
             get { return _username; }
-            set {
+            set
+            {
                 // Set UserName to some new value
                 _username = value;
 
@@ -16,6 +21,6 @@ namespace PPR.App.DTOs.User {
         }
         public string Password { get; set; }
 
-        public string[] Roles { get; set; }
+        public List<UserRoleDTO> UserRole { get; set; }
     }
 }

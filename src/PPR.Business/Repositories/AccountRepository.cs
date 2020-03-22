@@ -81,10 +81,10 @@ namespace PPR.Business.Repositories
             return user.UserRoles == null ? new string[] { } : user.UserRoles.Select(u => u.Role).Select(u => u.RoleName).ToArray();
         }
 
-        public string[] GetAllRoles()
+        public IEnumerable<Role> GetAllRoles()
         {
 
-            return _dataContext.Roles.Select(r => r.RoleName).ToArray();
+            return _dataContext.Roles.ToList<Role>();
 
         }
 

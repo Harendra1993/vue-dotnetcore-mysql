@@ -14,8 +14,7 @@ namespace PPR.Business.Interfaces
         void AddUserRole(UserRole userRole);
         bool IsUserInRole(string username, string roleName);
         string[] GetRolesForUser(string username);
-        string[] GetAllRoles();
-        //MembershipUser GetUser (string username, bool userIsOnline);
+        IEnumerable<Role> GetAllRoles();
 
     }
 }

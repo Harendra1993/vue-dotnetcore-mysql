@@ -16,7 +16,8 @@
         </div>
       </div>
     </div>
-    <user @created="doUserCreated" ref="user" />
+    <create-user @created="doUserCreated" ref="create_user" />
+    <edit-user ref="edit_user" />
   </div>
 </template>
 
@@ -25,11 +26,12 @@ import Loading from "vue-loading-overlay";
 import { mapGetters } from "vuex";
 
 import DataTable from "@/components/DataTable";
-import User from "./User";
+import CreateUser from "./CreateUser";
+import EditUser from "./EditUser";
 import { helpers } from "@/utils";
 
 export default {
-  components: { Loading, DataTable, User },
+  components: { Loading, DataTable, CreateUser, EditUser },
 
   data() {
     const vm = this;
@@ -126,7 +128,7 @@ export default {
 
   methods: {
     doAlertUserCreate() {
-      this.$refs.user.show();
+      this.$refs.create_user.show();
     },
 
     doUserCreated(data, user) {
@@ -136,7 +138,7 @@ export default {
     },
 
     doAlertUserEdit(row) {
-      this.$refs.user.show(row);
+      this.$refs.edit_user.show(row);
     },
 
     doAlertUserDelete(data, row, tr, target) {

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using PPR.App.DTOs;
 using PPR.App.DTOs.User;
 using PPR.App.JwtHelpers;
 using PPR.Business.Interfaces;
@@ -76,23 +77,6 @@ namespace PPR.App.Controllers
             }
         }
 
-        // [Route ("GetUser")]
-        // [Authorize (Roles = "User, Admin")]
-        // [HttpGet]
-        // public async Task<IActionResult> GetUser () {
-        //     var name = User.GetClaimValue ("Name");
-
-        //     return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "You are an authorized user" });
-        // }
-
-        // [Route ("GetAdmin")]
-        // [Authorize (Roles = "Admin")]
-        // [HttpGet]
-        // public async Task<IActionResult> GetAdmin () {
-        //     var name = User.GetClaimValue ("Name");
-
-        //     return Ok (new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "You are an authorized user" });
-        // }
         [Authorize(Roles = "Admin")]
         [HttpGet("AllUsers")]
         public async Task<IActionResult> AllUsers()
@@ -108,6 +92,35 @@ namespace PPR.App.Controllers
                     var usersDTO = _mapper.Map<IEnumerable<User>, List<UserDTO>>(await users);
 
                     return Ok(new CustomResponse<List<UserDTO>> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = usersDTO });
+                }
+                else
+                {
+                    return Ok(new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "You are an authorized user" });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Error.LogError(ex));
+            }
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("AllRoles")]
+        public async Task<IActionResult> AllRoles()
+        {
+            try
+            {
+                var roles = Task.Run(() => _accountRepository.GetAllRoles());
+
+                await Task.WhenAny(roles);
+
+                if (roles != null)
+                {
+                    var rolesDTO = _mapper.Map<IEnumerable<Role>, List<RoleDTO>>(await roles);
+
+                    return Ok(new CustomResponse<List<RoleDTO>> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = rolesDTO });
                 }
                 else
                 {
