@@ -1,6 +1,8 @@
-import { authHeader } from "@/utils"
+import {
+  authHeader
+} from "@/utils"
 export default class Helpers {
-  constructor() { }
+  constructor() {}
 
 
   // requests data from server side script using axios-get method
@@ -383,6 +385,7 @@ export default class Helpers {
   }
 
   fullDateTime(d) {
+    if (d == "0001-01-01T00:00:00") return "";
     var date = new Date(d);
     var n = date.toLocaleString("en-US", {
       hour12: true
