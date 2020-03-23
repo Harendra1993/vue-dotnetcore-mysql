@@ -18,8 +18,8 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
-    roles() {
-      return this.$store.state.auth.user.roles;
+    userRoles() {
+      return this.$store.state.auth.user.userRoles;
     }
   },
   created() {},
@@ -27,10 +27,11 @@ export default {
   mounted() {
     const vm = this;
     if (this.loggedIn) {
-      if (this.roles.includes("Super")) this.$router.push("/super/dashboard");
-      else if (this.roles.includes("Admin"))
+      if (this.userRoles.some(x => x.role.roleName.includes("Super")))
+        this.$router.push("/super/dashboard");
+      else if (this.userRoles.some(x => x.role.roleName.includes("Admin")))
         this.$router.push("/admin/dashboard");
-      else if (this.roles.includes("User"))
+      else if (this.userRoles.some(x => x.role.roleName.includes("User")))
         this.$router.push("/user/dashboard");
     }
   },

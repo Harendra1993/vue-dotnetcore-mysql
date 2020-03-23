@@ -10,7 +10,7 @@ export default [{
     name: "users",
     component: page("account/ListUsers.vue"),
     meta: {
-      authorize: ["Super", "Admin"]
+      authorize: ["Super Admin", "Admin"]
     }
   },
 
