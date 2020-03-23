@@ -50,9 +50,9 @@ namespace PPR.App.Controllers
                 if (user != null)
                 {
                     var userDTO = _mapper.Map<User, UserDTO>(await user);
-                    var userRoles = Task.Run(() => _accountRepository.GetRolesForUser(model.UserName));
+                    //var userRoles = Task.Run(() => _accountRepository.GetRolesForUser(model.UserName));
 
-                    userDTO.Roles = await userRoles;
+                    //userDTO.Roles = await userRoles;
                     userDTO.Password = null;
 
                     userDTO.GenerateToken(_configuration);

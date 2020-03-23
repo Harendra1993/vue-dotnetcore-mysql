@@ -81,7 +81,7 @@ async function beforeEach(to, from, next) {
     }
 
     // check if route is restricted by role
-    if (authorize.length && !currentUser.roles.some(x => authorize.includes(x))) {
+    if (authorize.length && !currentUser.userRoles.some(x => authorize.includes(x.role.roleName))) {
       // role not authorised so redirect to home page
       return next({
         path: '/'

@@ -6,99 +6,114 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using PPR.App.DTOs;
 
-namespace PPR.App.JwtHelpers {
-    public class JwtTokenBuilder {
+namespace PPR.App.JwtHelpers
+{
+    public class JwtTokenBuilder
+    {
         private SecurityKey securityKey = null;
         private string subject = "";
         private string issuer = "";
         private string audience = "";
-        private Dictionary<string, string> claims = new Dictionary<string, string> ();
+        private Dictionary<string, string> claims = new Dictionary<string, string>();
         private int expiryInDays = 30;
 
-        public JwtTokenBuilder AddSecurityKey (SecurityKey securityKey) {
+        public JwtTokenBuilder AddSecurityKey(SecurityKey securityKey)
+        {
             this.securityKey = securityKey;
             return this;
         }
 
-        public JwtTokenBuilder AddSubject (string subject) {
+        public JwtTokenBuilder AddSubject(string subject)
+        {
             this.subject = subject;
             return this;
         }
 
-        public JwtTokenBuilder AddIssuer (string issuer) {
+        public JwtTokenBuilder AddIssuer(string issuer)
+        {
             this.issuer = issuer;
             return this;
         }
 
-        public JwtTokenBuilder AddAudience (string audience) {
+        public JwtTokenBuilder AddAudience(string audience)
+        {
             this.audience = audience;
             return this;
         }
 
-        public JwtTokenBuilder AddClaim (string type, string value) {
-            this.claims.Add (type, value);
+        public JwtTokenBuilder AddClaim(string type, string value)
+        {
+            this.claims.Add(type, value);
             return this;
         }
 
-        public JwtTokenBuilder AddRole (string value) {
-            this.claims.Add (ClaimTypes.Role, value);
+        public JwtTokenBuilder AddRole(string value)
+        {
+            this.claims.Add(ClaimTypes.Role, value);
             return this;
         }
 
-        public JwtTokenBuilder AddRoles (string[] claims) {
-            foreach (var claim in claims) {
-                this.claims.Add (ClaimTypes.Role, claim);
+        public JwtTokenBuilder AddRoles(IEnumerable<UserRoleDTO> claims)
+        {
+            foreach (var claim in claims)
+            {
+                this.claims.Add(ClaimTypes.Role, claim.Role.RoleName);
             }
             return this;
         }
 
-        public JwtTokenBuilder AddClaims (Dictionary<string, string> claims) {
-            this.claims.Union (claims);
+        public JwtTokenBuilder AddClaims(Dictionary<string, string> claims)
+        {
+            this.claims.Union(claims);
             return this;
         }
 
-        public JwtTokenBuilder AddExpiry (int expiryInDays) {
+        public JwtTokenBuilder AddExpiry(int expiryInDays)
+        {
             this.expiryInDays = expiryInDays;
             return this;
         }
 
-        public JwtTokenBuilder AddExpiryInDays (int expiryInDays) {
+        public JwtTokenBuilder AddExpiryInDays(int expiryInDays)
+        {
             this.expiryInDays = expiryInDays;
             return this;
         }
 
-        public JwtToken Build () {
-            EnsureArguments ();
+        public JwtToken Build()
+        {
+            EnsureArguments();
 
             var claims = new List<Claim> {
                     new Claim (JwtRegisteredClaimNames.Sub, this.subject),
                     new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid ().ToString ())
                 }
-                .Union (this.claims.Select (item => new Claim (item.Key, item.Value)));
+                .Union(this.claims.Select(item => new Claim(item.Key, item.Value)));
 
-            var token = new JwtSecurityToken (
+            var token = new JwtSecurityToken(
                 issuer: this.issuer,
                 audience: this.audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays (expiryInDays),
-                signingCredentials: new SigningCredentials (
+                expires: DateTime.UtcNow.AddDays(expiryInDays),
+                signingCredentials: new SigningCredentials(
                     this.securityKey,
                     SecurityAlgorithms.HmacSha256));
 
-            return new JwtToken (token);
+            return new JwtToken(token);
         }
 
         #region " private "
 
-        private void EnsureArguments () {
+        private void EnsureArguments()
+        {
             if (this.securityKey == null)
-                throw new ArgumentNullException ("Security Key");
+                throw new ArgumentNullException("Security Key");
 
-            if (string.IsNullOrEmpty (this.issuer))
-                throw new ArgumentNullException ("Issuer");
+            if (string.IsNullOrEmpty(this.issuer))
+                throw new ArgumentNullException("Issuer");
 
-            if (string.IsNullOrEmpty (this.audience))
-                throw new ArgumentNullException ("Audience");
+            if (string.IsNullOrEmpty(this.audience))
+                throw new ArgumentNullException("Audience");
         }
 
         #endregion

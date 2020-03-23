@@ -13,7 +13,7 @@ namespace PPR.App.DTOs.User
         public DateTime Created { get; set; }
         public string Token { get; set; }
 
-        public string[] Roles { get; set; }
+        public string[] Role { get; set; }
         public IEnumerable<UserRoleDTO> UserRoles { get; set; }
     }
 }
