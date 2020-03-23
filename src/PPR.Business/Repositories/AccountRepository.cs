@@ -35,7 +35,11 @@ namespace PPR.Business.Repositories
             _dataContext.UserRoles.Add(userRole);
             _dataContext.SaveChanges();
         }
-
+        public void AddUserRoles(IEnumerable<UserRole> userRoles)
+        {
+            _dataContext.UserRoles.AddRange(userRoles);
+            _dataContext.SaveChanges();
+        }
         public IEnumerable<User> GetAllUsers()
         {
             return _dataContext.Users.ToList();
@@ -95,5 +99,7 @@ namespace PPR.Business.Repositories
             _dataContext.UpdateRange(userObj);
             _dataContext.SaveChanges();
         }
+
+
     }
 }

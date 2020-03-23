@@ -12,6 +12,7 @@ namespace PPR.App.MappingProfiles
             CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<User, UserCreateDTO>().ReverseMap();
             CreateMap<User, UserUpdateDTO>().ReverseMap();
+            CreateMap<UserRole, UserRoleDTO>().ReverseMap();
             CreateMap<Role, RoleDTO>().ReverseMap();
         }
     }

@@ -21,6 +21,6 @@ namespace PPR.App.DTOs.User
         }
         public string Password { get; set; }
 
-        public List<UserRoleDTO> UserRole { get; set; }
+        public string[] Roles { get; set; }
     }
 }

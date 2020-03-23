@@ -35,9 +35,13 @@
             <label class="col-lg-2 col-form-label">Role</label>
 
             <div class="col-lg-10">
-              <select class="select2_demo_2 form-control" multiple="multiple">
+              <select
+                v-model.trim="$v.user.roles.$model"
+                class="select2_demo_2 form-control"
+                multiple="multiple"
+              >
                 <option
-                  v-for="(option, index) in user.roles"
+                  v-for="(option, index) in roles"
                   :value="option.roleId"
                   :key="index"
                 >
@@ -81,6 +85,7 @@ export default {
         username: "",
         roles: []
       },
+      roles: [],
       loading: false,
       submitted: false
     };
@@ -110,7 +115,7 @@ export default {
 
       helpers.get("/api/account/allroles").then(({ data }) => {
         if (data.message == "Success") {
-          vm.user.roles = vm.user.roles.concat(data.result);
+          vm.roles = data.result;
         }
       });
     },
