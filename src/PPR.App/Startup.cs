@@ -15,72 +15,84 @@ using PPR.Business.Interfaces;
 using PPR.Business.Repositories;
 using PPR.Common.Entities;
 
-namespace PPR.App {
-    public class Startup {
-        public Startup (IConfiguration configuration) {
+namespace PPR.App
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices (IServiceCollection services) {
+        public void ConfigureServices(IServiceCollection services)
+        {
 
-            services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer (options => {
-                    options.TokenValidationParameters = new TokenValidationParameters {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration.GetValue<string> ("JwtIssuer"),
-                    ValidAudience = Configuration.GetValue<string> ("JwtAudience"),
-                    IssuerSigningKey = new SymmetricSecurityKey (Encoding.UTF8.GetBytes (Configuration.GetValue<string> ("JwtSecretKey")))
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration.GetValue<string>("JwtIssuer"),
+                        ValidAudience = Configuration.GetValue<string>("JwtAudience"),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JwtSecretKey")))
                     };
                 });
 
             // Add framework services.
-            services.AddMvc ()
-                .SetCompatibilityVersion (CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Simple example with dependency injection for a data provider.
-            services.AddSingleton<IWeatherProvider, WeatherProviderFake> ();
-            services.AddSingleton<IAccountRepository, AccountRepository> ();
-            services.AddSingleton<IDashboardRepository, DashboardRepository> ();
+            services.AddSingleton<IWeatherProvider, WeatherProviderFake>();
+            services.AddSingleton<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IDashboardRepository, DashboardRepository>();
 
-            services.AddAutoMapper (typeof (AccountMappings));
+            services.AddAutoMapper(typeof(AccountMappings));
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
-            if (env.IsDevelopment ()) {
-                app.UseDeveloperExceptionPage ();
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
 
                 // Webpack initialization with hot-reload.
-                app.UseWebpackDevMiddleware (new WebpackDevMiddlewareOptions {
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
                     HotModuleReplacement = true,
                 });
-            } else {
-                app.UseExceptionHandler ("/Home/Error");
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts ();
+                app.UseHsts();
             }
 
             //  app.UseHttpsRedirection ();
-            app.UseStaticFiles ();
+            app.UseStaticFiles();
 
-            app.UseAuthentication ();
+            app.UseAuthentication();
 
-            app.UseMvc (routes => {
-                routes.MapRoute (
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapSpaFallbackRoute (
+                routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
-                    defaults : new { controller = "Home", action = "Index" });
+                    defaults: new { controller = "Home", action = "Index" });
             });
 
         }

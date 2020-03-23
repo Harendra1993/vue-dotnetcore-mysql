@@ -1978,6 +1978,12 @@ table.dataTable thead .sorting_desc_disabled {
   float: right;
 }
 
+.dataTables_paginate {
+  float: right;
+  margin-top: -15px;
+
+}
+
 .html5buttons a {
   border: 1px solid #e7eaec;
   background: #fff;

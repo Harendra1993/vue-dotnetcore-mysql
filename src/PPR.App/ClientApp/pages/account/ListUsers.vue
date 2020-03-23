@@ -49,7 +49,7 @@ export default {
         dom:
           "<'col-sm-2'l><'col-sm-6'f><'html5buttons'B>" +
           "<'col-sm-12'tr>" +
-          "<'col-sm-4'i><'col-sm-6'p>",
+          "<'col-sm-4'i><'col-sm-8'p>",
         /*eslint-enable */
         responsive: false,
         processing: true,

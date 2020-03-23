@@ -14,7 +14,7 @@ namespace PPR.App.JwtHelpers
         private string subject = "";
         private string issuer = "";
         private string audience = "";
-        private Dictionary<string, string> claims = new Dictionary<string, string>();
+        private List<Claim> claims = new List<Claim>();
         private int expiryInDays = 30;
 
         public JwtTokenBuilder AddSecurityKey(SecurityKey securityKey)
@@ -43,13 +43,13 @@ namespace PPR.App.JwtHelpers
 
         public JwtTokenBuilder AddClaim(string type, string value)
         {
-            this.claims.Add(type, value);
+            this.claims.Add(new Claim(type, value));
             return this;
         }
 
         public JwtTokenBuilder AddRole(string value)
         {
-            this.claims.Add(ClaimTypes.Role, value);
+            this.claims.Add(new Claim(ClaimTypes.Role, value));
             return this;
         }
 
@@ -57,16 +57,18 @@ namespace PPR.App.JwtHelpers
         {
             foreach (var claim in claims)
             {
-                this.claims.Add(ClaimTypes.Role, claim.Role.RoleName);
+                // this.claims.Add(new Claim("role", claim.Role.RoleName));
+                this.claims.Add(new Claim(ClaimTypes.Role, claim.Role.RoleName));
             }
+
             return this;
         }
 
-        public JwtTokenBuilder AddClaims(Dictionary<string, string> claims)
-        {
-            this.claims.Union(claims);
-            return this;
-        }
+        // public JwtTokenBuilder AddClaims(Dictionary<string, string> claims)
+        // {
+        //     this.claims.Union(claims);
+        //     return this;
+        // }
 
         public JwtTokenBuilder AddExpiry(int expiryInDays)
         {
@@ -88,7 +90,7 @@ namespace PPR.App.JwtHelpers
                     new Claim (JwtRegisteredClaimNames.Sub, this.subject),
                     new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid ().ToString ())
                 }
-                .Union(this.claims.Select(item => new Claim(item.Key, item.Value)));
+            .Union(this.claims);
 
             var token = new JwtSecurityToken(
                 issuer: this.issuer,
