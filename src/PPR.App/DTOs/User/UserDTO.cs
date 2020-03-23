@@ -14,5 +14,6 @@ namespace PPR.App.DTOs.User
         public string Token { get; set; }
 
         public string[] Roles { get; set; }
+        public IEnumerable<UserRoleDTO> UserRoles { get; set; }
     }
 }

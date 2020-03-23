@@ -42,7 +42,7 @@ namespace PPR.Business.Repositories
         }
         public IEnumerable<User> GetAllUsers()
         {
-            return _dataContext.Users.ToList();
+            return _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).ToList();
         }
 
         public User GetUserByName(string userName)

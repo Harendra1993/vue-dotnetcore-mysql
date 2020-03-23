@@ -94,12 +94,16 @@ export default {
             return helpers.undefinedCheck(helpers.fullDateTime(data));
           }
         },
-        roles: {
+        userRoles: {
           label: "Roles",
           sortable: false,
           searchable: true,
           render: function(data, type, full, meta) {
-            return data;
+            return data
+              .map(function(item) {
+                return item.role.roleName;
+              })
+              .join(", ");
           }
         },
         edit: {
