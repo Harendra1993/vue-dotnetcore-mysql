@@ -56,8 +56,8 @@ export default {
         searching: true,
         searchDelay: 15,
         destroy: true,
-        // ordering: true,
-        // order: [0, "desc"],
+        ordering: true,
+        order: [1, "desc"],
         lengthChange: true,
         serverSide: false,
         fixedHeader: true,
@@ -82,14 +82,14 @@ export default {
             return helpers.undefinedCheck(helpers.blankSpaceAndNullCheck(data));
           }
         },
-        lastLogin: {
-          label: "Last Login",
+        created: {
+          label: "Created On",
           render: function(data, type, full, meta) {
             return helpers.undefinedCheck(helpers.fullDateTime(data));
           }
         },
-        created: {
-          label: "Created On",
+        lastLogin: {
+          label: "Last Login",
           render: function(data, type, full, meta) {
             return helpers.undefinedCheck(helpers.fullDateTime(data));
           }
