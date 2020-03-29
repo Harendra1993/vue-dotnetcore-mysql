@@ -30,26 +30,26 @@
           </div>
           <div
             class="form-group row"
-            :class="{ 'has-error': submitted && $v.user.roles.$error }"
+            :class="{ 'has-error': submitted && $v.user.userRoles.$error }"
           >
             <label class="col-lg-2 col-form-label">Role</label>
 
             <div class="col-lg-10">
               <select
-                v-model.trim="$v.user.roles.$model"
+                v-model.trim="$v.user.userRoles.$model"
                 class="select2_demo_2 form-control"
                 multiple="multiple"
               >
                 <option
-                  v-for="(option, index) in roles"
-                  :value="option.roleId"
+                  v-for="(option, index) in userRoles"
+                  :value="option"
                   :key="index"
                 >
                   {{ option.roleName }}</option
                 >
               </select>
               <div
-                v-if="submitted && !$v.user.roles.required"
+                v-if="submitted && !$v.user.userRoles.required"
                 class="help-block with-errors"
               >
                 <b>Seect atleast one Role !</b>
@@ -83,9 +83,9 @@ export default {
       open: false,
       user: {
         username: "",
-        roles: []
+        userRoles: []
       },
-      roles: [],
+      userRoles: [],
       loading: false,
       submitted: false
     };
@@ -94,7 +94,7 @@ export default {
   validations: {
     user: {
       username: { required },
-      roles: { required }
+      userRoles: { required }
     }
   },
 
@@ -105,7 +105,7 @@ export default {
       // Create New User
       vm.isNew = true;
       vm.user.username = "";
-      vm.user.roles = [];
+      vm.user.userRoles = [];
 
       vm.open = true;
     },
@@ -115,14 +115,14 @@ export default {
 
       helpers.get("/api/account/allroles").then(({ data }) => {
         if (data.message == "Success") {
-          vm.roles = data.result;
+          vm.userRoles = data.result;
         }
       });
     },
     handleUserCreate() {
       const vm = this;
       vm.submitted = true;
-      vm.$v.user.roles.$touch();
+      vm.$v.user.userRoles.$touch();
 
       // stop here if form is invalid
       vm.$v.$touch();
@@ -131,7 +131,7 @@ export default {
       }
 
       vm.loading = true;
-      if (vm.user.username && vm.user.roles) {
+      if (vm.user.username && vm.user.userRoles) {
         helpers.post("/api/account/createuser", vm.user).then(({ data }) => {
           if (data.message == "Success") vm.$emit("created", data, vm);
         });

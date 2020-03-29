@@ -145,22 +145,7 @@ namespace PPR.App.Controllers
                 {
 
                     User toAdd = _mapper.Map<User>(userCreateDTO);
-
                     _accountRepository.CreateUser(toAdd);
-
-                    List<UserRoleDTO> _userRolesDTO = new List<UserRoleDTO>();
-
-                    foreach (var item in userCreateDTO.Roles)
-                    {
-                        UserRoleDTO userRoleDTO = new UserRoleDTO();
-                        userRoleDTO.UserId = toAdd.UserId;
-                        userRoleDTO.RoleId = short.Parse(item);
-
-                        _userRolesDTO.Add(userRoleDTO);
-                    }
-                    List<UserRole> toAddUserRoles = _mapper.Map<List<UserRole>>(_userRolesDTO);
-
-                    _accountRepository.AddUserRoles(toAddUserRoles);
 
                     UserDTO userDTO = _mapper.Map<UserDTO>(toAdd);
 

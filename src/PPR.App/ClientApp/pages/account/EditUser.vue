@@ -136,8 +136,6 @@ export default {
         Object.assign(x.role, { userId: x.userId })
       );
 
-      console.log(vm.$v.user.userRoles.$model);
-
       vm.user.isActive = row.isActive;
 
       vm.open = true;
