@@ -721,7 +721,7 @@ export default {
           vm.dataTable
             .row(rowId)
             .data(data)
-            .draw();
+            .draw(false);
       }
       return vm;
     },
