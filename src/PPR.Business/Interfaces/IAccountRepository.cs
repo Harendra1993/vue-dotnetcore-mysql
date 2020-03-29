@@ -18,5 +18,6 @@ namespace PPR.Business.Interfaces
         string[] GetRolesForUser(string username);
         IEnumerable<Role> GetAllRoles();
 
+        void RemoveUser(int userId);
     }
 }

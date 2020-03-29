@@ -109,5 +109,15 @@ namespace PPR.Business.Repositories
             _dataContext.SaveChanges();
             return obj;
         }
+
+        public void RemoveUser(int userId)
+        {
+            var user = _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).First(x => x.UserId == userId);
+            if (user != null)
+            {
+                _dataContext.Users.Remove(user);
+                _dataContext.SaveChanges();
+            }
+        }
     }
 }

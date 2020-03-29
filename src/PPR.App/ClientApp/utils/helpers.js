@@ -23,6 +23,11 @@ export default class Helpers {
     return axios.put(url, data);
   }
 
+  delete(url) {
+    authHeader();
+    return axios.delete(url);
+  }
+
 
   // maps a month into yearly format from a given number
 

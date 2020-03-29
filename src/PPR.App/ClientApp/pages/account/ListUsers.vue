@@ -163,17 +163,18 @@ export default {
     },
 
     doAlertUserDelete(data, row, tr, target) {
-      window.alert(`deleting item ID: ${data.id}`);
-
-      // row.remove() doesn't work when serverside is enabled
-      // so we fake it with dom remove
-      tr.remove();
-
       const table = this.$refs.table;
-      setTimeout(() => {
-        // simulate extra long running ajax
-        table.reload();
-      }, 1500);
+
+      window.alert(`deleting item ID: ${data.userId}`);
+
+      helpers
+        .delete("/api/account/removeuser/" + data.userId)
+        .then(({ data }) => {
+          if (data.result) {
+            tr.remove();
+            // table.reload();
+          }
+        });
     },
 
     // DT

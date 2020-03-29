@@ -191,5 +191,20 @@ namespace PPR.App.Controllers
                 return StatusCode(Error.LogError(ex));
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("RemoveUser/{userId}")]
+        public IActionResult RemoveUser([FromRoute] int userId)
+        {
+            try
+            {
+                _accountRepository.RemoveUser(userId);
+                return Ok(new CustomResponse<Boolean> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = true });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Error.LogError(ex));
+            }
+        }
     }
 }
