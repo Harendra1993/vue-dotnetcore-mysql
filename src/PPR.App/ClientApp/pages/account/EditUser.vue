@@ -127,7 +127,7 @@ export default {
   },
 
   methods: {
-    show: function(data, row) {
+    show: function(data, rowId) {
       const vm = this;
       vm.doLoadRoles();
       vm.user.userId = data.userId;
