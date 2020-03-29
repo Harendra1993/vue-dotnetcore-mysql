@@ -169,7 +169,7 @@ export default {
       vm.loading = true;
       if (vm.user) {
         helpers.post("/api/account/updateuser", vm.user).then(({ data }) => {
-          if (data.message == "Success") vm.$emit("edited", data, vm.row, vm);
+          if (data.message == "Success") vm.$emit("edited", data, vm.rowId, vm);
         });
         vm.loading = false;
         vm.open = false;
