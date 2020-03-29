@@ -114,6 +114,7 @@ export default {
         isActive: false
       },
       userRoles: [],
+      rowId: null,
       loading: false,
       submitted: false
     };
@@ -126,18 +127,18 @@ export default {
   },
 
   methods: {
-    show: function(row) {
+    show: function(data, row) {
       const vm = this;
       vm.doLoadRoles();
-      vm.user.userId = row.userId;
-      vm.user.username = row.userName;
+      vm.user.userId = data.userId;
+      vm.user.username = data.userName;
 
-      vm.$v.user.userRoles.$model = row.userRoles.map(x =>
+      vm.$v.user.userRoles.$model = data.userRoles.map(x =>
         Object.assign(x.role, { userId: x.userId })
       );
 
-      vm.user.isActive = row.isActive;
-
+      vm.user.isActive = data.isActive;
+      vm.rowId = rowId;
       vm.open = true;
     },
 
@@ -168,7 +169,7 @@ export default {
       vm.loading = true;
       if (vm.user) {
         helpers.post("/api/account/updateuser", vm.user).then(({ data }) => {
-          if (data.message == "Success") vm.$emit("edited", data, vm);
+          if (data.message == "Success") vm.$emit("edited", data, vm.row, vm);
         });
         vm.loading = false;
         vm.open = false;

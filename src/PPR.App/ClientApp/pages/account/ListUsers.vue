@@ -146,20 +146,22 @@ export default {
       this.$refs.create_user.show();
     },
 
-    doUserCreated(data, user) {
+    doUserCreated(data) {
       const vm = this;
       const table = vm.$refs.table;
       table.addTableRow(data.result);
     },
 
-    doAlertUserEdit(row) {
-      this.$refs.edit_user.show(row);
+    doAlertUserEdit(data, row, tr, target) {
+      const vm = this;
+
+      vm.$refs.edit_user.show(data, row.index());
     },
 
-    doUserEdited(data, user) {
+    doUserEdited(data, rowId) {
       const vm = this;
       const table = vm.$refs.table;
-      table.updateTableRow(data.result);
+      table.updateTableRow(data.result, rowId);
     },
 
     doAlertUserDelete(data, row, tr, target) {

@@ -714,12 +714,12 @@ export default {
      * @param {Object} data   the object of data
      * @return {Object}            the component
      */
-    updateTableRow(data) {
+    updateTableRow(data, rowId) {
       const vm = this;
       if (data.constructor === Object) {
         if (vm.dataTable)
           vm.dataTable
-            .row()
+            .row(rowId)
             .data(data)
             .draw();
       }
