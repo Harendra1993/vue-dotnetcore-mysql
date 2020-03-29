@@ -177,5 +177,34 @@ namespace PPR.App.Controllers
                 return StatusCode(Error.LogError(ex));
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("UpdateUser")]
+        public IActionResult UpdateUser([FromBody] UserUpdateDTO userUpdateDTO)
+        {
+            try
+            {
+
+                if (userUpdateDTO != null)
+                {
+
+                    User toUpdate = _mapper.Map<User>(userUpdateDTO);
+                    User updated = _accountRepository.UpdateUser(toUpdate);
+
+                    UserDTO userDTO = _mapper.Map<UserDTO>(updated);
+
+                    return Ok(new CustomResponse<UserDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = userDTO });
+                }
+                else
+                {
+                    return Ok(new CustomResponse<string> { Message = Global.ResponseMessages.BadRequest, StatusCode = StatusCodes.Status400BadRequest, Result = "Some thing wrong with your Request." });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(Error.LogError(ex));
+            }
+        }
     }
 }

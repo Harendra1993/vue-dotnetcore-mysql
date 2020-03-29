@@ -688,11 +688,11 @@ export default {
     },
 
     /**
-     * Set table data array that was loaded from somewhere else
+     * Set table data object that was loaded from somewhere else
      * This method allow for local setting of data; though, it
      * is recommended to use ajax instead of this.
      *
-     * @param {Object} data   the array of data
+     * @param {Object} data   the object of data
      * @return {Object}            the component
      */
     addTableRow(data) {
@@ -702,6 +702,26 @@ export default {
         vm.dataTable.draw(false);
         // vm.dataTable.columns.adjust();
         vm.dataTable.columns.adjust().draw();
+      }
+      return vm;
+    },
+
+    /**
+     * Set table data object that was loaded from somewhere else
+     * This method allow for local setting of data; though, it
+     * is recommended to use ajax instead of this.
+     *
+     * @param {Object} data   the object of data
+     * @return {Object}            the component
+     */
+    updateTableRow(data) {
+      const vm = this;
+      if (data.constructor === Object) {
+        if (vm.dataTable)
+          vm.dataTable
+            .row()
+            .data(data)
+            .draw();
       }
       return vm;
     },

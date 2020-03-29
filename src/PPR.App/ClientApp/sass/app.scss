@@ -389,6 +389,7 @@ a {
 
 .bg-color-greenLight {
   background-color: #71843f !important;
+  color: #fff;
 }
 
 .bg-color-greenDark {
@@ -397,6 +398,7 @@ a {
 
 .bg-color-red {
   background-color: #a90329 !important;
+  color: #fff;
 }
 
 .bg-color-yellow {
@@ -922,18 +924,10 @@ mark {
   z-index: 1000;
 }
 
-.pdf {
-  color: rgb(255, 0, 0);
-}
-
-.ppt {
-  color: #be351d;
-}
-
-.doc {
-  color: #275596;
-}
-
-.xls {
-  color: #126c43;
+.form-check-inline {
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 0;
+  margin-right: .75rem;
 }

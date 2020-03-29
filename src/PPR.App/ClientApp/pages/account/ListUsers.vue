@@ -17,7 +17,7 @@
       </div>
     </div>
     <create-user @created="doUserCreated" ref="create_user" />
-    <edit-user ref="edit_user" />
+    <edit-user @edited="doUserEdited" ref="edit_user" />
   </div>
 </template>
 
@@ -106,6 +106,17 @@ export default {
               .join(", ");
           }
         },
+        isActive: {
+          label: "Status",
+          sortable: false,
+          searchable: true,
+          render: function(data, type, full, meta) {
+            if (data)
+              return `<label class="label bg-color-greenLight"><b>Active</b?</label>`;
+            else
+              return `<label class="label bg-color-red"><b>Inactive</b></label>`;
+          }
+        },
         edit: {
           isLocal: true,
           label: "Edit",
@@ -143,6 +154,12 @@ export default {
 
     doAlertUserEdit(row) {
       this.$refs.edit_user.show(row);
+    },
+
+    doUserEdited(data, user) {
+      const vm = this;
+      const table = vm.$refs.table;
+      table.updateTableRow(data.result);
     },
 
     doAlertUserDelete(data, row, tr, target) {

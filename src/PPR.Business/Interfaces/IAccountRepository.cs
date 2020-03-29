@@ -5,6 +5,7 @@ namespace PPR.Business.Interfaces
     public interface IAccountRepository
     {
         void CreateUser(User userObj);
+        User UpdateUser(User userObj);
         IEnumerable<User> GetAllUsers();
         User GetUserByName(string userName);
         User GetUser(string userName, string password);

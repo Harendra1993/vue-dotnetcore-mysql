@@ -100,6 +100,14 @@ namespace PPR.Business.Repositories
             _dataContext.SaveChanges();
         }
 
-
+        public User UpdateUser(User userObj)
+        {
+            var obj = _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).First(x => x.UserId == userObj.UserId);
+            obj.IsActive = userObj.IsActive;
+            obj.UserRoles = userObj.UserRoles;
+            _dataContext.UpdateRange(obj);
+            _dataContext.SaveChanges();
+            return obj;
+        }
     }
 }

@@ -1,52 +1,38 @@
 <template>
   <modal v-model="open" @hide="callback" ref="modal" size="md">
-    <span slot="title"><i class="far fa-user"></i> Create New User</span>
+    <span slot="title"><i class="far fa-user"></i> Update User</span>
     <div class="ibox shadow-md-down">
       <div class="ibox-content">
-        <form class="m-t" role="form" @submit.prevent="handleUserCreate">
-          <div
-            v-if="isNew"
-            class="form-group row"
-            :class="{ 'has-error': submitted && $v.user.username.$error }"
-          >
+        <form class="m-t" role="form" @submit.prevent="handleUserUpdate">
+          <div class="form-group row">
             <label class="col-lg-2 col-form-label">User Name</label>
 
             <div class="col-lg-10">
-              <input
-                type="text"
-                v-model.trim="$v.user.username.$model"
-                placeholder="User Name"
-                class="form-control"
-              />
-              <!-- <span class="form-text m-b-none"
-                >Example block-level help text here.</span
-              > -->
-              <div
-                v-if="submitted && !$v.user.username.required"
-                class="help-block with-errors"
-              >
-                <b>Username is required!</b>
-              </div>
+              {{ user.username }}
             </div>
           </div>
           <div
             class="form-group row"
-            :class="{ 'has-error': submitted && $v.user.roles.$error }"
+            :class="{ 'has-error': submitted && $v.user.userRoles.$error }"
           >
             <label class="col-lg-2 col-form-label">Role</label>
 
             <div class="col-lg-10">
-              <select class="select2_demo_2 form-control" multiple="multiple">
+              <select
+                v-model.trim="$v.user.userRoles.$model"
+                class="select2_demo_2 form-control"
+                multiple="multiple"
+              >
                 <option
-                  v-for="(option, index) in user.roles"
-                  :value="option.roleId"
+                  v-for="(option, index) in userRoles"
+                  :value="option"
                   :key="index"
                 >
                   {{ option.roleName }}</option
                 >
               </select>
               <div
-                v-if="submitted && !$v.user.roles.required"
+                v-if="submitted && !$v.user.userRoles.required"
                 class="help-block with-errors"
               >
                 <b>Seect atleast one Role !</b>
@@ -54,10 +40,52 @@
             </div>
           </div>
 
+          <div
+            class="form-group row"
+            :class="{ 'has-error': submitted && $v.user.userRoles.$error }"
+          >
+            <label class="col-lg-2 col-form-label">Status</label>
+
+            <div class="col-lg-10">
+              <fieldset>
+                <div
+                  class="form-check abc-radio abc-radio-success form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="radioActive"
+                    value="true"
+                    name="radioInline"
+                    v-model="user.isActive"
+                  />
+                  <label class="form-check-label" for="radioActive">
+                    Active
+                  </label>
+                </div>
+                <div
+                  class="form-check abc-radio abc-radio-danger form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="radioInactive"
+                    value="false"
+                    name="radioInline"
+                    v-model="user.isActive"
+                  />
+                  <label class="form-check-label" for="radioInactive">
+                    Inactive
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
           <div class="form-group row">
             <div class="col-lg-offset-2 col-lg-10">
-              <button class="btn btn-primary">
-                <i class="far fa-check-circle"></i> Create User
+              <button class="btn btn-success">
+                <i class="far fa-check-circle"></i> Update User
               </button>
             </div>
           </div>
@@ -73,35 +101,27 @@
 <script>
 import { required } from "vuelidate/lib/validators";
 import { helpers } from "@/utils";
+import "awesome-bootstrap-checkbox";
 
 export default {
   data() {
     return {
       open: false,
-      isNew: true,
       user: {
+        userId: "",
         username: "",
-        roles: []
+        userRoles: [],
+        isActive: false
       },
+      userRoles: [],
       loading: false,
       submitted: false
     };
   },
 
-  validations() {
-    if (this.isNew) {
-      return {
-        user: {
-          username: { required },
-          roles: { required }
-        }
-      };
-    } else {
-      return {
-        user: {
-          roles: { required }
-        }
-      };
+  validations: {
+    user: {
+      userRoles: { required }
     }
   },
 
@@ -109,33 +129,37 @@ export default {
     show: function(row) {
       const vm = this;
       vm.doLoadRoles();
-      if (row === undefined) {
-        // Create New User
-        vm.isNew = true;
-        vm.user.username = "";
-        vm.user.roles = [];
-      } else {
-        // Update Existing User
-        console.log(row);
-        vm.isNew = false;
-        vm.user.username = row.userName;
-      }
+      vm.user.userId = row.userId;
+      vm.user.username = row.userName;
+
+      vm.$v.user.userRoles.$model = row.userRoles.map(x =>
+        Object.assign(x.role, { userId: x.userId })
+      );
+
+      console.log(vm.$v.user.userRoles.$model);
+
+      vm.user.isActive = row.isActive;
+
       vm.open = true;
     },
+
     doLoadRoles() {
       const vm = this;
       const table = vm.$refs.table;
 
       helpers.get("/api/account/allroles").then(({ data }) => {
         if (data.message == "Success") {
-          vm.user.roles = vm.user.roles.concat(data.result);
+          vm.userRoles = data.result.map(x =>
+            Object.assign(x, { userId: vm.user.userId })
+          );
         }
       });
     },
-    handleUserCreate() {
+
+    handleUserUpdate() {
       const vm = this;
       vm.submitted = true;
-      vm.$v.user.roles.$touch();
+      vm.$v.user.userRoles.$touch();
 
       // stop here if form is invalid
       vm.$v.$touch();
@@ -144,23 +168,15 @@ export default {
       }
 
       vm.loading = true;
-      if (vm.user.username && vm.user.roles) {
-        helpers.post("/api/account/createuser", vm.user).then(({ data }) => {
-          if (data.message == "Success") vm.$emit("created", data, vm);
+      if (vm.user) {
+        helpers.post("/api/account/updateuser", vm.user).then(({ data }) => {
+          if (data.message == "Success") vm.$emit("edited", data, vm);
         });
         vm.loading = false;
         vm.open = false;
       }
     },
-    handleUserUpdate() {
-      this.submitted = true;
 
-      // stop here if form is invalid
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
-    },
     callback(msg) {
       //this.$notify(`Modal dismissed with msg '${msg}'.`);
     }
