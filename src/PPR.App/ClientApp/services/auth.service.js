@@ -9,12 +9,15 @@ class AuthService {
         UserName: user.username,
         Password: user.password
       })
-      .then(({ data }) => {
+      .then(({
+        data
+      }) => {
         if (data.statusCode == 200) {
-          localStorage.setItem("user", JSON.stringify(data.result));
+          return data.result;
+        } else {
+          throw new Error(data.result.errorMessage, data)
         }
 
-        return data.result;
       });
   }
 

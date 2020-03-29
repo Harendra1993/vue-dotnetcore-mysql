@@ -52,7 +52,7 @@ namespace PPR.Business.Repositories
 
         public User GetUser(string userName, string password)
         {
-            var user = _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).SingleOrDefault(x => x.UserName == userName && x.Password == password);
+            var user = _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).SingleOrDefault(x => x.UserName == userName && x.Password == password && x.IsActive);
             return user;
         }
         public User GetUser(int userId)

@@ -47,7 +47,7 @@ namespace PPR.App.Controllers
 
                 await Task.WhenAny(user);
 
-                if (user != null)
+                if (user.Result != null)
                 {
                     var userDTO = _mapper.Map<User, UserDTO>(await user);
                     //var userRoles = Task.Run(() => _accountRepository.GetRolesForUser(model.UserName));
@@ -116,7 +116,7 @@ namespace PPR.App.Controllers
 
                 await Task.WhenAny(roles);
 
-                if (roles != null)
+                if (roles.Result != null)
                 {
                     var rolesDTO = _mapper.Map<IEnumerable<Role>, List<RoleDTO>>(await roles);
 

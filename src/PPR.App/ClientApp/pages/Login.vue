@@ -61,8 +61,8 @@
               <i class="fas fa-spinner-third fa-spin" v-if="loading"></i>
               <span>Login</span>
             </button>
-            <div class="form-group">
-              <div v-if="message" class="has-error help-block with-errors">
+            <div class="form-group has-error">
+              <div v-if="message" class="help-block with-errors">
                 <b>{{ message }}</b>
               </div>
             </div>
@@ -150,8 +150,15 @@ export default {
       this.loading = true;
       if (this.user.username && this.user.password) {
         this.$store.dispatch("auth/login", this.user).then(
-          () => {
-            this.$router.push("/");
+          data => {
+            if (data.message == "Sucess") this.$router.push("/");
+            else {
+              this.loading = false;
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+            }
           },
           error => {
             this.loading = false;
