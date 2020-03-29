@@ -50,17 +50,45 @@
         </li>
       </ul>
     </li>
-
     <ul class="nav navbar-top-links navbar-right">
-      <li>
-        <a @click="handleLogout"> <i class="fa fa-sign-out"></i> Logout </a>
+      <li class="dropdown">
+        <a
+          class="dropdown-toggle"
+          data-toggle="dropdown"
+          role="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <!-- The Profile picture inserted via div class below, with shaping provided by Bootstrap -->
+          <div class="img-rounded profile-img"></div>
+          {{ user.userName }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <router-link to="/account/users">
+              Users List
+            </router-link>
+          </li>
+          <li>
+            <a href="#">Settings</a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+            <a @click="handleLogout"> <i class="fa fa-sign-out"></i> Logout </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </ul>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters({ user: "auth/user" })
+  },
   methods: {
     handleLogout() {
       this.$store.dispatch("auth/logout").then(
