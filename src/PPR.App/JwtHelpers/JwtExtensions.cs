@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System;
 using Microsoft.Extensions.Configuration;
 using PPR.App.DTOs.User;
@@ -16,7 +17,8 @@ namespace PPR.App.JwtHelpers
                     .AddIssuer(configuration.GetValue<string>("JwtIssuer"))
                     .AddAudience(configuration.GetValue<string>("JwtAudience"))
                     .AddExpiry(30)
-                    .AddClaim("Id", user.UserId.ToString())
+                    .AddClaim(ClaimTypes.NameIdentifier, user.UserId.ToString())
+                    .AddClaim(ClaimTypes.Name, user.UserName.ToString())
                     .AddRoles(user.UserRoles)
                     .Build();
 

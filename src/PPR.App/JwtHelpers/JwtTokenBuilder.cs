@@ -11,7 +11,7 @@ namespace PPR.App.JwtHelpers
     public class JwtTokenBuilder
     {
         private SecurityKey securityKey = null;
-        private string subject = "";
+        private string subject = "1";
         private string issuer = "";
         private string audience = "";
         private List<Claim> claims = new List<Claim>();

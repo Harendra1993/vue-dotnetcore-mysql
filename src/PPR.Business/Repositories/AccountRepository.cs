@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using PPR.Business.Interfaces;
 using PPR.Common.Entities;
@@ -40,9 +41,9 @@ namespace PPR.Business.Repositories
             _dataContext.UserRoles.AddRange(userRoles);
             _dataContext.SaveChanges();
         }
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<User> GetAllUsers(int currentUserId)
         {
-            return _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).ToList();
+            return _dataContext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).Where(x => x.UserId != currentUserId).ToList();
         }
 
         public User GetUserByName(string userName)

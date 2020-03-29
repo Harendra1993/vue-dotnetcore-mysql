@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -33,6 +34,14 @@ namespace PPR.App.Controllers
         }
 
         #endregion
+
+        [HttpGet]
+        public string GetCurrentUserId()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return userId;
+        }
+
 
         [AllowAnonymous]
         [HttpPost("login")]
@@ -83,7 +92,8 @@ namespace PPR.App.Controllers
         {
             try
             {
-                var users = Task.Run(() => _accountRepository.GetAllUsers());
+                var currentUserId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var users = Task.Run(() => _accountRepository.GetAllUsers(currentUserId));
 
                 await Task.WhenAny(users);
 

@@ -6,7 +6,7 @@ namespace PPR.Business.Interfaces
     {
         void CreateUser(User userObj);
         User UpdateUser(User userObj);
-        IEnumerable<User> GetAllUsers();
+        IEnumerable<User> GetAllUsers(int currentUserId);
         User GetUserByName(string userName);
         User GetUser(string userName, string password);
         User GetUser(int userId);
