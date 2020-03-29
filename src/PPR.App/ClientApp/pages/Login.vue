@@ -151,14 +151,7 @@ export default {
       if (this.user.username && this.user.password) {
         this.$store.dispatch("auth/login", this.user).then(
           data => {
-            if (data.message == "Sucess") this.$router.push("/");
-            else {
-              this.loading = false;
-              this.message =
-                (error.response && error.response.data) ||
-                error.message ||
-                error.toString();
-            }
+            this.$router.push("/");
           },
           error => {
             this.loading = false;
