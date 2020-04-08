@@ -6,7 +6,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/VueDotNetMySql.App/VueDotNetMySql.App.csproj",
+                "${workspaceFolder}/src/VueDotNetCoreMySql.App/VueDotNetCoreMySql.App.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -18,7 +18,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/VueDotNetMySql.App/VueDotNetMySql.App.csproj",
+                "${workspaceFolder}/src/VueDotNetCoreMySql.App/VueDotNetCoreMySql.App.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -31,7 +31,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/VueDotNetMySql.App/VueDotNetMySql.App.csproj",
+                "${workspaceFolder}/src/VueDotNetCoreMySql.App/VueDotNetCoreMySql.App.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

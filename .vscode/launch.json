@@ -9,9 +9,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/VueDotNetMySql.App/bin/Debug/netcoreapp2.1/VueDotNetMySql.App.dll",
+            "program": "${workspaceFolder}/src/VueDotNetCoreMySql.App/bin/Debug/netcoreapp2.1/VueDotNetCoreMySql.App.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/VueDotNetMySql.App",
+            "cwd": "${workspaceFolder}/src/VueDotNetCoreMySql.App",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

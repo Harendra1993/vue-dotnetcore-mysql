@@ -261,24 +261,24 @@ _Pvt_Extensions
 
 # Jest Code Coverage report
 coverage/
-src/VueDotNetMySql/ClientApp/dist/
-src/VueDotNetMySql/ClientApp/test/setupJest.js
-src/VueDotNetMySql/ClientApp/**.js
-src/VueDotNetMySql/ClientApp/**/*.js
+src/VueDotNetCoreMySql/ClientApp/dist/
+src/VueDotNetCoreMySql/ClientApp/test/setupJest.js
+src/VueDotNetCoreMySql/ClientApp/**.js
+src/VueDotNetCoreMySql/ClientApp/**/*.js
 src/Expenses/e2e/**/*.js
 /src/Expenses/package-lock.json
 
-src/VueDotNetMySql.App/bin
-src/VueDotNetMySql.App/obj
+src/VueDotNetCoreMySql.App/bin
+src/VueDotNetCoreMySql.App/obj
 
-src/VueDotNetMySql.Common/bin
-src/VueDotNetMySql.Common/obj
+src/VueDotNetCoreMySql.Common/bin
+src/VueDotNetCoreMySql.Common/obj
 
-src/VueDotNetMySql.Business/bin
-src/VueDotNetMySql.Business/obj
+src/VueDotNetCoreMySql.Business/bin
+src/VueDotNetCoreMySql.Business/obj
 
-src/VueDotNetMySql.Data/Migrations
-src/VueDotNetMySql.Data/bin
-src/VueDotNetMySql.Data/obj
+src/VueDotNetCoreMySql.Data/Migrations
+src/VueDotNetCoreMySql.Data/bin
+src/VueDotNetCoreMySql.Data/obj
 
 obj/
