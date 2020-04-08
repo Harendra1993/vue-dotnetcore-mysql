@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using PPR.Common.Entities;
-namespace PPR.Business.Interfaces
+using VueDotNetMySql.Common.Entities;
+namespace VueDotNetMySql.Business.Interfaces
 {
     public interface IAccountRepository
     {

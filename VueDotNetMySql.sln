@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85E03461-FC02-4E52-B75E-3BF3CA9767C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPR.App", "src\PPR.App\PPR.App.csproj", "{E1E6A130-22F9-4150-83AB-361CFEEB5DE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueDotNetMySql.App", "src\VueDotNetMySql.App\VueDotNetMySql.App.csproj", "{E1E6A130-22F9-4150-83AB-361CFEEB5DE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPR.Business", "src\PPR.Business\PPR.Business.csproj", "{652C74AC-E6B6-4B74-B57C-0CB971397AAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueDotNetMySql.Business", "src\VueDotNetMySql.Business\VueDotNetMySql.Business.csproj", "{652C74AC-E6B6-4B74-B57C-0CB971397AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPR.Common", "src\PPR.Common\PPR.Common.csproj", "{669DB4B6-B84B-43CC-96E3-1FA36132C899}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueDotNetMySql.Common", "src\VueDotNetMySql.Common\VueDotNetMySql.Common.csproj", "{669DB4B6-B84B-43CC-96E3-1FA36132C899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPR.Data", "src\PPR.Data\PPR.Data.csproj", "{29B97C16-04DE-4508-A923-B2528A0526F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueDotNetMySql.Data", "src\VueDotNetMySql.Data\VueDotNetMySql.Data.csproj", "{29B97C16-04DE-4508-A923-B2528A0526F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

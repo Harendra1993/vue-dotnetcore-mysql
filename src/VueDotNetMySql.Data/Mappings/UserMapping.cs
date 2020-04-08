@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PPR.Common.Entities;
+using VueDotNetMySql.Common.Entities;
 
-namespace PPR.Data.Mappings
+namespace VueDotNetMySql.Data.Mappings
 {
     class UserMapping : IEntityTypeConfiguration<User>
     {

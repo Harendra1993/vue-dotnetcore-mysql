@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PPR.App.Controllers {
+namespace VueDotNetMySql.App.Controllers
+{
 
     [Authorize]
     [ApiController]
-    [Route ("[api/controller]")]
-    public class UsersController : ControllerBase {
+    [Route("[api/controller]")]
+    public class UsersController : ControllerBase
+    {
 
     }
 }

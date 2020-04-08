@@ -1,5 +1,7 @@
-namespace PPR.Common.Enums {
-    public enum LogLevels {
+namespace VueDotNetMySql.Common.Enums
+{
+    public enum LogLevels
+    {
         /// <summary>
         /// The debug
         /// </summary>

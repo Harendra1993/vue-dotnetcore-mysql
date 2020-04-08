@@ -261,24 +261,24 @@ _Pvt_Extensions
 
 # Jest Code Coverage report
 coverage/
-src/PPR/ClientApp/dist/
-src/PPR/ClientApp/test/setupJest.js
-src/PPR/ClientApp/**.js
-src/PPR/ClientApp/**/*.js
+src/VueDotNetMySql/ClientApp/dist/
+src/VueDotNetMySql/ClientApp/test/setupJest.js
+src/VueDotNetMySql/ClientApp/**.js
+src/VueDotNetMySql/ClientApp/**/*.js
 src/Expenses/e2e/**/*.js
 /src/Expenses/package-lock.json
 
-src/PPR.App/bin
-src/PPR.App/obj
+src/VueDotNetMySql.App/bin
+src/VueDotNetMySql.App/obj
 
-src/PPR.Common/bin
-src/PPR.Common/obj
+src/VueDotNetMySql.Common/bin
+src/VueDotNetMySql.Common/obj
 
-src/PPR.Business/bin
-src/PPR.Business/obj
+src/VueDotNetMySql.Business/bin
+src/VueDotNetMySql.Business/obj
 
-src/PPR.Data/Migrations
-src/PPR.Data/bin
-src/PPR.Data/obj
+src/VueDotNetMySql.Data/Migrations
+src/VueDotNetMySql.Data/bin
+src/VueDotNetMySql.Data/obj
 
 obj/

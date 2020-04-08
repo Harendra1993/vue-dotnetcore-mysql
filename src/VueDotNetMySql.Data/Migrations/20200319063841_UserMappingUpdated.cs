@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace PPR.Data.Migrations
+namespace VueDotNetMySql.Data.Migrations
 {
     public partial class UserMappingUpdated : Migration
     {

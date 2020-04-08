@@ -1,8 +1,8 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using PPR.App.Providers;
+using VueDotNetMySql.App.Providers;
 
-namespace PPR.App.Controllers
+namespace VueDotNetMySql.App.Controllers
 {
     [Route("api/[controller]")]
     public class WeatherController : Controller

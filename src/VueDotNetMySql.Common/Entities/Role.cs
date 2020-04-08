@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace PPR.Common.Entities {
-    public class Role {
+namespace VueDotNetMySql.Common.Entities
+{
+    public class Role
+    {
 
         public short RoleId { get; set; }
         public string RoleName { get; set; }

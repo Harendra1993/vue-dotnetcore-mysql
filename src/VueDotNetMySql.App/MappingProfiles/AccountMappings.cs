@@ -1,9 +1,9 @@
 using AutoMapper;
-using PPR.App.DTOs;
-using PPR.App.DTOs.User;
-using PPR.Common.Entities;
+using VueDotNetMySql.App.DTOs;
+using VueDotNetMySql.App.DTOs.User;
+using VueDotNetMySql.Common.Entities;
 
-namespace PPR.App.MappingProfiles
+namespace VueDotNetMySql.App.MappingProfiles
 {
     public class AccountMappings : Profile
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PPR.App.DTOs.User
+namespace VueDotNetMySql.App.DTOs.User
 {
     public class UserDTO
     {

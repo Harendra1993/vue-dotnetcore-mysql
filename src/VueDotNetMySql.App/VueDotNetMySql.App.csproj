@@ -18,8 +18,8 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PPR.Common\PPR.Common.csproj" />
-    <ProjectReference Include="..\PPR.Business\PPR.Business.csproj" />
+    <ProjectReference Include="..\VueDotNetMySql.Common\VueDotNetMySql.Common.csproj" />
+    <ProjectReference Include="..\VueDotNetMySql.Business\VueDotNetMySql.Business.csproj" />
   </ItemGroup>
 
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">

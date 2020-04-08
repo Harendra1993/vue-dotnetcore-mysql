@@ -1,7 +1,6 @@
-<template> </template>
+<template></template>
 <script>
 import Bottombar from "@/components/Bottombar";
-import ReleaseNotes from "@/pages/ReleaseNotes";
 
 export default {
   layout: "blank",

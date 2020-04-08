@@ -64,7 +64,7 @@ Note:
 
 ### -OR- Clone this Repo itself
 
- * Clone this repository : `$ git clone https://github.com/MarkPieszak/aspnetcore-Vue-starter.git VueWeb`
+ * Clone this repository : `$ git clone https://github.com/harendra1993/aspnetcore-Vue-starter.git VueWeb`
  * `$ cd VueWeb/content`
  * `$ dotnet restore && npm install`
  * (If using VSCode) `$ code .`
@@ -84,50 +84,5 @@ Run the application in VSCode or Visual Studio 2017 by hitting `F5`.
 ## View your application running
 When running the app using debug menu or `F5` VS open auto the app in the browser;
 
-----
-
-# Demo of Application Running
-
-![](./repo-example.png)
-
----
-
-# Recommended plugin for debugging VueJS
-
-- Get Chrome DevTools for VueJS [here](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-
----
-
-# Found a Bug? Want to Contribute?
-
-Nothing's ever perfect, but please let me know by creating an issue (make sure there isn't an existing one about it already), and we'll try and work out a fix for it! If you have any good ideas, or want to contribute, feel free to either make an Issue with the Proposal, or just make a PR from your Fork.
-Please note that this project is released with a [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
-
----
-
-_Looking for ASP.NET Core & Angular 7.x+ Universal starter? [click here](https://github.com/TrilonIO/aspnetcore-angular-universal)_
-
-----
-
-# License
-
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=e51384)](/LICENSE)
-
-Copyright (c) 2016-2019 [Mark Pieszak](https://github.com/MarkPieszak)
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/MarkPieszak.svg?style=social)](https://twitter.com/MarkPieszak)
-
-----
-
-# Trilon - Vue, Asp.NET, NodeJS - Consulting | Training | Development
-
-Check out **[Trilon.io](https://Trilon.io)** for more info!
-
-Contact us at **hello@trilon.io**, and let's talk about your projects needs.
-
-[![Trilon Consulting](https://trilon.io/trilon-logo-clear.png)](https://trilon.io)
 
 
-## Follow Trilon online:
-
-Twitter: [@Trilon_io](http://twitter.com/Trilon_io)

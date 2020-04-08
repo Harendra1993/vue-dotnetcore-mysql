@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PPR.Common\PPR.Common.csproj" />
-    <ProjectReference Include="..\PPR.Data\PPR.Data.csproj" />
+    <ProjectReference Include="..\VueDotNetMySql.Common\VueDotNetMySql.Common.csproj" />
+    <ProjectReference Include="..\VueDotNetMySql.Data\VueDotNetMySql.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -14,7 +14,7 @@
         </button>
 
         <router-link to="/" class="navbar-brand">
-          <b>PPR</b>
+          <b>VueDotNetMySql</b>
         </router-link>
       </div>
 

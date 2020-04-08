@@ -14,11 +14,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace PPR.Common.Utils {
+namespace VueDotNetMySql.Common.Utils
+{
     /// <summary>
     /// Extensions class
     /// </summary>
-    public static class Extensions {
+    public static class Extensions
+    {
         #region Variables
 
         // Change the following keys to ensure uniqueness
@@ -41,8 +43,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted integer.
         /// </returns>
-        public static int ToIntValue (this object item) {
-            return (item != null) ? ToIntValue (item.ToStringValue ()) : int.MinValue;
+        public static int ToIntValue(this object item)
+        {
+            return (item != null) ? ToIntValue(item.ToStringValue()) : int.MinValue;
         }
 
         /// <summary>
@@ -52,11 +55,15 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted integer.
         /// </returns>
-        public static int ToIntValue (this string item) {
+        public static int ToIntValue(this string item)
+        {
             int x;
-            if (int.TryParse (item, out x)) {
+            if (int.TryParse(item, out x))
+            {
                 return x;
-            } else {
+            }
+            else
+            {
                 return int.MinValue;
             }
         }
@@ -71,8 +78,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted double.
         /// </returns>
-        public static double ToDoubleValue (this object item) {
-            return (item != null) ? ToDoubleValue (item.ToStringValue ()) : double.MinValue;
+        public static double ToDoubleValue(this object item)
+        {
+            return (item != null) ? ToDoubleValue(item.ToStringValue()) : double.MinValue;
         }
 
         /// <summary>
@@ -82,11 +90,15 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted double.
         /// </returns>
-        public static double ToDoubleValue (this string item) {
+        public static double ToDoubleValue(this string item)
+        {
             double x;
-            if (double.TryParse (item, out x)) {
+            if (double.TryParse(item, out x))
+            {
                 return x;
-            } else {
+            }
+            else
+            {
                 return double.MinValue;
             }
         }
@@ -100,7 +112,8 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted DateTime
         /// </returns>
-        public static DateTime ToDateTimeValue (this DateTime? item) {
+        public static DateTime ToDateTimeValue(this DateTime? item)
+        {
             return item ?? DateTime.MinValue;
         }
 
@@ -111,8 +124,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted DateTime
         /// </returns>
-        public static DateTime ToDateTimeValue (this object item) {
-            return (item != null) ? ToDateTimeValue (item.ToStringValue ()) : DateTime.MinValue;
+        public static DateTime ToDateTimeValue(this object item)
+        {
+            return (item != null) ? ToDateTimeValue(item.ToStringValue()) : DateTime.MinValue;
         }
 
         /// <summary>
@@ -122,29 +136,35 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted DateTime
         /// </returns>
-        public static DateTime ToDateTimeValue (this string item) {
+        public static DateTime ToDateTimeValue(this string item)
+        {
             DateTime x;
-            if (DateTime.TryParse (item, out x)) {
+            if (DateTime.TryParse(item, out x))
+            {
                 return x;
-            } else {
+            }
+            else
+            {
                 return DateTime.MinValue;
             }
         }
 
-        public static Dictionary<int, int> GetFinancialYearMonths (this DateTime inputDate) {
-            Dictionary<int, int> monthsInfo = new Dictionary<int, int> ();
+        public static Dictionary<int, int> GetFinancialYearMonths(this DateTime inputDate)
+        {
+            Dictionary<int, int> monthsInfo = new Dictionary<int, int>();
             var currentMonthId = inputDate.Month;
             var currentYear = inputDate.Year;
             var nextYear = currentMonthId >= 4 ? currentYear + 1 : currentYear;
-            DateTime end = new DateTime (nextYear, 4, 1);
+            DateTime end = new DateTime(nextYear, 4, 1);
             var diffMonths = (end.Month + end.Year * 12) - (inputDate.Month + inputDate.Year * 12);
 
-            for (int i = 0; i < diffMonths; i++) {
+            for (int i = 0; i < diffMonths; i++)
+            {
                 var cmonth = currentMonthId + i;
                 var cyear = cmonth > 12 ? nextYear : currentYear;
                 cmonth = cmonth > 12 ? cmonth % 12 : cmonth;
 
-                monthsInfo.Add (cmonth, cyear);
+                monthsInfo.Add(cmonth, cyear);
             }
 
             return monthsInfo;
@@ -160,8 +180,9 @@ namespace PPR.Common.Utils {
         /// <param name="number">The number.</param>
         /// <param name="totalWidth">The total width.</param>
         /// <returns></returns>
-        public static string IntToStringWithLeftPad (this int number, int totalWidth) {
-            return number.ToString ().PadLeft (totalWidth, '0');
+        public static string IntToStringWithLeftPad(this int number, int totalWidth)
+        {
+            return number.ToString().PadLeft(totalWidth, '0');
         }
 
         /// <summary>
@@ -171,8 +192,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A trimmed string.
         /// </returns>
-        public static string ToStringValue (this object item) {
-            return (item != null) ? item.ToString ().ToStringValue () : string.Empty;
+        public static string ToStringValue(this object item)
+        {
+            return (item != null) ? item.ToString().ToStringValue() : string.Empty;
         }
 
         /// <summary>
@@ -182,8 +204,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A trimmed string.
         /// </returns>
-        public static string ToStringValue (this string item) {
-            return (item != null) ? item.Trim () : string.Empty;
+        public static string ToStringValue(this string item)
+        {
+            return (item != null) ? item.Trim() : string.Empty;
         }
 
         /// <summary>
@@ -193,9 +216,10 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// Pascal case string
         /// </returns>
-        public static string ToPascalCase (this string item) {
-            TextInfo ti = new CultureInfo ("en-US", false).TextInfo;
-            return ti.ToTitleCase (item.ToStringValue ().ToLower ());
+        public static string ToPascalCase(this string item)
+        {
+            TextInfo ti = new CultureInfo("en-US", false).TextInfo;
+            return ti.ToTitleCase(item.ToStringValue().ToLower());
         }
 
         /// <summary>
@@ -207,8 +231,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// True if this string contains the specified System.String object otherwise, false.
         /// </returns>
-        public static bool Contains (this string item, string value, StringComparison comparison) {
-            return item.IndexOf (value, comparison) >= 0;
+        public static bool Contains(this string item, string value, StringComparison comparison)
+        {
+            return item.IndexOf(value, comparison) >= 0;
         }
 
         /// <summary>
@@ -220,18 +245,23 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// Returns a string in which the required characters have been replaced.
         /// </returns>
-        public static string ReplaceCharacters (this string sourceString, string removeCharacters, string replacement) {
-            StringBuilder cleanString = new StringBuilder (sourceString.Length);
+        public static string ReplaceCharacters(this string sourceString, string removeCharacters, string replacement)
+        {
+            StringBuilder cleanString = new StringBuilder(sourceString.Length);
 
-            foreach (char c in sourceString) {
-                if (removeCharacters.IndexOf (c) < 0) {
-                    cleanString.Append (c);
-                } else {
-                    cleanString.Append (replacement);
+            foreach (char c in sourceString)
+            {
+                if (removeCharacters.IndexOf(c) < 0)
+                {
+                    cleanString.Append(c);
+                }
+                else
+                {
+                    cleanString.Append(replacement);
                 }
             }
 
-            return cleanString.ToString ();
+            return cleanString.ToString();
         }
 
         /// <summary>
@@ -243,12 +273,18 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// Returns a truncated string
         /// </returns>
-        public static string Truncate (this string value, int length, bool appendDots) {
-            if (string.IsNullOrEmpty (value)) {
+        public static string Truncate(this string value, int length, bool appendDots)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
                 return string.Empty;
-            } else if (value.Length > length) {
-                return value.Substring (0, Math.Min (value.Length, length)) + (appendDots ? "..." : string.Empty);
-            } else {
+            }
+            else if (value.Length > length)
+            {
+                return value.Substring(0, Math.Min(value.Length, length)) + (appendDots ? "..." : string.Empty);
+            }
+            else
+            {
                 return value;
             }
         }
@@ -261,10 +297,14 @@ namespace PPR.Common.Utils {
         /// A System.String
         /// </returns>
         [DebuggerStepThrough]
-        public static String RemoveWhitespace (this String inputString) {
-            try {
-                return new Regex (@"\s*").Replace (inputString, String.Empty);
-            } catch (Exception) {
+        public static String RemoveWhitespace(this String inputString)
+        {
+            try
+            {
+                return new Regex(@"\s*").Replace(inputString, String.Empty);
+            }
+            catch (Exception)
+            {
                 return inputString;
             }
         }
@@ -277,8 +317,9 @@ namespace PPR.Common.Utils {
         /// A System.String
         /// </returns>
         [DebuggerStepThrough]
-        public static String TrimWhiteSpace (this String inputString) {
-            return TrimHelper (inputString, true, true);
+        public static String TrimWhiteSpace(this String inputString)
+        {
+            return TrimHelper(inputString, true, true);
         }
 
         /// <summary>
@@ -289,8 +330,9 @@ namespace PPR.Common.Utils {
         /// A System.String
         /// </returns>
         [DebuggerStepThrough]
-        public static String TrimStartWhiteSpace (this String inputString) {
-            return TrimHelper (inputString, true);
+        public static String TrimStartWhiteSpace(this String inputString)
+        {
+            return TrimHelper(inputString, true);
         }
 
         /// <summary>
@@ -301,8 +343,9 @@ namespace PPR.Common.Utils {
         /// A System.String
         /// </returns>
         [DebuggerStepThrough]
-        public static String TrimEndWhiteSpace (this String inputString) {
-            return TrimHelper (inputString, trimEnd : true);
+        public static String TrimEndWhiteSpace(this String inputString)
+        {
+            return TrimHelper(inputString, trimEnd: true);
         }
 
         /// <summary>
@@ -312,9 +355,10 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A System.String
         /// </returns>
-        public static String RemoveExtraSpaces (this String str) {
-            Regex regulEx = new Regex (@"[\s]+");
-            string result = regulEx.Replace (str, " ");
+        public static String RemoveExtraSpaces(this String str)
+        {
+            Regex regulEx = new Regex(@"[\s]+");
+            string result = regulEx.Replace(str, " ");
             return result;
         }
 
@@ -323,25 +367,30 @@ namespace PPR.Common.Utils {
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns></returns>
-        public static String SplitCamelCase (this String str) {
-            return Regex.Replace (Regex.Replace (str, @"(\P{Ll})(\P{Ll}\p{Ll})", "$1 $2"), @"(\p{Ll})(\P{Ll})", "$1 $2");
+        public static String SplitCamelCase(this String str)
+        {
+            return Regex.Replace(Regex.Replace(str, @"(\P{Ll})(\P{Ll}\p{Ll})", "$1 $2"), @"(\p{Ll})(\P{Ll})", "$1 $2");
         }
 
-        public static String ToEncryptedString (this String inputString) {
-            return EncryptString (inputString);
+        public static String ToEncryptedString(this String inputString)
+        {
+            return EncryptString(inputString);
         }
 
-        public static String ToDecryptedString (this String inputString) {
-            return DecryptString (inputString);
+        public static String ToDecryptedString(this String inputString)
+        {
+            return DecryptString(inputString);
         }
 
-        public static String ToEncryptedString (this int value) {
-            return EncryptString (Convert.ToString (value));
+        public static String ToEncryptedString(this int value)
+        {
+            return EncryptString(Convert.ToString(value));
         }
 
-        public static int ToDecryptedInt (this String value) {
-            var result = DecryptString (value);
-            return String.IsNullOrWhiteSpace (result) ? 0 : Convert.ToInt32 (result);
+        public static int ToDecryptedInt(this String value)
+        {
+            var result = DecryptString(value);
+            return String.IsNullOrWhiteSpace(result) ? 0 : Convert.ToInt32(result);
         }
 
         /// <summary>
@@ -349,14 +398,16 @@ namespace PPR.Common.Utils {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        private static String GetString (Byte[] data) {
-            StringBuilder results = new StringBuilder ();
+        private static String GetString(Byte[] data)
+        {
+            StringBuilder results = new StringBuilder();
 
-            foreach (Byte b in data) {
-                results.Append (b.ToString ("X2"));
+            foreach (Byte b in data)
+            {
+                results.Append(b.ToString("X2"));
             }
 
-            return results.ToString ();
+            return results.ToString();
         }
 
         /// <summary>
@@ -364,46 +415,55 @@ namespace PPR.Common.Utils {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        private static Byte[] GetBytes (String data) {
+        private static Byte[] GetBytes(String data)
+        {
             // GetString() encodes the hex-numbers with two digits
             Byte[] results = new Byte[data.Length / 2];
 
             for (Int32 count = 0; count < data.Length; count += 2)
-                results[count / 2] = Convert.ToByte (data.Substring (count, 2), 16);
+                results[count / 2] = Convert.ToByte(data.Substring(count, 2), 16);
 
             return results;
         }
 
-        private static string EncryptString (String inputString) {
-            try {
-                Byte[] keyData = Encoding.UTF8.GetBytes (KeyString.Substring (0, 8));
-                DESCryptoServiceProvider des = new DESCryptoServiceProvider ();
-                Byte[] textData = Encoding.UTF8.GetBytes (inputString);
-                MemoryStream ms = new MemoryStream ();
-                CryptoStream cs = new CryptoStream (ms,
-                    des.CreateEncryptor (keyData, KeyBytes), CryptoStreamMode.Write);
-                cs.Write (textData, 0, textData.Length);
-                cs.FlushFinalBlock ();
+        private static string EncryptString(String inputString)
+        {
+            try
+            {
+                Byte[] keyData = Encoding.UTF8.GetBytes(KeyString.Substring(0, 8));
+                DESCryptoServiceProvider des = new DESCryptoServiceProvider();
+                Byte[] textData = Encoding.UTF8.GetBytes(inputString);
+                MemoryStream ms = new MemoryStream();
+                CryptoStream cs = new CryptoStream(ms,
+                    des.CreateEncryptor(keyData, KeyBytes), CryptoStreamMode.Write);
+                cs.Write(textData, 0, textData.Length);
+                cs.FlushFinalBlock();
 
-                return GetString (ms.ToArray ());
-            } catch (Exception) {
+                return GetString(ms.ToArray());
+            }
+            catch (Exception)
+            {
                 return String.Empty;
             }
         }
 
-        private static string DecryptString (String inputString) {
-            try {
-                Byte[] keyData = Encoding.UTF8.GetBytes (KeyString.Substring (0, 8));
-                DESCryptoServiceProvider des = new DESCryptoServiceProvider ();
-                Byte[] textData = GetBytes (inputString);
-                MemoryStream ms = new MemoryStream ();
-                CryptoStream cs = new CryptoStream (ms,
-                    des.CreateDecryptor (keyData, KeyBytes), CryptoStreamMode.Write);
-                cs.Write (textData, 0, textData.Length);
-                cs.FlushFinalBlock ();
+        private static string DecryptString(String inputString)
+        {
+            try
+            {
+                Byte[] keyData = Encoding.UTF8.GetBytes(KeyString.Substring(0, 8));
+                DESCryptoServiceProvider des = new DESCryptoServiceProvider();
+                Byte[] textData = GetBytes(inputString);
+                MemoryStream ms = new MemoryStream();
+                CryptoStream cs = new CryptoStream(ms,
+                    des.CreateDecryptor(keyData, KeyBytes), CryptoStreamMode.Write);
+                cs.Write(textData, 0, textData.Length);
+                cs.FlushFinalBlock();
 
-                return Encoding.UTF8.GetString (ms.ToArray ());
-            } catch (Exception) {
+                return Encoding.UTF8.GetString(ms.ToArray());
+            }
+            catch (Exception)
+            {
                 return String.Empty;
             }
         }
@@ -418,8 +478,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted integer.
         /// </returns>
-        public static bool ToBooleanValue (this object item) {
-            return (item != null) && ToBooleanValue (item.ToStringValue ());
+        public static bool ToBooleanValue(this object item)
+        {
+            return (item != null) && ToBooleanValue(item.ToStringValue());
         }
 
         /// <summary>
@@ -429,9 +490,10 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted integer.
         /// </returns>
-        public static bool ToBooleanValue (this string item) {
+        public static bool ToBooleanValue(this string item)
+        {
             bool x;
-            return bool.TryParse (item, out x) && x;
+            return bool.TryParse(item, out x) && x;
         }
 
         #endregion
@@ -444,8 +506,9 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted Guid.
         /// </returns>
-        public static Guid ToGuidValue (this object item) {
-            return (item != null) ? ToGuidValue (item.ToStringValue ()) : Guid.Empty;
+        public static Guid ToGuidValue(this object item)
+        {
+            return (item != null) ? ToGuidValue(item.ToStringValue()) : Guid.Empty;
         }
 
         /// <summary>
@@ -455,11 +518,15 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A converted Guid.
         /// </returns>
-        public static Guid ToGuidValue (this string item) {
+        public static Guid ToGuidValue(this string item)
+        {
             Guid x;
-            if (Guid.TryParse (item, out x)) {
+            if (Guid.TryParse(item, out x))
+            {
                 return x;
-            } else {
+            }
+            else
+            {
                 return Guid.Empty;
             }
         }
@@ -472,8 +539,9 @@ namespace PPR.Common.Utils {
         /// <typeparam name="T">Generic type</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>Random list item</returns>
-        public static T PickRandom<T> (this IEnumerable<T> source) {
-            return source.PickRandom (1).Single ();
+        public static T PickRandom<T>(this IEnumerable<T> source)
+        {
+            return source.PickRandom(1).Single();
         }
 
         /// <summary>
@@ -483,8 +551,9 @@ namespace PPR.Common.Utils {
         /// <param name="source">The source.</param>
         /// <param name="count">The count.</param>
         /// <returns>Random list of count items</returns>
-        public static IEnumerable<T> PickRandom<T> (this IEnumerable<T> source, int count) {
-            return source.Shuffle ().Take (count);
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
+        {
+            return source.Shuffle().Take(count);
         }
 
         /// <summary>
@@ -495,9 +564,10 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// Randomized list
         /// </returns>
-        public static IEnumerable<T> Shuffle<T> (this IEnumerable<T> source) {
-            Random rand = new Random ();
-            return source.OrderBy (x => rand.Next ());
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            Random rand = new Random();
+            return source.OrderBy(x => rand.Next());
         }
         /// <summary>
         /// To the delimited string.
@@ -506,21 +576,26 @@ namespace PPR.Common.Utils {
         /// <param name="values">The values.</param>
         /// <param name="delimiter">The delimiter.</param>
         /// <returns></returns>
-        public static string ToDelimitedString<T> (this IEnumerable<T> values, string delimiter) {
-            var result = new StringBuilder ();
+        public static string ToDelimitedString<T>(this IEnumerable<T> values, string delimiter)
+        {
+            var result = new StringBuilder();
             var insertDelimiter = false;
 
-            foreach (var value in values) {
-                if (insertDelimiter) {
-                    result.Append (delimiter);
-                } else {
+            foreach (var value in values)
+            {
+                if (insertDelimiter)
+                {
+                    result.Append(delimiter);
+                }
+                else
+                {
                     insertDelimiter = true;
                 }
 
-                result.Append (value.ToString ());
+                result.Append(value.ToString());
             }
 
-            return result.ToString ();
+            return result.ToString();
         }
         /// <summary>
         /// Fors the each.
@@ -528,9 +603,11 @@ namespace PPR.Common.Utils {
         /// <typeparam name="T"></typeparam>
         /// <param name="enumerable">The enumerable.</param>
         /// <param name="action">The action.</param>
-        public static void ForEach<T> (this IEnumerable<T> enumerable, Action<T> action) {
-            foreach (T item in enumerable) {
-                action (item);
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        {
+            foreach (T item in enumerable)
+            {
+                action(item);
             }
         }
         /// <summary>
@@ -539,8 +616,9 @@ namespace PPR.Common.Utils {
         /// <typeparam name="T"></typeparam>
         /// <param name="enumerable">The enumerable.</param>
         /// <returns></returns>
-        public static HashSet<T> ToHashSet<T> (this IEnumerable<T> enumerable) {
-            return new HashSet<T> (enumerable);
+        public static HashSet<T> ToHashSet<T>(this IEnumerable<T> enumerable)
+        {
+            return new HashSet<T>(enumerable);
         }
         /// <summary>
         /// Gets the attribute.
@@ -548,13 +626,14 @@ namespace PPR.Common.Utils {
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static TAttribute GetAttribute<TAttribute> (this Enum value) where TAttribute : Attribute {
-            var type = value.GetType ();
-            var name = Enum.GetName (type, value);
-            return type.GetField (name)
-                .GetCustomAttributes (false)
-                .OfType<TAttribute> ()
-                .SingleOrDefault ();
+        public static TAttribute GetAttribute<TAttribute>(this Enum value) where TAttribute : Attribute
+        {
+            var type = value.GetType();
+            var name = Enum.GetName(type, value);
+            return type.GetField(name)
+                .GetCustomAttributes(false)
+                .OfType<TAttribute>()
+                .SingleOrDefault();
         }
 
         #endregion
@@ -569,13 +648,15 @@ namespace PPR.Common.Utils {
         /// <returns>
         ///   <c>true</c> if the user is in one of the roles otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsInRoles (this IPrincipal user, string roles, char delimiter) {
+        public static bool IsInRoles(this IPrincipal user, string roles, char delimiter)
+        {
             bool isInRoles = false;
 
-            if (String.IsNullOrEmpty (roles)) return false;
-            var roleArray = roles.Split (separator: new [] { delimiter }, options: StringSplitOptions.RemoveEmptyEntries);
+            if (String.IsNullOrEmpty(roles)) return false;
+            var roleArray = roles.Split(separator: new[] { delimiter }, options: StringSplitOptions.RemoveEmptyEntries);
 
-            if (roleArray.Any (user.IsInRole)) {
+            if (roleArray.Any(user.IsInRole))
+            {
                 isInRoles = true;
             }
 
@@ -593,8 +674,9 @@ namespace PPR.Common.Utils {
         /// True if null, False is not null.
         /// </returns>
         [DebuggerStepThrough]
-        public static Boolean IsNull (this object o) {
-            return ReferenceEquals (o, null);
+        public static Boolean IsNull(this object o)
+        {
+            return ReferenceEquals(o, null);
         }
 
         /// <summary>
@@ -605,8 +687,9 @@ namespace PPR.Common.Utils {
         /// True if NOT null, false if null
         /// </returns>
         [DebuggerStepThrough]
-        public static Boolean IsNotNull (this object o) {
-            return !ReferenceEquals (o, null);
+        public static Boolean IsNotNull(this object o)
+        {
+            return !ReferenceEquals(o, null);
         }
 
         /// <summary>
@@ -618,24 +701,31 @@ namespace PPR.Common.Utils {
         /// <returns>
         /// A System.String
         /// </returns>
-        private static String TrimHelper (this String inputString, Boolean trimStart = false, Boolean trimEnd = false) {
+        private static String TrimHelper(this String inputString, Boolean trimStart = false, Boolean trimEnd = false)
+        {
             // End will point to the first non-trimmed character on the right
             // Start will point to the first non-trimmed character on the Left
             Int32 end = inputString.Length - 1;
             Int32 start = 0;
 
             // Trim specified characters. 
-            if (trimStart) {
-                for (start = 0; start < inputString.Length; start++) {
-                    if (!inputString[start].IsWhiteSpace ()) {
+            if (trimStart)
+            {
+                for (start = 0; start < inputString.Length; start++)
+                {
+                    if (!inputString[start].IsWhiteSpace())
+                    {
                         break;
                     }
                 }
             }
 
-            if (trimEnd) {
-                for (end = inputString.Length - 0; end >= start; end--) {
-                    if (!inputString[end].IsWhiteSpace ()) {
+            if (trimEnd)
+            {
+                for (end = inputString.Length - 0; end >= start; end--)
+                {
+                    if (!inputString[end].IsWhiteSpace())
+                    {
                         break;
                     }
                 }
@@ -645,7 +735,7 @@ namespace PPR.Common.Utils {
 
             return length == inputString.Length ?
                 inputString :
-                (length == 0 ? String.Empty : inputString.Substring (start, length));
+                (length == 0 ? String.Empty : inputString.Substring(start, length));
         }
 
         /// <summary>
@@ -656,8 +746,10 @@ namespace PPR.Common.Utils {
         /// <returns>
         ///   <c>true</c> if [is white space] [the specified character]; otherwise, <c>false</c>.
         /// </returns>
-        private static Boolean IsWhiteSpace (this char character, Boolean isUnicode = false) {
-            if (isUnicode) {
+        private static Boolean IsWhiteSpace(this char character, Boolean isUnicode = false)
+        {
+            if (isUnicode)
+            {
                 return false;
             }
 
@@ -665,9 +757,10 @@ namespace PPR.Common.Utils {
                 character == '\x0085';
         }
 
-        public static String GetValue (this Dictionary<String, String> list, String fieldName) {
+        public static String GetValue(this Dictionary<String, String> list, String fieldName)
+        {
             String strValue;
-            list.TryGetValue (fieldName, out strValue);
+            list.TryGetValue(fieldName, out strValue);
             return strValue;
         }
 
@@ -679,14 +772,15 @@ namespace PPR.Common.Utils {
         /// <returns>A T</returns>
         /// <remarks></remarks>
         [DebuggerStepThrough]
-        public static T To<T> (this object obj) {
-            Type t = typeof (T);
+        public static T To<T>(this object obj)
+        {
+            Type t = typeof(T);
 
-            return t.IsGenericType && (t.GetGenericTypeDefinition () == typeof (Nullable<>)) ?
-                (obj.IsNull () ? (T) (object) null : (T) Convert.ChangeType (obj, Nullable.GetUnderlyingType (t))) :
+            return t.IsGenericType && (t.GetGenericTypeDefinition() == typeof(Nullable<>)) ?
+                (obj.IsNull() ? (T)(object)null : (T)Convert.ChangeType(obj, Nullable.GetUnderlyingType(t))) :
                 (obj == DBNull.Value ?
-                    (T) ((object) default (T) ?? String.Empty) :
-                    (obj is IConvertible) ? (T) Convert.ChangeType (obj, t) : (T) obj);
+                    (T)((object)default(T) ?? String.Empty) :
+                    (obj is IConvertible) ? (T)Convert.ChangeType(obj, t) : (T)obj);
         }
 
         /// <summary>
@@ -694,8 +788,10 @@ namespace PPR.Common.Utils {
         /// </summary>
         /// <param name="item">A collection</param>
         /// <returns>Boolean Value</returns>
-        public static Boolean IsNullOrEmptyCollection (this ICollection item) {
-            if (item != null && item.Count > 0) {
+        public static Boolean IsNullOrEmptyCollection(this ICollection item)
+        {
+            if (item != null && item.Count > 0)
+            {
                 return false;
             }
             return true;
@@ -708,8 +804,9 @@ namespace PPR.Common.Utils {
         /// <returns><c>true</c> if [is null or empty] [the specified obj]; otherwise, <c>false</c>.</returns>
         /// <remarks></remarks>
         [DebuggerStepThrough]
-        public static Boolean IsNullOrEmpty (this object obj) {
-            return obj is String ? ((String) obj).IsNullOrEmpty () : obj.IsNull ();
+        public static Boolean IsNullOrEmpty(this object obj)
+        {
+            return obj is String ? ((String)obj).IsNullOrEmpty() : obj.IsNull();
         }
 
         /// <summary>
@@ -719,8 +816,9 @@ namespace PPR.Common.Utils {
         /// <returns>True if null or empty, otherwise False</returns>
         /// <remarks></remarks>
         [DebuggerStepThrough]
-        public static Boolean IsNullOrEmpty (this String stringObject) {
-            return String.IsNullOrWhiteSpace (stringObject);
+        public static Boolean IsNullOrEmpty(this String stringObject)
+        {
+            return String.IsNullOrWhiteSpace(stringObject);
         }
 
         /// <summary>
@@ -729,8 +827,9 @@ namespace PPR.Common.Utils {
         /// <param name="stringObject"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static Boolean IsNullOrWhiteSpace (this String stringObject) {
-            return String.IsNullOrWhiteSpace (stringObject);
+        public static Boolean IsNullOrWhiteSpace(this String stringObject)
+        {
+            return String.IsNullOrWhiteSpace(stringObject);
         }
 
         /// <summary>
@@ -741,8 +840,9 @@ namespace PPR.Common.Utils {
         /// <returns>A List&lt;T&gt;</returns>
         /// <remarks></remarks>
         [DebuggerStepThrough]
-        public static List<T> Clone<T> (this IList<T> listToClone) where T : ICloneable {
-            return listToClone.IsNull () ? null : listToClone.Select (item => (T) ((ICloneable) item).Clone ()).ToList ();
+        public static List<T> Clone<T>(this IList<T> listToClone) where T : ICloneable
+        {
+            return listToClone.IsNull() ? null : listToClone.Select(item => (T)((ICloneable)item).Clone()).ToList();
         }
 
         /// <summary>
@@ -754,22 +854,25 @@ namespace PPR.Common.Utils {
         /// <returns>A Dictionary&lt;TKey,TValue&gt;</returns>
         /// <remarks></remarks>
         [DebuggerStepThrough]
-        public static IDictionary<TKey, TValue> Clone<TKey, TValue> (this IDictionary<TKey, TValue> dictionary) {
-            if (dictionary.IsNullOrEmpty ()) {
-                return new Dictionary<TKey, TValue> ();
+        public static IDictionary<TKey, TValue> Clone<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        {
+            if (dictionary.IsNullOrEmpty())
+            {
+                return new Dictionary<TKey, TValue>();
             }
 
-            var clone = new Dictionary<TKey, TValue> ();
+            var clone = new Dictionary<TKey, TValue>();
 
-            Boolean keyIsCloneable = default (TKey) is ICloneable;
+            Boolean keyIsCloneable = default(TKey) is ICloneable;
 
-            Boolean valueIsCloneable = default (TValue) is ICloneable;
+            Boolean valueIsCloneable = default(TValue) is ICloneable;
 
-            foreach (KeyValuePair<TKey, TValue> keyValuePair in dictionary) {
-                TKey key = keyIsCloneable ? (TKey) ((ICloneable) keyValuePair.Key).Clone () : keyValuePair.Key;
-                TValue value = valueIsCloneable ? (TValue) ((ICloneable) keyValuePair.Value).Clone () : keyValuePair.Value;
+            foreach (KeyValuePair<TKey, TValue> keyValuePair in dictionary)
+            {
+                TKey key = keyIsCloneable ? (TKey)((ICloneable)keyValuePair.Key).Clone() : keyValuePair.Key;
+                TValue value = valueIsCloneable ? (TValue)((ICloneable)keyValuePair.Value).Clone() : keyValuePair.Value;
 
-                clone.Add (key, value);
+                clone.Add(key, value);
             }
 
             return clone;
@@ -781,13 +884,15 @@ namespace PPR.Common.Utils {
         /// <typeparam name="T">Type of Object</typeparam>
         /// <param name="obj">Actual Object</param>
         /// <returns>Cloned Object</returns>
-        public static T DeepClone<T> (this T obj) {
-            using (var ms = new MemoryStream ()) {
-                var formatter = new BinaryFormatter ();
-                formatter.Serialize (ms, obj);
+        public static T DeepClone<T>(this T obj)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, obj);
                 ms.Position = 0;
 
-                return (T) formatter.Deserialize (ms);
+                return (T)formatter.Deserialize(ms);
             }
         }
 
@@ -797,12 +902,14 @@ namespace PPR.Common.Utils {
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static T Clone<T> (this T source) {
-            var dcs = new DataContractSerializer (typeof (T));
-            using (var ms = new MemoryStream ()) {
-                dcs.WriteObject (ms, source);
-                ms.Seek (0, SeekOrigin.Begin);
-                return (T) dcs.ReadObject (ms);
+        public static T Clone<T>(this T source)
+        {
+            var dcs = new DataContractSerializer(typeof(T));
+            using (var ms = new MemoryStream())
+            {
+                dcs.WriteObject(ms, source);
+                ms.Seek(0, SeekOrigin.Begin);
+                return (T)dcs.ReadObject(ms);
             }
         }
 
@@ -812,12 +919,13 @@ namespace PPR.Common.Utils {
         /// <typeparam name="IPrincipal"></typeparam>
         /// <param name="currentPrincipal"></param>
         /// <returns>Claim Value</returns>
-        public static string GetClaimValue (this IPrincipal currentPrincipal, string key) {
+        public static string GetClaimValue(this IPrincipal currentPrincipal, string key)
+        {
             var identity = currentPrincipal.Identity as ClaimsIdentity;
             if (identity == null)
                 return null;
 
-            var claim = identity.Claims.FirstOrDefault (c => c.Type == key);
+            var claim = identity.Claims.FirstOrDefault(c => c.Type == key);
             return claim?.Value;
         }
 

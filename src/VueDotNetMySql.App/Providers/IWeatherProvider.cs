@@ -1,8 +1,10 @@
 using System.Collections.Generic;
-using PPR.App.DTOs;
+using VueDotNetMySql.App.DTOs;
 
-namespace PPR.App.Providers {
-    public interface IWeatherProvider {
-        List<WeatherForecast> GetForecasts ();
+namespace VueDotNetMySql.App.Providers
+{
+    public interface IWeatherProvider
+    {
+        List<WeatherForecast> GetForecasts();
     }
 }

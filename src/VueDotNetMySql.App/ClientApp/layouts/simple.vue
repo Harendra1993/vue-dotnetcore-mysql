@@ -14,9 +14,7 @@
             <i class="fa fa-reorder"></i>
           </button>
 
-          <a href="/" class="navbar-brand">
-            <img class="logo" src="/img/logo/without_text.png" />
-          </a>
+          <a href="/" class="navbar-brand">VueDotNetMySql</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="nav navbar-top-links navbar-right">
@@ -34,24 +32,20 @@
       <div class="row">
         <div class="col-md-12">
           <child />
-          <release-notes ref="popup"></release-notes>
         </div>
       </div>
-      <bottombar @onShowReleaseNotes="showReleaseNotes" />
     </div>
   </div>
 </template>
 
 <script>
 import Bottombar from "@/components/Bottombar";
-import ReleaseNotes from "@/pages/ReleaseNotes";
 
 export default {
   name: "SimpleLayout",
 
   components: {
-    Bottombar,
-    ReleaseNotes
+    Bottombar
   },
   methods: {
     handleLogout() {
@@ -67,9 +61,6 @@ export default {
             error.toString();
         }
       );
-    },
-    showReleaseNotes() {
-      this.$refs.popup.show();
     }
   }
 };

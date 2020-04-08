@@ -178,7 +178,7 @@ body {
 
 .btn-primary {
   color: #fff;
-  background-color: #bb8b30;
+  background-color: #a155e7;
 }
 
 .btn-primary:hover,
@@ -190,8 +190,8 @@ body {
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .btn-primary.active:focus {
-  background-color: #bb8b30;
-  border-color: #bb8b30;
+  background-color: #a155e7;
+  border-color: #a155e7;
   color: #ffffff;
 }
 

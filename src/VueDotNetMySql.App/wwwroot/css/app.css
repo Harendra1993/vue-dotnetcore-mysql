@@ -1,5 +1,5 @@
 .top-navigation .nav > li > .exact-active {
-  color: #bb8b30;
+  color: #a155e7;
   cursor: pointer;
 }
 
@@ -26,7 +26,7 @@ table tbody tr td a img {
 }
 
 table tbody tr td a:hover {
-  color: #bb8b30;
+  color: #a155e7;
 }
 
 table tbody tr td img {
@@ -123,12 +123,12 @@ table tbody tr td img {
 .dropdown-menu > .active > a:hover {
   color: #fff;
   text-decoration: none;
-  background-color: #bb8b30;
+  background-color: #a155e7;
   outline: 0;
 }
 
 a {
-  color: #bb8b30;
+  color: #a155e7;
   text-decoration: none;
 }
 
@@ -659,7 +659,7 @@ tr.hover_row td {
 }
 
 .footer a {
-  color: #bb8b30;
+  color: #a155e7;
 }
 
 ::-webkit-scrollbar-track {
@@ -680,7 +680,7 @@ tr.hover_row td {
     linear,
     40% 0%,
     75% 84%,
-    from(#bb8b30),
+    from(#a155e7),
     to(#19911d),
     color-stop(0.6, #54de5d)
   );

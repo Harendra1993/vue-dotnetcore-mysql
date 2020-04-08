@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using PPR.App.DTOs.User;
+using VueDotNetMySql.App.DTOs.User;
 
-namespace PPR.App.DTOs
+namespace VueDotNetMySql.App.DTOs
 {
     public class RoleDTO
     {

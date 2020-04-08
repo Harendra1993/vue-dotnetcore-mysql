@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace PPR.App.Controllers
+namespace VueDotNetMySql.App.Controllers
 {
     public class HomeController : Controller
     {

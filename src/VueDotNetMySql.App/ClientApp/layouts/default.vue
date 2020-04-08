@@ -5,10 +5,8 @@
       <div class="row">
         <div class="col-md-12">
           <child />
-          <release-notes ref="popup"></release-notes>
         </div>
       </div>
-      <bottombar @onShowReleaseNotes="showReleaseNotes" />
     </div>
   </div>
 </template>
@@ -16,20 +14,13 @@
 <script>
 import Topbar from "@/components/Topbar";
 import Bottombar from "@/components/Bottombar";
-import ReleaseNotes from "@/pages/ReleaseNotes";
 
 export default {
   name: "DefaultLayout",
 
   components: {
     Topbar,
-    Bottombar,
-    ReleaseNotes
-  },
-  methods: {
-    showReleaseNotes() {
-      this.$refs.popup.show();
-    }
+    Bottombar
   }
 };
 </script>

@@ -1,20 +1,9 @@
 <template>
   <div :class="classes">
-    <table
-      v-once
-      :id="tableId"
-      ref="table"
-      :class="className"
-      cellpadding="0"
-      style="width:100%"
-    >
+    <table v-once :id="tableId" ref="table" :class="className" cellpadding="0" style="width:100%">
       <thead>
         <tr>
-          <th
-            v-for="(field, i) in options.columns"
-            :key="i"
-            :class="field.className"
-          >
+          <th v-for="(field, i) in options.columns" :key="i" :class="field.className">
             <slot :name="`HEAD_${field.name}`" :field="field" :i="i">
               <div v-html="field.title" />
             </slot>
@@ -582,7 +571,7 @@ export default {
               this.api()
                 .table()
                 .header()
-            ).css({ "background-color": "#bb8b30", color: "#fff" });
+            ).css({ "background-color": "#a155e7", color: "#fff" });
           },
           drawCallback: function(settings) {
             //console.log(Math.ceil((this.fnSettings().fnRecordsDisplay()) / this.fnSettings()._iDisplayLength));

@@ -1,5 +1,7 @@
-namespace PPR.Common.Entities {
-    public class Book {
+namespace VueDotNetMySql.Common.Entities
+{
+    public class Book
+    {
         public string ISBN { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }

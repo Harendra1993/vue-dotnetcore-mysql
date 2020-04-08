@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PPR.Data;
+using VueDotNetMySql.Data;
 
-namespace PPR.Data.Migrations
+namespace VueDotNetMySql.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -16,7 +16,7 @@ namespace PPR.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113");
 
-            modelBuilder.Entity("PPR.Common.Entities.Book", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.Book", b =>
                 {
                     b.Property<string>("ISBN")
                         .ValueGeneratedOnAdd();
@@ -39,7 +39,7 @@ namespace PPR.Data.Migrations
                     b.ToTable("Book");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.Publisher", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.Publisher", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -52,7 +52,7 @@ namespace PPR.Data.Migrations
                     b.ToTable("Publisher");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.Role", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.Role", b =>
                 {
                     b.Property<short>("RoleId")
                         .ValueGeneratedOnAdd();
@@ -69,7 +69,7 @@ namespace PPR.Data.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.User", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
@@ -99,7 +99,7 @@ namespace PPR.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.UserRole", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.UserRole", b =>
                 {
                     b.Property<int>("UserRoleId")
                         .ValueGeneratedOnAdd();
@@ -117,28 +117,28 @@ namespace PPR.Data.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.Book", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.Book", b =>
                 {
-                    b.HasOne("PPR.Common.Entities.Publisher", "Publisher")
+                    b.HasOne("VueDotNetMySql.Common.Entities.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.User", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.User", b =>
                 {
-                    b.HasOne("PPR.Common.Entities.Role")
+                    b.HasOne("VueDotNetMySql.Common.Entities.Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId");
                 });
 
-            modelBuilder.Entity("PPR.Common.Entities.UserRole", b =>
+            modelBuilder.Entity("VueDotNetMySql.Common.Entities.UserRole", b =>
                 {
-                    b.HasOne("PPR.Common.Entities.Role", "Role")
+                    b.HasOne("VueDotNetMySql.Common.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("PPR.Common.Entities.User")
+                    b.HasOne("VueDotNetMySql.Common.Entities.User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

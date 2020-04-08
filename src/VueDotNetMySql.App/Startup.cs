@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using PPR.App.DTOs;
-using PPR.App.MappingProfiles;
-using PPR.App.Providers;
-using PPR.Business.Interfaces;
-using PPR.Business.Repositories;
-using PPR.Common.Entities;
+using VueDotNetMySql.App.DTOs;
+using VueDotNetMySql.App.MappingProfiles;
+using VueDotNetMySql.App.Providers;
+using VueDotNetMySql.Business.Interfaces;
+using VueDotNetMySql.Business.Repositories;
+using VueDotNetMySql.Common.Entities;
 
-namespace PPR.App
+namespace VueDotNetMySql.App
 {
     public class Startup
     {

@@ -1,19 +1,22 @@
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using PPR.Common.Entities;
-using PPR.Data.Mappings;
+using VueDotNetMySql.Common.Entities;
+using VueDotNetMySql.Data.Mappings;
 
-namespace PPR.Data {
-    public class AppDbContext : DbContext {
+namespace VueDotNetMySql.Data
+{
+    public class AppDbContext : DbContext
+    {
 
-        protected override void OnConfiguring (DbContextOptionsBuilder dbContextBuilder) {
-            var configuration = new ConfigurationBuilder ()
-                .SetBasePath (Directory.GetCurrentDirectory ())
-                .AddJsonFile ("appsettings.json")
-                .Build ();
+        protected override void OnConfiguring(DbContextOptionsBuilder dbContextBuilder)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-            dbContextBuilder.UseMySQL (configuration.GetConnectionString ("DefaultConnection"));
+            dbContextBuilder.UseMySQL(configuration.GetConnectionString("DefaultConnection"));
         }
 
         public DbSet<Book> Book { get; set; }
@@ -23,23 +26,26 @@ namespace PPR.Data {
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
-        protected override void OnModelCreating (ModelBuilder builder) {
-            base.OnModelCreating (builder);
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
-            builder.Entity<Publisher> (entity => {
-                entity.HasKey (e => e.ID);
-                entity.Property (e => e.Name).IsRequired ();
+            builder.Entity<Publisher>(entity =>
+            {
+                entity.HasKey(e => e.ID);
+                entity.Property(e => e.Name).IsRequired();
             });
 
-            builder.Entity<Book> (entity => {
-                entity.HasKey (e => e.ISBN);
-                entity.Property (e => e.Title).IsRequired ();
-                entity.HasOne (d => d.Publisher)
-                    .WithMany (p => p.Books);
+            builder.Entity<Book>(entity =>
+            {
+                entity.HasKey(e => e.ISBN);
+                entity.Property(e => e.Title).IsRequired();
+                entity.HasOne(d => d.Publisher)
+                    .WithMany(p => p.Books);
             });
 
-            builder.ApplyConfiguration (new UserMapping ());
-            builder.ApplyConfiguration (new RoleMapping ());
+            builder.ApplyConfiguration(new UserMapping());
+            builder.ApplyConfiguration(new RoleMapping());
         }
     }
 }

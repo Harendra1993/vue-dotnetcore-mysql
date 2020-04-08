@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PPR.Common.Entities
+namespace VueDotNetMySql.Common.Entities
 {
     public class User
     {

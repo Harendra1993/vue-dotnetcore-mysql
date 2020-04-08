@@ -10,8 +10,7 @@ function page(path) {
     );
 }
 
-const routes = [
-  {
+const routes = [{
     path: "/",
     name: "home",
     component: page("Home.vue"),
@@ -23,11 +22,7 @@ const routes = [
     name: "login",
     component: page("Login.vue")
   },
-  {
-    path: "/release-notes",
-    name: "release",
-    component: page("ReleaseNotes.vue")
-  },
+
   {
     path: "/test",
     name: "test",

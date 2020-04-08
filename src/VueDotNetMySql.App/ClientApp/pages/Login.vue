@@ -13,15 +13,12 @@
       >
         <div>
           <center style="  color: white;">
-            <h2 class="font-bold">Welcome to PPR</h2>
+            <h2 class="font-bold">Welcome to VueDotNetMySql</h2>
             <p>Login in. To see it in action.</p>
           </center>
 
           <form class="m-t" role="form" @submit.prevent="handleLogin">
-            <div
-              class="form-group"
-              :class="{ 'has-error': submitted && $v.user.username.$error }"
-            >
+            <div class="form-group" :class="{ 'has-error': submitted && $v.user.username.$error }">
               <input
                 v-model.trim="$v.user.username.$model"
                 type="text"
@@ -29,17 +26,11 @@
                 class="form-control"
                 placeholder="Enter Username"
               />
-              <div
-                v-if="submitted && !$v.user.username.required"
-                class="help-block with-errors"
-              >
+              <div v-if="submitted && !$v.user.username.required" class="help-block with-errors">
                 <b>Username is required!</b>
               </div>
             </div>
-            <div
-              class="form-group"
-              :class="{ 'has-error': submitted && $v.user.password.$error }"
-            >
+            <div class="form-group" :class="{ 'has-error': submitted && $v.user.password.$error }">
               <input
                 v-model.trim="$v.user.password.$model"
                 type="password"
@@ -47,17 +38,11 @@
                 class="form-control"
                 placeholder="Enter Password"
               />
-              <div
-                v-if="submitted && !$v.user.password.required"
-                class="help-block with-errors"
-              >
+              <div v-if="submitted && !$v.user.password.required" class="help-block with-errors">
                 <b>Password is required!</b>
               </div>
             </div>
-            <button
-              class="btn btn-primary block full-width m-b"
-              :disabled="loading"
-            >
+            <button class="btn btn-primary block full-width m-b" :disabled="loading">
               <i class="fas fa-spinner-third fa-spin" v-if="loading"></i>
               <span>Login</span>
             </button>
@@ -70,23 +55,13 @@
         </div>
       </div>
     </div>
-
-    <div class="date-time">
-      <h1 class="time">{{ time }}</h1>
-      <h1 class="date">{{ date }}</h1>
-    </div>
-    <bottombar
-      @onShowReleaseNotes="showReleaseNotes"
-      link_color="white"
-      style="background-color:transparent; color:white; border:none;"
-    />
+    <bottombar style="background-color:transparent; color:white; border:none;" />
   </div>
 </template>
 <script>
 import { required } from "vuelidate/lib/validators";
 
 import Bottombar from "@/components/Bottombar";
-import ReleaseNotes from "@/pages/ReleaseNotes";
 
 export default {
   layout: "blank",
@@ -98,9 +73,7 @@ export default {
       },
       loading: false,
       submitted: false,
-      message: "",
-      time: "",
-      date: ""
+      message: ""
     };
   },
   validations: {
@@ -110,8 +83,7 @@ export default {
     }
   },
   components: {
-    Bottombar,
-    ReleaseNotes
+    Bottombar
   },
   computed: {
     loggedIn() {
@@ -122,19 +94,6 @@ export default {
     if (this.loggedIn) {
       this.$router.push("/dashboard");
     }
-  },
-
-  mounted() {
-    const vm = this;
-    vm.interval = setInterval(() => {
-      vm.updateTimestamp();
-    }, 1000);
-
-    vm.updateTimestamp();
-  },
-
-  destroyed() {
-    clearInterval(this.interval);
   },
 
   methods: {
@@ -162,25 +121,6 @@ export default {
           }
         );
       }
-    },
-    showReleaseNotes() {
-      this.$refs.popup.show();
-    },
-    updateTimestamp() {
-      var date = new Date();
-      this.date = date.toGMTString().slice(0, 16);
-
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
-      var seconds = date.getSeconds();
-
-      if (hours < 10) hours = "0" + hours;
-
-      if (minutes < 10) minutes = "0" + minutes;
-
-      //if (seconds < 10) seconds = "0" + seconds;
-
-      this.time = hours + ":" + minutes;
     }
   }
 };
@@ -198,69 +138,6 @@ export default {
   width: 100wh;
   margin-top: -15px;
   padding: 0;
-}
-
-.date-time {
-  bottom: 5px;
-  left: 15px;
-  position: absolute;
-  padding: 0;
-  color: white;
-}
-
-.date {
-  font-size: 4em;
-  padding-left: 0.2em;
-  margin-top: -5px;
-}
-
-.time {
-  font-size: 10em;
-}
-
-.page {
-  z-index: 9;
-  text-align: center;
-  width: 700px;
-  left: 50%;
-  top: 40%;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  white-space: normal;
-}
-
-.search {
-  max-width: 900px;
-  margin: 20px auto;
-}
-
-.search input {
-  height: 55px;
-  border: 0px;
-  border-radius: 3px;
-  color: #000;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  padding: 5px 20px;
-}
-
-.search .form-control:hover {
-  border: 1px solid #b9b9b9;
-  border-top-color: #a0a0a0;
-}
-
-.search .form-control:focus {
-  outline: none;
-  border: 2px solid #bb8b30;
-}
-
-.search .input-group-btn .btn-primary {
-  background: #bb8b30;
-  cursor: pointer;
-  font-weight: bold;
-  color: white;
 }
 
 .left {

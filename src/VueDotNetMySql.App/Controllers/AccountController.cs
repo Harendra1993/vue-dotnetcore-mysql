@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using PPR.App.DTOs;
-using PPR.App.DTOs.User;
-using PPR.App.JwtHelpers;
-using PPR.Business.Interfaces;
-using PPR.Common.Entities;
-using PPR.Common.Utils;
+using VueDotNetMySql.App.DTOs;
+using VueDotNetMySql.App.DTOs.User;
+using VueDotNetMySql.App.JwtHelpers;
+using VueDotNetMySql.Business.Interfaces;
+using VueDotNetMySql.Common.Entities;
+using VueDotNetMySql.Common.Utils;
 
-namespace PPR.App.Controllers
+namespace VueDotNetMySql.App.Controllers
 {
 
     [Authorize]

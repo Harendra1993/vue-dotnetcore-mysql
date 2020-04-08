@@ -1,9 +1,9 @@
 using System.Security.Claims;
 using System;
 using Microsoft.Extensions.Configuration;
-using PPR.App.DTOs.User;
+using VueDotNetMySql.App.DTOs.User;
 
-namespace PPR.App.JwtHelpers
+namespace VueDotNetMySql.App.JwtHelpers
 {
 
     public static class JwtExtensions

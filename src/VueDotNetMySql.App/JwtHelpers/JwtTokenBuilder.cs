@@ -4,9 +4,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
-using PPR.App.DTOs;
+using VueDotNetMySql.App.DTOs;
 
-namespace PPR.App.JwtHelpers
+namespace VueDotNetMySql.App.JwtHelpers
 {
     public class JwtTokenBuilder
     {

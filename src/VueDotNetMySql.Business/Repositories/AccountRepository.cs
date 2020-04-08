@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-using PPR.Business.Interfaces;
-using PPR.Common.Entities;
-using PPR.Data;
+using VueDotNetMySql.Business.Interfaces;
+using VueDotNetMySql.Common.Entities;
+using VueDotNetMySql.Data;
 
-namespace PPR.Business.Repositories
+namespace VueDotNetMySql.Business.Repositories
 {
     public class AccountRepository : IAccountRepository
     {

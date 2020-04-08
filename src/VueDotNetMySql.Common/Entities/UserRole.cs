@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PPR.Common.Entities {
-    public class UserRole {
+namespace VueDotNetMySql.Common.Entities
+{
+    public class UserRole
+    {
         [Key]
         public int UserRoleId { get; set; }
         public int UserId { get; set; }
