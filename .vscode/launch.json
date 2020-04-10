@@ -24,7 +24,11 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             },
-            "justMyCode": false
+            "justMyCode": false,
+
+            "logging": {
+                "moduleLoad": false
+            }
         },
         {
             "name": ".NET Core Attach",
