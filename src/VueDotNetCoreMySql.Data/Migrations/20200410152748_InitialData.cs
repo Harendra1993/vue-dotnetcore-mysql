@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VueDotNetCoreMySql.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,7 +30,7 @@ namespace VueDotNetCoreMySql.Data.Migrations
                     UserName = table.Column<string>(maxLength: 25, nullable: false),
                     Password = table.Column<string>(maxLength: 20, nullable: false),
                     LastLogin = table.Column<DateTime>(nullable: true),
-                    Created = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2020, 4, 10, 16, 40, 32, 949, DateTimeKind.Local)),
+                    Created = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2020, 4, 10, 18, 27, 47, 957, DateTimeKind.Local)),
                     IsActive = table.Column<short>(nullable: false),
                     RoleId = table.Column<short>(nullable: true)
                 },
@@ -70,6 +70,40 @@ namespace VueDotNetCoreMySql.Data.Migrations
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "RoleId", "RoleDescription", "RoleName" },
+                values: new object[,]
+                {
+                    { (short)1, null, "Super Admin" },
+                    { (short)2, null, "Admin" },
+                    { (short)3, null, "User" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Created", "IsActive", "LastLogin", "Password", "RoleId", "UserName" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2020, 4, 10, 15, 27, 48, 217, DateTimeKind.Utc), (short)1, null, "admin", null, "admin" },
+                    { 2, new DateTime(2020, 4, 10, 15, 27, 48, 217, DateTimeKind.Utc), (short)1, null, "test", null, "test" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserRoles",
+                columns: new[] { "UserRoleId", "RoleId", "UserId" },
+                values: new object[] { 1, (short)1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "UserRoles",
+                columns: new[] { "UserRoleId", "RoleId", "UserId" },
+                values: new object[] { 2, (short)2, 1 });
+
+            migrationBuilder.InsertData(
+                table: "UserRoles",
+                columns: new[] { "UserRoleId", "RoleId", "UserId" },
+                values: new object[] { 3, (short)3, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",

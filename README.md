@@ -10,9 +10,10 @@ ASP.NET Core and Vue.JS (Vue) using MySql Databae - with Webpack (with HMR), Web
   - Repository Pattern
 - **VueJS 2**
   - Vuex (State Store)
+- **Json Web Token (JWT)**
 - **Webpack**
   - HMR (Hot Module Replacement/Reloading)
-- **Bootstrap 4**
+- **Bootstrap 3**
 - **MySql Database**
 
 # Prerequisites:
@@ -49,12 +50,12 @@ Run the application using `dotnet run` or `npm run dev`
 - note `dotnet run` should be run in `Development` environment for hot reloading. This setting can be set either within the command line or via the `launchSettings.json` available in the `Properties` folder.
 
 ### 2. Using the built-in run command
-Run the application in VSCode or Visual Studio 2017 by hitting `F5`.
+Run the application in VSCode or Visual Studio 2019 by hitting `F5`.
 
 ## View your application running
 When running the app using debug menu or `F5` VS open auto the app in the browser;
 
-## Migrations commands remaining will add soon.
+## Database Migrations.
 * Nevigate to Data Project Directory `cd src/VueDotNetCoreMySql.Data`
 * Run migration scripts `dotnet ef migrations add InitialCreate --startup-project ../VueDotNetCoreMySql.App/`
 * Update the Database `dotnet ef database update --startup-project ../VueDotNetCoreMySql.App/`

@@ -9,8 +9,8 @@ using VueDotNetCoreMySql.Data;
 namespace VueDotNetCoreMySql.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200410134033_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200410152748_InitialData")]
+    partial class InitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,12 @@ namespace VueDotNetCoreMySql.Data.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new { RoleId = (short)1, RoleName = "Super Admin" },
+                        new { RoleId = (short)2, RoleName = "Admin" },
+                        new { RoleId = (short)3, RoleName = "User" }
+                    );
                 });
 
             modelBuilder.Entity("VueDotNetCoreMySql.Common.Entities.User", b =>
@@ -42,7 +48,7 @@ namespace VueDotNetCoreMySql.Data.Migrations
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2020, 4, 10, 16, 40, 32, 949, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2020, 4, 10, 18, 27, 47, 957, DateTimeKind.Local));
 
                     b.Property<short>("IsActive");
 
@@ -63,6 +69,11 @@ namespace VueDotNetCoreMySql.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new { UserId = 1, Created = new DateTime(2020, 4, 10, 15, 27, 48, 425, DateTimeKind.Utc), IsActive = (short)1, Password = "admin", UserName = "admin" },
+                        new { UserId = 2, Created = new DateTime(2020, 4, 10, 15, 27, 48, 425, DateTimeKind.Utc), IsActive = (short)1, Password = "test", UserName = "test" }
+                    );
                 });
 
             modelBuilder.Entity("VueDotNetCoreMySql.Common.Entities.UserRole", b =>
@@ -81,6 +92,12 @@ namespace VueDotNetCoreMySql.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new { UserRoleId = 1, RoleId = (short)1, UserId = 1 },
+                        new { UserRoleId = 2, RoleId = (short)2, UserId = 1 },
+                        new { UserRoleId = 3, RoleId = (short)3, UserId = 2 }
+                    );
                 });
 
             modelBuilder.Entity("VueDotNetCoreMySql.Common.Entities.User", b =>

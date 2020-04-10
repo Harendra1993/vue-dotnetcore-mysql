@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ namespace VueDotNetCoreMySql.Data
 {
     public class AppDbContext : DbContext
     {
+        bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextBuilder)
         {
@@ -30,6 +32,9 @@ namespace VueDotNetCoreMySql.Data
 
             builder.ApplyConfiguration(new UserMapping());
             builder.ApplyConfiguration(new RoleMapping());
+
+            if (isDevelopment)
+                builder.Seed();
         }
     }
 }
