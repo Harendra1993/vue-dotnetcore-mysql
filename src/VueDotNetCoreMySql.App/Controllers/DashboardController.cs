@@ -14,19 +14,6 @@ namespace VueDotNetCoreMySql.App.Controllers
             _dashboardRepository = dashboardRepository;
         }
 
-        [HttpGet("[action]")]
-        public IActionResult Books()
-        {
-            //System.Threading.Thread.Sleep(500); // Fake latency
-
-            var allForecasts = _dashboardRepository.Books();
-            var result = new
-            {
-                Total = allForecasts.Count,
-                Forecasts = allForecasts
-            };
-
-            return Ok(result);
-        }
+     
     }
 }

@@ -5,6 +5,5 @@ namespace VueDotNetCoreMySql.Business.Interfaces
 {
     public interface IDashboardRepository
     {
-        IList<Book> Books();
     }
 }

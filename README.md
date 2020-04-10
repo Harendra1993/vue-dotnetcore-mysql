@@ -55,5 +55,9 @@ Run the application in VSCode or Visual Studio 2017 by hitting `F5`.
 When running the app using debug menu or `F5` VS open auto the app in the browser;
 
 ## Migrations commands remaining will add soon.
+* Nevigate to Data Project Directory `cd src/VueDotNetCoreMySql.Data`
+* Run migration scripts `dotnet ef migrations add InitialCreate --startup-project ../VueDotNetCoreMySql.App/`
+* Update the Database `dotnet ef database update --startup-project ../VueDotNetCoreMySql.App/`
+* ([Checkout more migration commands](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli))
 
 
