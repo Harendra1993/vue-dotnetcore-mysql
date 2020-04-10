@@ -277,7 +277,6 @@ src/VueDotNetCoreMySql.Common/obj
 src/VueDotNetCoreMySql.Business/bin
 src/VueDotNetCoreMySql.Business/obj
 
-src/VueDotNetCoreMySql.Data/Migrations
 src/VueDotNetCoreMySql.Data/bin
 src/VueDotNetCoreMySql.Data/obj
 

@@ -14,11 +14,6 @@ namespace VueDotNetCoreMySql.Business.Repositories
         {
             _dataContext = new AppDbContext();
         }
-        public IList<Book> Books()
-        {
-            IList<Book> data = _dataContext.Book.ToList();
-
-            return data;
-        }
+        
     }
 }

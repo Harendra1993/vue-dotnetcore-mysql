@@ -1,16 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="SqlKata" Version="1.1.7" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\VueDotNetCoreMySql.Common\VueDotNetCoreMySql.Common.csproj" />
     <ProjectReference Include="..\VueDotNetCoreMySql.Data\VueDotNetCoreMySql.Data.csproj" />
+    <Content Include="Repositories\DashboardRepository.cs" />
+    <Content Include="Interfaces\IDashboardRepository.cs" />
   </ItemGroup>
-
 </Project>
